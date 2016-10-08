@@ -16,6 +16,7 @@ return array(
     '*' => array(
         'omitScriptNameInUrls' => true,
         'enableCsrfProtection' => true,
+        'siteUrl' => $customEnv['baseUrl'],
         'environmentVariables' => array(
             'baseUrl'  => $customEnv['baseUrl'],
             'basePath' => $customEnv['basePath'],
