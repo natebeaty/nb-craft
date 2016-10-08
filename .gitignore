@@ -1,0 +1,9 @@
+craft/storage/runtime/*
+craft/storage/backups/*
+public/assets/bower_components/*
+
+.DS_Store
+.scss-cache/*
+.gulp-scss-cache/*
+node_modules/*
+logs/*

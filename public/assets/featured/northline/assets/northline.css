@@ -1,0 +1,11 @@
+#featured-page { background:#245091 url(/feature/northline/assets/texture-bg.png); }
+#featured-page h1 { 
+	text-indent:-1000em; 
+	background:url(/feature/northline/assets/h1-northline.png) no-repeat; 
+	width:744px; height:187px;
+	margin:5px 0 0 -105px;
+}
+.title { width:100%; }
+#featured-page .info { margin-top:10px; }
+#featured-page p.description { color:#fff; margin:-30px 0 20px 23px;}
+#featured-page p a { color:#73C3EB; }

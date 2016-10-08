@@ -1,0 +1,22 @@
+#featured-page {
+	background:#a9286d url(/feature/lumpen/assets/texture-bg.png);
+}
+#featured-page h1 {
+	text-indent:-1000em;
+	background:url(/feature/lumpen/assets/lumpen-logo.png) no-repeat;
+	width:350px; 
+	height:262px;
+	background-size: cover;
+	float: left;
+	margin: 0;
+}
+.title {
+	width:100%;
+	overflow: hidden;
+}
+#featured-page .info {
+	width: 580px;
+}
+#featured-page p.description {
+	margin: 60px 0 20px 390px;
+}

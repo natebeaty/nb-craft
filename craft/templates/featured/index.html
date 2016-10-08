@@ -1,0 +1,12 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = "Featured" %}
+
+{% block content %}
+	<section class="featured-list page-content" data-page="/featured" data-page-title="{{ title }}">
+		{% for entry in craft.entries.section('featured').find() %}
+			<article class="bigclicky">
+				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+			</article>
+		{% endfor %}
+	</section>
+{% endblock %}

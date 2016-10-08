@@ -1,0 +1,12 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = "Journal" %}
+
+{% block content %}
+	<section class="journal-list page-content" data-page="/journal" data-page-title="{{ title }}">
+		{% for entry in craft.entries.section('journal').find() %}
+			<article>
+				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+			</article>
+		{% endfor %}
+	</section>
+{% endblock %}

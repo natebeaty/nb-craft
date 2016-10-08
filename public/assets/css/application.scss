@@ -1,0 +1,340 @@
+@import "reset";
+
+$comics: #ff1412;
+$journal: #00597d;
+$animation: #cd3b5c;
+$featured: #e1992e;
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  background: $comics;
+  transition: background-color .25s ease-out;
+}
+nav.main {
+  height: 100vh;
+  a {
+    font: italic 24px/1 "Anonymous Pro", monospace;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-decoration: none;
+    display: block;
+    position: fixed;
+    z-index: 9;
+    width: 50%;
+    height: 50vh;
+    transition: all .3s, border-color 0.01s, background 0.01s;
+    border: 0 solid rgba(0,0,0,0);
+    &:hover span {
+      // text-decoration: strike-through;
+      text-decoration: underline;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      left: 30%;
+      top: 50%;
+      transition: top .5s, left .5s, right .5s, bottom .5s;
+      transform: translateY(-50%);
+    }
+    &.journal,
+    &.featured {
+      span {
+        left: auto;
+        right: 30%;
+      }
+    }
+    &.comics {
+      top: 0;
+      left: 0;
+      background: $comics;
+    }
+    &.journal {
+      top: 0;
+      right: 0;
+      background: $journal;
+    }
+    &.animation {
+      bottom: 0;
+      left: 0;
+      background: $animation;
+    }
+    &.featured {
+      bottom: 0;
+      right: 0;
+      background: $featured;
+    }
+  }
+}
+#natehead {
+  pointer-events: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 500px;
+  margin: -250px;
+  z-index: 10;
+  transition: all .25s ease-out;
+}
+h1.title {
+  font: italic 24px/1 "Anonymous Pro";
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  z-index: 11;
+  .nate {
+    display: block;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: .4em;
+  }
+  .beaty {
+    top: 0;
+    display: block;
+    position: absolute;
+  }
+}
+
+// @media screen and (max-width: 540px) {
+//  #wrapper { padding: 20px 40px; }
+//  #header { margin-bottom: 40px; }
+//  h1 { font-size: 17px; }
+//  #footer { margin-top: 40px; padding-bottom: 20px; }
+// }
+
+// @media screen and (max-width:440px) {
+//  #thumbnails a:nth-child(n) {
+//    width: 100%;
+//    max-width: 300px;
+//    margin: 0 auto;
+//    margin-top: 20px;
+//    display: inline-block;
+//    float: none;
+//  }
+
+//  a#docs { display: none; }
+//  #thumbnails a:first-child { margin-top: 0; }
+//  #header { text-align: center; margin-bottom: 0; }
+//  #wrapper { padding: 20px 20px 40px 20px; }
+//  .post { margin-bottom: 40px; }
+//  #footer { text-align: center; padding-bottom: 15px; }
+// }
+
+// general "in a section" body state
+body.in-section {
+  #natehead {
+    cursor: pointer;
+    pointer-events: auto;
+    transform: scale(.3);
+    top: 50px;
+  }
+  h1.title {
+    display: none;
+  }
+  nav.main {
+    height: 0;
+    a {
+      height: 50px;
+      span {
+        left: 5%;
+      }
+      &.journal,
+      &.featured {
+        span {
+          left: auto;
+          right: 5%;
+
+        }
+      }
+    }
+  }
+}
+
+// section specifics
+
+// comics
+body.active-comics {
+  #natehead {
+    top: calc(100% - 50px);
+  }
+  nav.main a.journal {
+    height: calc(100% - 50px);
+    width: 50px;
+    span {
+      transform: rotate(90deg);
+      transform-origin: top right;
+      right: 20%;
+      top: 15%;
+    }
+  }
+}
+// journal
+body.active-journal {
+  background: $journal;
+  #natehead {
+    top: calc(100% - 50px);
+  }
+}
+// animation
+body.active-animation {
+  background: $animation;
+}
+// featured
+body.active-featured {
+  background: $featured;
+}
+
+// rotate offside links 90deg
+body.active-comics nav.main a.journal,
+body.active-journal nav.main a.comics,
+body.active-animation nav.main a.featured,
+body.active-featured nav.main a.animation {
+  height: calc(100% - 50px);
+  width: 50px;
+  span {
+    transform: rotate(90deg);
+    transform-origin: top right;
+    right: 20%;
+    top: 15%;
+  }
+}
+
+body.active-animation nav.main a.animation,
+body.active-featured nav.main a.featured,
+body.active-journal nav.main a.journal,
+body.active-comics nav.main a.comics {
+  font: italic 30px/1 "Anonymous Pro", monospace;
+  background: transparent;
+  span {
+    text-decoration: underline;
+  }
+}
+
+body.active-animation nav.main a.animation,
+body.active-featured nav.main a.featured {
+  bottom: calc(100vh - 100px);
+}
+
+// homepage hover effect giant oldskool border madness
+body:not(.in-section) {
+  nav.main a {
+    &.comics {
+      &:hover {
+        border-bottom: 25vh solid darken($comics,10%);
+        border-right: 25vh solid lighten($comics,10%);
+      }
+    }
+    &.journal {
+      &:hover {
+        border-bottom: 25vh solid darken($journal,10%);
+        border-left: 25vh solid lighten($journal,10%);
+      }
+    }
+    &.animation {
+      &:hover {
+        border-top: 25vh solid lighten($animation,10%);
+        border-right: 25vh solid darken($animation,10%);
+      }
+    }
+    &.featured {
+      &:hover {
+        border-top: 25vh solid lighten($featured,10%);
+        border-left: 25vh solid darken($featured,10%);
+      }
+    }
+  }
+}
+
+.page-content {
+  opacity: 0;
+  display: none;
+  transition: opacity .5s 1s;
+  padding: 80px 5% 100px 2.5%;
+}
+.in-section .page-content {
+  // transition: opacity .5s 1s;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+body.active-featured .page-content.featured-list,
+body.active-animation .page-content.animation-list,
+body.active-journal .page-content.journal-list,
+body.active-comics .page-content.comics-list {
+  opacity: 1;
+  display: block;
+}
+
+// comics
+.comics-list {
+  article {
+    width: 250px;
+    float: left;
+    margin: 0 20px 20px 0;
+    position: relative;
+    cursor: pointer;
+    a {
+      display: block;
+    }
+    img {
+      display: block;
+    }
+    h1 {
+      visibility: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      font: normal 18px/1 "Anonymous Pro", monospace;
+      color: #fff;
+      background: rgba(0,0,0,.8);
+      // padding: 8px 10px;
+      z-index: 3;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .15s, visibility 0s .15s;
+      a {
+        padding: 8px 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    // &:before {
+    //   content: '';
+    //   display: block;
+    //   opacity: 0;
+    //   position: absolute;
+    //   left: 0;
+    //   top: 100%;
+    //   width: 100%;
+    //   // background: linear-gradient(8deg, rgba(0, 0, 0, 0.65) 0%, transparent 58%, transparent 50%);
+    //   background: rgba(0,0,0,.8);
+    //   padding: 10px;
+    // }
+    &:hover {
+      // &:before {
+      //   opacity: 1;
+      // }
+      h1 {
+        visibility: visible;
+        max-height: 50px;
+        transition: max-height .15s, visibility 0s;
+      }
+    }
+  }
+}
+
+// journal
+.journal-list {
+
+}

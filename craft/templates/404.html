@@ -1,0 +1,6 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = "404" %}
+
+{% block content %}
+	<h1>Page not found</h1>
+{% endblock %}

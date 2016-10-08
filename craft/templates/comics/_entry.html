@@ -1,0 +1,9 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% block content %}
+	<article class="comic modal-content" data-page="{{ entry.url }}" data-page-title="{{ entry.title }}">
+		{% for image in entry.comicPages %}
+			<img src="{{ image.url }}" alt="{{ entry.title }}">
+		{% endfor %}
+	</article>
+{% endblock %}

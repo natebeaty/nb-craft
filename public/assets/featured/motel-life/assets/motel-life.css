@@ -1,0 +1,10 @@
+#featured-page { background:#a26300 url(/feature/motel-life/assets/texture-bg.png); }
+#featured-page h1 { 
+	text-indent:-1000em; 
+	background:url(/feature/motel-life/assets/h1-motel-life.png) no-repeat; 
+	width:600px; height:290px;
+	margin:-15px 0 0 -29px;
+}
+.title { width:100%; }
+#featured-page .info { margin-top:10px; }
+#featured-page p.description { color:#fff; margin:-7px 0 -2px -22px; width:600px; }

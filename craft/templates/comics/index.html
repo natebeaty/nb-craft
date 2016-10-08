@@ -1,0 +1,17 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = "Comics" %}
+
+{% block content %}
+	<section class="comics-list page-content" data-page="/comics" data-page-title="{{ title }}">
+		{% for entry in craft.entries.section('comics').find() %}
+
+			{% set front_image = entry.featuredImage.last() %}
+			{% if front_image %}
+				<article class="bigclicky">
+					<img src="{{ front_image.getUrl() }}" alt="{{ image.title }}">
+					<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+				</article>
+			{% endif %}
+		{% endfor %}
+	</section>
+{% endblock %}

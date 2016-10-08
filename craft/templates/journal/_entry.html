@@ -1,0 +1,9 @@
+{% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+
+{% block content %}
+	<article class="journal modal-content" data-page="{{ entry.url }}" data-page-title="{{ entry.title }}">
+		<h1>{{ entry.title }}</h1>
+		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
+		{{ entry.body }}
+	</article>
+{% endblock %}
