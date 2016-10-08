@@ -7,3 +7,4 @@ public/assets/bower_components/*
 .gulp-scss-cache/*
 node_modules/*
 logs/*
+_env.php
