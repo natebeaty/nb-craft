@@ -8,7 +8,7 @@
 			{% set front_image = entry.featuredImage.last() %}
 			{% if front_image %}
 				<article class="bigclicky">
-					<img src="{{ front_image.getUrl() }}" alt="{{ image.title }}">
+					<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
 					<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 				</article>
 			{% endif %}

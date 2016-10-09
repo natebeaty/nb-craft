@@ -1,5 +1,5 @@
-{% includeCssFile "/assets/dist/css/application.css" %}
-{% includeJsFile "/assets/dist/js/application.js" %}
+{% includeCssFile craft.config.devMode ? "/assets/dist/css/application.css" : rev('css/application.css') %}
+{% includeJsFile craft.config.devMode ? "/assets/dist/js/application.js" : rev('js/application.js') %}
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
