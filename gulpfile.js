@@ -42,7 +42,7 @@ gulp.task('scripts', function() {
 
 // revision files for production assets
 gulp.task('rev', function() {
-	return gulp.src(['public/assets/**/*.css', 'public/assets/**/*.js'])
+	return gulp.src(['public/assets/dist/**/*.css', 'public/assets/dist/**/*.js'])
 		.pipe(rev())
 		// .pipe(gzip({ append: false }))
 		.pipe(gulp.dest('public/assets/dist/gz'))
@@ -57,7 +57,7 @@ gulp.task('watch', ['styles', 'scripts'], function() {
 });
 
 // `gulp clean` - Deletes the build folder entirely.
-gulp.task('clean', require('del').bind(null, ['assets']));
+gulp.task('clean', require('del').bind(null, ['public/assets/dist']));
 
 // `gulp build` - Run all the build tasks but don't clean up beforehand.
 gulp.task('build', function(callback) {
