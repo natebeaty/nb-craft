@@ -73,11 +73,12 @@ nav.main {
 #natehead {
   pointer-events: none;
   position: fixed;
-  top: 50%;
+  transform-origin: top center;
+  transform: translate(-50%,calc(50vh - 250px));
   left: 50%;
+  top: 0;
   width: 500px;
   height: 500px;
-  margin: -250px;
   z-index: 10;
   transition: all .25s ease-out;
 }
@@ -135,8 +136,8 @@ body.in-section {
   #natehead {
     cursor: pointer;
     pointer-events: auto;
-    transform: scale(.3);
-    top: 50px;
+    transform: scale(.333) translate(-150%, calc(-150px));
+    // top: 50px;
   }
   h1.title {
     display: none;
@@ -165,7 +166,8 @@ body.in-section {
 // comics
 body.active-comics {
   #natehead {
-    top: calc(100% - 50px);
+    transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    // top: calc(100% - 50px);
   }
   nav.main a.journal {
     height: calc(100% - 50px);
@@ -182,7 +184,8 @@ body.active-comics {
 body.active-journal {
   background: $journal;
   #natehead {
-    top: calc(100% - 50px);
+    transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    // top: calc(100% - 50px);
   }
 }
 // animation

@@ -95,7 +95,6 @@ var Nb = (function($) {
       if (State.url == root_url) {
         $('body').attr('class', '');
       } else {
-        // Comics
         if (page_cache[encodeURIComponent(State.url)]) {
           _updatePage();
         } else {
@@ -106,12 +105,11 @@ var Nb = (function($) {
 
       // } else if (relative_url.match(/^\/collection\//)) {
 
-      //   // Collection
       //   _showCollection();
 
       // } else {
 
-      //   // URL isn't handled as a modal or isn't project category (or is page without $category_nav)
+      //   // URL isn't handled as a modal
       //   if (State.url !== original_url) {
       //     // Just load URL if isn't original_url
       //     location.href = State.url;
