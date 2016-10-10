@@ -2,16 +2,19 @@
 {% set title = "Comics" %}
 
 {% block content %}
-	<section class="comics-list page-content" data-page="/comics" data-page-title="{{ title }}">
+	<section class="comics-list image-list page-content" data-page="/comics" data-page-title="{{ title }}">
+		<div class="masonryme">
 		{% for entry in craft.entries.section('comics').find() %}
-
 			{% set front_image = entry.featuredImage.last() %}
-			{% if front_image %}
+			{% if front_image|length %}
 				<article class="bigclicky">
-					<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+					<div class="wrap">
+						<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+					</div>
 					<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 				</article>
 			{% endif %}
 		{% endfor %}
+		</div>
 	</section>
 {% endblock %}

@@ -5,7 +5,7 @@
 	<section class="animation-list page-content" data-page="/animation" data-page-title="{{ title }}">
 		{% set animation_page = craft.entries.slug('animation').first() %}
 		{% if animation_page %}
-
+			{#
 			{% if animation_page.headsploog|length > 0 %}
 				<div class="headsploog-wrap">';
 					<div id="headsploog" class="anim comic-slide">
@@ -17,7 +17,7 @@
 					<p>Moving doodles via iPad Animation Creator HD app then export as JPGs then <code>convert -delay 1x10 *.JPG -resize x400 -colors 16 -fuzz 10% -transparent "#ffffff" -set dispose background -coalesce -layers OptimizeFrame +map headsploog.gif</code></p>
 				</div>
 			{% endif %}
-
+			#}
 			<div class="animation">
 				{{ animation_page.animationEmbed|raw }}
 			</div>

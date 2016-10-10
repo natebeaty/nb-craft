@@ -1,9 +1,14 @@
 @import "reset";
+@import "variables";
+@import "mixins";
 
-$comics: #ff1412;
-$journal: #00597d;
-$animation: #cd3b5c;
-$featured: #e1992e;
+// @include min-screen($breakpoint-medium) {
+//   padding: 214px 30px 0;
+// }
+
+// @include min-screen($breakpoint-nav) {
+//   padding-top: 184px;
+// }
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -11,6 +16,24 @@ $featured: #e1992e;
 body {
   background: $comics;
   transition: background-color .25s ease-out;
+  font: 14px/1.4 monospace;
+  // letter-spacing: .1em;
+  color: #fff;
+}
+h1 {
+  font: italic 24px/1 "Anonymous Pro", monospace;
+  margin: 1em 0 .5em;
+}
+h2,h3 {
+  font: italic 18px/1 "Anonymous Pro", monospace;
+  margin: 1em 0 .5em;
+}
+main {
+  h1 a,
+  h2 a,
+  h3 a{
+    color: #fff;
+  }
 }
 nav.main {
   height: 100vh;
@@ -147,13 +170,13 @@ body.in-section {
     a {
       height: 50px;
       span {
-        left: 5%;
+        left: 20px;
       }
       &.journal,
       &.featured {
         span {
           left: auto;
-          right: 5%;
+          right: 20px;
 
         }
       }
@@ -176,13 +199,16 @@ body.active-comics {
       transform: rotate(90deg);
       transform-origin: top right;
       right: 20%;
-      top: 15%;
+      top: 20px;
     }
   }
 }
 // journal
 body.active-journal {
   background: $journal;
+  .page-content {
+    padding: 100px 20px 150px 70px;
+  }
   #natehead {
     transform: scale(.333) translate(-150%, calc(300vh - 400px));
     // top: calc(100% - 50px);
@@ -191,10 +217,16 @@ body.active-journal {
 // animation
 body.active-animation {
   background: $animation;
+  .page-content {
+    padding-top: 150px;
+  }
 }
 // featured
 body.active-featured {
   background: $featured;
+  .page-content {
+    padding: 150px 20px 150px 70px;
+  }
 }
 
 // rotate offside links 90deg
@@ -207,8 +239,9 @@ body.active-featured nav.main a.animation {
   span {
     transform: rotate(90deg);
     transform-origin: top right;
+    left: 0;
     right: 20%;
-    top: 15%;
+    top: 70px;
   }
 }
 
@@ -219,6 +252,7 @@ body.active-comics nav.main a.comics {
   font: italic 30px/1 "Anonymous Pro", monospace;
   background: transparent;
   span {
+    // text-shadow: 2px 2px 0 #000;
     text-decoration: underline;
   }
 }
@@ -259,10 +293,11 @@ body:not(.in-section) {
 }
 
 .page-content {
+  @include clearfix;
   opacity: 0;
   display: none;
   transition: opacity .5s 1s;
-  padding: 80px 5% 100px 2.5%;
+  padding: 100px 70px 150px 20px;
 }
 .in-section .page-content {
   // transition: opacity .5s 1s;
@@ -280,11 +315,14 @@ body.active-comics .page-content.comics-list {
 }
 
 // comics
-.comics-list {
+.image-list {
   article {
-    width: 250px;
+    width: 25%;
     float: left;
-    margin: 0 20px 20px 0;
+    .wrap {
+      padding: 0 10px 0 0;
+    }
+    margin: 0 0 10px;
     position: relative;
     cursor: pointer;
     a {
@@ -296,17 +334,18 @@ body.active-comics .page-content.comics-list {
     h1 {
       visibility: hidden;
       position: absolute;
-      top: 100%;
+      bottom: 0;
       left: 0;
+      margin-right: 20px;
       font: normal 18px/1 "Anonymous Pro", monospace;
       color: #fff;
       background: rgba(0,0,0,.8);
-      // padding: 8px 10px;
       z-index: 3;
       max-height: 0;
       overflow: hidden;
       transition: max-height .15s, visibility 0s .15s;
       a {
+        display: block;
         padding: 8px 10px;
         color: #fff;
         text-decoration: none;
@@ -341,3 +380,5 @@ body.active-comics .page-content.comics-list {
 .journal-list {
 
 }
+
+// animation

@@ -2,11 +2,19 @@
 {% set title = "Featured" %}
 
 {% block content %}
-	<section class="featured-list page-content" data-page="/featured" data-page-title="{{ title }}">
+	<section class="featured-list image-list page-content" data-page="/featured" data-page-title="{{ title }}">
+		<div class="masonryme">
 		{% for entry in craft.entries.section('featured').find() %}
+			{% set front_image = entry.featuredImage.last() %}
+			{% if front_image %}
 			<article class="bigclicky">
+				<div class="wrap">
+					<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+				</div>
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 			</article>
+			{% endif %}
 		{% endfor %}
+		</div>
 	</section>
 {% endblock %}

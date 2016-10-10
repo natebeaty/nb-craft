@@ -3,7 +3,9 @@
 /*jshint latedef:false*/
 
 //=include "../bower_components/jquery/dist/jquery.js"
+//=include "../bower_components/jquery.fitvids/jquery.fitvids.js"
 //=include "../bower_components/velocity/velocity.min.js"
+//=include "../bower_components/imagesloaded/imagesloaded.pkgd.min.js"
 //=include "../bower_components/masonry/dist/masonry.pkgd.js"
 //=include "../bower_components/history.js/scripts/bundled/html5/jquery.history.js"
 
@@ -24,6 +26,9 @@ var Nb = (function($) {
   function _init() {
     $('#stache').velocity({ fill: '#eee' });
 
+    // Fit them vids!
+    $('main').fitVids();
+
     // natehead clicks
     $(document).on('click', '#natehead', function(e) {
       _showNav();
@@ -41,7 +46,6 @@ var Nb = (function($) {
     $('nav.main a').hover(function() {
       var bg = $(this).css('background-color');
       var hex = _rgb2hex(bg);
-      console.log(bg, hex);
       if (hex) {
         $('#stache').stop().velocity({ fill: hex });
       }
@@ -135,10 +139,19 @@ var Nb = (function($) {
     }
     // page specifics
     if (section_in == 'comics') {
-      $('.comics-list').masonry({
-        itemSelector: 'article'
-      }).masonry('layout');
     }
+    // Refit them vids!
+    $('main').fitVids();
+    $('.masonryme:not(.inited)').masonry({
+      itemSelector: 'article'
+    }).on('layoutComplete', function(){
+      $(this).addClass('inited');
+    });
+    $('.masonryme').imagesLoaded(function() {
+      $('.masonryme').masonry('layout');
+    });
+
+    _scrollBody($('body'), 250, 0);
   }
 
   // Load AJAX content
@@ -188,7 +201,6 @@ var Nb = (function($) {
     } catch (Exception) {}
   }
 
-
   function _showNav() {
     History.pushState({}, '', root_url);
   }
@@ -199,6 +211,16 @@ var Nb = (function($) {
     breakpoint_small = (screenWidth > breakpoint_array[0]);
     breakpoint_medium = (screenWidth > breakpoint_array[1]);
     breakpoint_large = (screenWidth > breakpoint_array[2]);
+  }
+
+  // Scroll to location in body or container element
+  function _scrollBody(element, duration, delay, offset, container) {
+    element.velocity('scroll', {
+      duration: duration,
+      delay: delay,
+      offset: (typeof offset !== 'undefined' ? offset : 0),
+      container: (typeof container !== 'undefined' ? container : null)
+    }, 'easeOutSine');
   }
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
