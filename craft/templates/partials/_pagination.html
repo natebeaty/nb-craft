@@ -1,4 +1,4 @@
 	<div class="pagination">
-		{% if prevEntry %}<a class="previous" href="{{ prevEntry.url }}"><span>Previous</span></a>{% endif %}
-		{% if nextEntry %}<a class="next" href="{{ nextEntry.url }}"><span>Next</span></a>{% endif %}
+		{% if prevEntry %}<a rel="previous" class="previous" href="{{ prevEntry.url }}"><span>Previous</span></a>{% endif %}
+		{% if nextEntry %}<a rel="next" class="next" href="{{ nextEntry.url }}"><span>Next</span></a>{% endif %}
 	</div>
