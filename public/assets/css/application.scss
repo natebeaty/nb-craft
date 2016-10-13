@@ -16,7 +16,7 @@
 body {
   background: $comics;
   transition: background-color .25s ease-out;
-  font: 15px/1.5 monospace;
+  font: 15px/1.5 "Anonymous Pro", monospace;
   // letter-spacing: .1em;
   color: #fff;
 }
@@ -41,6 +41,12 @@ p {
 .hidden {
   display: none;
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// big ol' primary nav
 nav.main {
   height: 100vh;
   a {
@@ -55,10 +61,9 @@ nav.main {
     z-index: 9;
     width: 50%;
     height: 50vh;
-    transition: all .3s, border-color 0.01s, background 0.01s;
+    transition: all .3s, border-color 0.01s, background 0.01s, font 0.01s;
     border: 0 solid rgba(0,0,0,0);
     &:hover span {
-      // text-decoration: strike-through;
       text-decoration: underline;
     }
 
@@ -99,6 +104,98 @@ nav.main {
     }
   }
 }
+
+// primary content area
+main {
+  padding: 100px 70px 150px 20px;
+}
+
+// rotate offside links 90deg
+body.active-comics nav.main a.journal,
+body.active-journal nav.main a.comics,
+body.active-animation nav.main a.featured,
+body.active-featured nav.main a.animation {
+  height: calc(100% - 50px);
+  width: 50px;
+  span {
+    transform: rotate(90deg);
+    transform-origin: top right;
+    left: 0;
+    right: 20%;
+    top: 70px;
+  }
+}
+
+// active nav item / headers
+body.active-animation nav.main a.animation,
+body.active-featured nav.main a.featured,
+body.active-journal nav.main a.journal,
+body.active-comics nav.main a.comics {
+  font: italic 30px/1 "Anonymous Pro", monospace;
+  background: transparent;
+  span {
+    // text-shadow: 2px 2px 0 #000;
+    text-decoration: underline;
+  }
+}
+body.active-animation nav.main a.animation,
+body.active-featured nav.main a.featured {
+  bottom: calc(100vh - 100px);
+}
+
+// homepage hover effect giant oldskool border madness
+body:not(.in-section) {
+  nav.main a {
+    &.comics {
+      &:hover {
+        border-bottom: 25vh solid darken($comics, 10%);
+        border-right: 25vh solid lighten($comics, 10%);
+      }
+    }
+    &.journal {
+      &:hover {
+        border-bottom: 25vh solid darken($journal, 10%);
+        border-left: 25vh solid lighten($journal, 10%);
+      }
+    }
+    &.animation {
+      &:hover {
+        border-top: 25vh solid lighten($animation, 10%);
+        border-right: 25vh solid darken($animation, 10%);
+      }
+    }
+    &.featured {
+      &:hover {
+        border-top: 25vh solid lighten($featured, 10%);
+        border-left: 25vh solid darken($featured, 10%);
+      }
+    }
+  }
+}
+
+// single pages & journal lists
+.journal-list article,
+.modal-content {
+  @include clearfix;
+  max-width: 750px;
+  margin: 0 auto;
+}
+.modal-content,
+.page-content {
+  opacity: 0;
+  transform-origin: top center;
+  transform: scale(.98);
+  transition: all .5s ease-out;
+}
+main.loaded {
+  .modal-content,
+  .page-content {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// giant SVG head
 #natehead {
   pointer-events: none;
   position: fixed;
@@ -111,6 +208,8 @@ nav.main {
   height: 500px;
   z-index: 10;
 }
+
+// "nate beaty" title
 h1.title {
   font: italic 24px/1 "Anonymous Pro";
   -webkit-font-smoothing: antialiased;
@@ -135,30 +234,32 @@ h1.title {
   }
 }
 
-// @media screen and (max-width: 540px) {
-//  #wrapper { padding: 20px 40px; }
-//  #header { margin-bottom: 40px; }
-//  h1 { font-size: 17px; }
-//  #footer { margin-top: 40px; padding-bottom: 20px; }
-// }
-
-// @media screen and (max-width:440px) {
-//  #thumbnails a:nth-child(n) {
-//    width: 100%;
-//    max-width: 300px;
-//    margin: 0 auto;
-//    margin-top: 20px;
-//    display: inline-block;
-//    float: none;
-//  }
-
-//  a#docs { display: none; }
-//  #thumbnails a:first-child { margin-top: 0; }
-//  #header { text-align: center; margin-bottom: 0; }
-//  #wrapper { padding: 20px 20px 40px 20px; }
-//  .post { margin-bottom: 40px; }
-//  #footer { text-align: center; padding-bottom: 15px; }
-// }
+// X close/back button
+.x {
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  right: 80px;
+  top: 10px;
+  cursor: pointer;
+  display: none;
+}
+.x::after,.x::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: '';
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: #fff;
+}
+.x::after{
+  transform: rotate(45deg);
+}
+.x::before{
+  transform: rotate(-45deg);
+}
 
 // general "in a section" body state
 body.in-section {
@@ -193,161 +294,7 @@ body.in-section {
   }
 }
 
-// section specifics
-
-// comics
-body.active-comics {
-  #natehead {
-    transform: scale(.333) translate(-150%, calc(300vh - 400px));
-    // top: calc(100% - 50px);
-  }
-  nav.main a.journal {
-    height: calc(100% - 50px);
-    width: 50px;
-    span {
-      transform: rotate(90deg);
-      transform-origin: top right;
-      right: 20%;
-      top: 20px;
-    }
-  }
-}
-// journal
-body.active-journal {
-  background: $journal;
-  // .journal-list {
-  main {
-    padding: 40px 20px 150px 70px;
-  }
-  #natehead {
-    transform: scale(.333) translate(-150%, calc(300vh - 400px));
-    // top: calc(100% - 50px);
-  }
-  .x {
-    right: auto;
-    left: 60px;
-  }
-}
-// animation
-body.active-animation {
-  background: $animation;
-  main {
-    padding-top: 150px;
-  }
-  .x {
-    top: 60px;
-  }
-}
-// featured
-body.active-featured {
-  background: $featured;
-  main {
-    padding: 150px 20px 150px 70px;
-  }
-  .x {
-    right: auto;
-    left: 60px;
-    top: 60px;
-  }
-}
-
-// rotate offside links 90deg
-body.active-comics nav.main a.journal,
-body.active-journal nav.main a.comics,
-body.active-animation nav.main a.featured,
-body.active-featured nav.main a.animation {
-  height: calc(100% - 50px);
-  width: 50px;
-  span {
-    transform: rotate(90deg);
-    transform-origin: top right;
-    left: 0;
-    right: 20%;
-    top: 70px;
-  }
-}
-
-body.active-animation nav.main a.animation,
-body.active-featured nav.main a.featured,
-body.active-journal nav.main a.journal,
-body.active-comics nav.main a.comics {
-  font: italic 30px/1 "Anonymous Pro", monospace;
-  background: transparent;
-  span {
-    // text-shadow: 2px 2px 0 #000;
-    text-decoration: underline;
-  }
-}
-
-body.active-animation nav.main a.animation,
-body.active-featured nav.main a.featured {
-  bottom: calc(100vh - 100px);
-}
-
-// homepage hover effect giant oldskool border madness
-body:not(.in-section) {
-  nav.main a {
-    &.comics {
-      &:hover {
-        border-bottom: 25vh solid darken($comics,10%);
-        border-right: 25vh solid lighten($comics,10%);
-      }
-    }
-    &.journal {
-      &:hover {
-        border-bottom: 25vh solid darken($journal,10%);
-        border-left: 25vh solid lighten($journal,10%);
-      }
-    }
-    &.animation {
-      &:hover {
-        border-top: 25vh solid lighten($animation,10%);
-        border-right: 25vh solid darken($animation,10%);
-      }
-    }
-    &.featured {
-      &:hover {
-        border-top: 25vh solid lighten($featured,10%);
-        border-left: 25vh solid darken($featured,10%);
-      }
-    }
-  }
-}
-.journal-list article {
-  max-width: 750px;
-  margin: 0 auto;
-}
-.modal-content {
-  @include clearfix;
-  max-width: 750px;
-  margin: 0 auto;
-}
-
-main {
-  padding: 100px 70px 150px 20px;
-}
-.page-content {
-  @include clearfix;
-  opacity: 0;
-  display: none;
-  transition: opacity .5s 1s;
-}
-.in-section .page-content {
-  // transition: opacity .5s 1s;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-body.active-featured .page-content.featured-list,
-body.active-animation .page-content.animation-list,
-body.active-journal .page-content.journal-list,
-body.active-comics .page-content.comics-list {
-  opacity: 1;
-  display: block;
-}
-
-// comics
+// general image masonry list (used on comics, featured)
 .image-list {
   article {
     width: 25%;
@@ -409,16 +356,50 @@ body.active-comics .page-content.comics-list {
   }
 }
 
+
+// Section specifics
+
+// comics
+body.active-comics {
+  #natehead {
+    transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    // top: calc(100% - 50px);
+  }
+  nav.main a.journal {
+    height: calc(100% - 50px);
+    width: 50px;
+    span {
+      transform: rotate(90deg);
+      transform-origin: top right;
+      right: 20%;
+      top: 20px;
+    }
+  }
+}
+
 // journal
+body.active-journal {
+  background: $journal;
+  // .journal-list {
+  main {
+    padding: 40px 20px 150px 70px;
+  }
+  #natehead {
+    transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    // top: calc(100% - 50px);
+  }
+  .x {
+    right: auto;
+    left: 60px;
+  }
+}
 article.journal {
   a {
     color: #6ccdf5;
     text-decoration: underline;
   }
 }
-.journal-list {
-
-}
+// custom li'l class for a writing excerpt in a journal entry
 .writing-excerpt {
   padding-left: 1.5em;
   border-left: 2px solid #ccc;
@@ -426,29 +407,25 @@ article.journal {
 }
 
 // animation
+body.active-animation {
+  background: $animation;
+  main {
+    padding-top: 150px;
+  }
+  .x {
+    top: 60px;
+  }
+}
 
-.x {
-  width: 30px;
-  height: 30px;
-  position: fixed;
-  right: 80px;
-  top: 10px;
-  cursor: pointer;
-  display: none;
-}
-.x::after,.x::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  content: '';
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: #fff;
-}
-.x::after{
-  transform: rotate(45deg);
-}
-.x::before{
-  transform: rotate(-45deg);
+// featured
+body.active-featured {
+  background: $featured;
+  main {
+    padding: 150px 20px 150px 70px;
+  }
+  .x {
+    right: auto;
+    left: 60px;
+    top: 60px;
+  }
 }

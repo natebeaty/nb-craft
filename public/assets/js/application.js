@@ -24,6 +24,7 @@ var Nb = (function($) {
       page_cache = {};
 
   function _init() {
+    $('html').addClass('loaded');
 
     // Fit them vids!
     $('main').fitVids();
@@ -43,6 +44,7 @@ var Nb = (function($) {
 
     // primary nav
     $('nav.main a').hover(function() {
+      // Magical color-changing moustache
       var bg = $(this).css('background-color');
       var hex = _rgb2hex(bg);
       if (hex) {
@@ -51,12 +53,15 @@ var Nb = (function($) {
     }).on('click', function(e) {
       e.preventDefault();
       if (State.url==this.href) {
-        _getSectionVar();
-        _showPage();
+        // If clicking nav header when in a section, just scroll to top
+        _scrollBody($('body'), 250, 0);
       } else {
+        // Otherwise push page to History
         History.pushState({}, '', this.href);
       }
     });
+
+    // X close/back button
     $('.x').click(function(e) {
       if ($('main .modal-content').length) {
         History.pushState({}, '', '/' + section_in);
@@ -64,9 +69,6 @@ var Nb = (function($) {
         _showNav();
       }
     });
-
-    _initBigClicky();
-    _initComics();
 
     // Init state
     State = History.getState();
@@ -79,14 +81,16 @@ var Nb = (function($) {
       page_cache[encodeURIComponent(History.getRootUrl().replace(/\/$/,'') + $(this).attr('data-page'))] = $(this).prop('outerHTML');
     });
 
+    _initBigClicky();
     _getSectionVar();
     _initStateHandling();
-    setTimeout(_showPage, 200);
+    setTimeout(_showPage, 150);
 
     $('#stache').velocity({ fill: '#93604b' });
 
   } // end init()
 
+  // Set section_in var for various logic, denotes primary section being shown
   function _getSectionVar() {
     var s = relative_url.match(/^\/(\w+)\/?/);
     section_in = (s) ? s[1] : 'home';
@@ -103,12 +107,8 @@ var Nb = (function($) {
         return;
       }
 
-
-
       if (State.url == root_url) {
         $('body').attr('class', '');
-      // } else if (relative_url.match(/^\/(comics|journal|featured)\/(\w)+/)) {
-      //   // Single pages
       } else {
         if (page_cache[encodeURIComponent(State.url)]) {
           _updatePage();
@@ -117,42 +117,37 @@ var Nb = (function($) {
         }
       }
 
-
-      // } else if (relative_url.match(/^\/collection\//)) {
-
-      //   _showCollection();
-
-      // } else {
-
-      //   // URL isn't handled as a modal
-      //   if (State.url !== original_url) {
-      //     // Just load URL if isn't original_url
-      //     location.href = State.url;
-      //   } else {
-      //     // ..otherwise just hide all modals
-      //     _hideModal();
-      //     _hideCollection();
-      //     _hideImageModal();
-      //   }
-
-      // }
-
     });
   }
-  // Comics
-  function _initComics() {
+
+  // Load AJAX content
+  function _loadPage() {
+    $.ajax({
+      url: State.url,
+      method: 'get',
+      dataType: 'html',
+      success: function(response) {
+        page_cache[encodeURIComponent(State.url)] = response;
+        _updatePage();
+      }
+    });
+  }
+
+  // Update modal with cached content for current URL and show it
+  function _updatePage() {
+    $('main').removeClass('loaded').find('img').off().attr('src', '').remove();
+    $('main').html(page_cache[encodeURIComponent(State.url)]);
+
+    _trackPage();
+    _showPage();
+    _updateTitle();
   }
 
   // Show active page bucket
   function _showPage() {
+    // Add section class to body
     if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
-    }
-
-    // $('[data-page="'+relative_url+'"]').fadeIn();
-
-    // page specifics
-    if (section_in == 'comics') {
     }
 
     // Refit them vids!
@@ -168,51 +163,28 @@ var Nb = (function($) {
       $('.masonryme').masonry('layout');
     });
 
-    _scrollBody($('body'), 250, 0);
-  }
-
-  // Load AJAX content
-  function _loadPage() {
-    $.ajax({
-      url: State.url,
-      method: 'get',
-      dataType: 'html',
-      success: function(response) {
-        // page_cache[encodeURIComponent(State.url)] = $.parseHTML(response);
-        page_cache[encodeURIComponent(State.url)] = response;
-        _updatePage();
-      }
+    // Add loaded class to init page transition animations
+    $('main').imagesLoaded(function() {
+      $('main').addClass('loaded');
     });
-  }
 
-  // Update modal with cached content for current URL and show it
-  function _updatePage() {
-    // Has page been loaded?
-    // if ($('[data-page="' + relative_url + '"]').length) {
-      // Replace if so
-      // $('[data-page="' + relative_url + '"]').prop('outerHTML', page_cache[encodeURIComponent(State.url)]);
-    // } else {
-      // Otherwise shove page into <main>
-      $('main').find("img").off().attr('src', '').remove();
-      $('main').html(page_cache[encodeURIComponent(State.url)]);
-    // }
-    // _trackPage();
-    _showPage();
-    // $page.fitVids();
-    _updateTitle();
+    // Scroll to top of page (this can be annoying to lose your scroll location...)
+    _scrollBody($('body'), 250, 0);
   }
 
   // Function to update document title after state change
   function _updateTitle() {
-    var title;
-    title = $('[data-page-title]').first().attr('data-page-title');
+    var title = '';
+    if ($('[data-page-title]').length) {
+      title = $('[data-page-title]').first().attr('data-page-title');
+    }
 
-    if (title === '') {
+    if (title == '') {
       title = 'Nate Beaty';
     } else {
       title = title + ' – Nate Beaty';
     }
-    // this bit also borrowed from Ajaxify
+    // Snippet from Ajaxify to update title
     document.title = title;
     try {
       document.getElementsByTagName('title')[0].innerHTML = document.title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
