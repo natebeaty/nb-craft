@@ -1,4 +1,5 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = entry.title %}
 
 {% block content %}
 	<article class="featured modal-content" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">

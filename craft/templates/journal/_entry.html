@@ -1,4 +1,5 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
+{% set title = entry.title %}
 
 {% block content %}
 	{% include "journal/_article" with {'modalClass': 'modal-content'} %}

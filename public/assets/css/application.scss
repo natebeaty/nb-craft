@@ -363,16 +363,11 @@ body.in-section {
 body.active-comics {
   #natehead {
     transform: scale(.333) translate(-150%, calc(300vh - 400px));
-    // top: calc(100% - 50px);
   }
   nav.main a.journal {
-    height: calc(100% - 50px);
-    width: 50px;
     span {
-      transform: rotate(90deg);
-      transform-origin: top right;
-      right: 20%;
-      top: 20px;
+      left: 0;
+      right: 20%
     }
   }
 }
@@ -380,13 +375,8 @@ body.active-comics {
 // journal
 body.active-journal {
   background: $journal;
-  // .journal-list {
-  main {
-    padding: 40px 20px 150px 70px;
-  }
   #natehead {
     transform: scale(.333) translate(-150%, calc(300vh - 400px));
-    // top: calc(100% - 50px);
   }
   .x {
     right: auto;
@@ -414,6 +404,10 @@ body.active-animation {
   }
   .x {
     top: 60px;
+  }
+  nav.main a.featured span {
+    left: 0;
+    right: 20%
   }
 }
 

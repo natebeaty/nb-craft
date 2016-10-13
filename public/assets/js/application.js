@@ -135,7 +135,7 @@ var Nb = (function($) {
 
   // Update modal with cached content for current URL and show it
   function _updatePage() {
-    $('main').removeClass('loaded').find('img').off().attr('src', '').remove();
+    $('main').removeClass('loaded'); // .find('img').off().attr('src', '').remove();
     $('main').html(page_cache[encodeURIComponent(State.url)]);
 
     _trackPage();
