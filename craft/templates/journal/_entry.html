@@ -1,6 +1,11 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = entry.title %}
 
+{% set params = craft.entries.section('journal').order('postDate desc, id asc') %}
+{% set prevEntry = entry.getPrev(params) %}
+{% set nextEntry = entry.getNext(params) %}
+
 {% block content %}
 	{% include "journal/_article" with {'modalClass': 'modal-content'} %}
+	{% include "partials/_pagination" %}
 {% endblock %}

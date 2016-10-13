@@ -236,15 +236,16 @@ h1.title {
 
 // X close/back button
 .x {
-  width: 30px;
-  height: 30px;
   position: fixed;
   right: 80px;
   top: 10px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   display: none;
 }
-.x::after,.x::before {
+.x::after,
+.x::before {
   position: absolute;
   top: 50%;
   left: 0;
@@ -356,6 +357,53 @@ body.in-section {
   }
 }
 
+.pagination {
+  width: 750px;
+  height: 40px;
+  margin: 20px auto;
+  position: relative;
+  a {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    top: 0;
+    &.previous {
+      left: 0;
+    }
+    &.next {
+      right: 0;
+      transform: rotate(180deg);
+    }
+    span {
+      display: none;
+    }
+    &.previous::after,
+    &.previous::before,
+    &.next::after,
+    &.next::before {
+      position: absolute;
+      top: 7px;
+      left: 0;
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #fff;
+    }
+    &.previous::after,
+    &.next::after {
+      top: 20px;
+      transform: rotate(45deg);
+    }
+    &.previous::before,
+    &.next::before {
+      transform: rotate(-45deg);
+    }
+
+  }
+}
 
 // Section specifics
 

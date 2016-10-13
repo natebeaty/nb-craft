@@ -82,6 +82,7 @@ var Nb = (function($) {
     });
 
     _initBigClicky();
+    _initPagination();
     _getSectionVar();
     _initStateHandling();
     setTimeout(_showPage, 150);
@@ -225,6 +226,13 @@ var Nb = (function($) {
           History.pushState({}, '', link[0].href);
         }
       }
+    });
+  }
+
+  function _initPagination() {
+    $(document).on('click', '.pagination a', function(e) {
+      e.preventDefault();
+      History.pushState({}, '', this.href);
     });
   }
 

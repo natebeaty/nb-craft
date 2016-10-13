@@ -1,6 +1,10 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = entry.title %}
 
+{% set params = craft.entries.section('comics').order('postDate desc, id asc') %}
+{% set prevEntry = entry.getPrev(params) %}
+{% set nextEntry = entry.getNext(params) %}
+
 {% block content %}
 	<article class="comic modal-content" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
 		<h1>{{ entry.title }}</h1>
@@ -8,4 +12,6 @@
 			<img src="{{ image.getUrl() }}" alt="{{ entry.title }}">
 		{% endfor %}
 	</article>
+
+	{% include "partials/_pagination" %}
 {% endblock %}
