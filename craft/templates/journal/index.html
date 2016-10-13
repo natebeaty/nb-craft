@@ -11,8 +11,8 @@
 		{% endfor %}
 
 		<div class="pagination">
-			{% if pageInfo.prevUrl %}<a class="previous" href="{{ pageInfo.prevUrl }}"><span>Previous</span></a>{% endif %}
-			{% if pageInfo.nextUrl %}<a class="next" href="{{ pageInfo.nextUrl }}"><span>Next</span></a>{% endif %}
+			{% if pageInfo.prevUrl %}<a rel="nofollow" class="previous" href="{{ pageInfo.prevUrl }}"><span>Previous</span></a>{% endif %}
+			{% if pageInfo.nextUrl %}<a rel="nofollow" class="next" href="{{ pageInfo.nextUrl }}"><span>Next</span></a>{% endif %}
 		</div>
 	</section>
 {% endblock %}
