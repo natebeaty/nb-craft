@@ -2,7 +2,7 @@
 {% set title = "Journal Archives" %}
 
 {% block content %}
-	<section class="journal-list page-content" data-page="/journal" data-page-title="{{ title }}">
+	<section class="journal-list page-content"  data-section="journal" data-page="/journal" data-page-title="{{ title }}">
 		{% for entry in craft.entries.section('journal').find() %}
 			<article>
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>

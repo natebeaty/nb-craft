@@ -24,7 +24,6 @@ var Nb = (function($) {
       page_cache = {};
 
   function _init() {
-    $('#stache').velocity({ fill: '#eee' });
 
     // Fit them vids!
     $('main').fitVids();
@@ -58,6 +57,13 @@ var Nb = (function($) {
         History.pushState({}, '', this.href);
       }
     });
+    $('.x').click(function(e) {
+      if ($('main .modal-content').length) {
+        History.pushState({}, '', '/' + section_in);
+      } else {
+        _showNav();
+      }
+    });
 
     _initBigClicky();
     _initComics();
@@ -77,6 +83,8 @@ var Nb = (function($) {
     _initStateHandling();
     setTimeout(_showPage, 200);
 
+    $('#stache').velocity({ fill: '#93604b' });
+
   } // end init()
 
   function _getSectionVar() {
@@ -95,9 +103,12 @@ var Nb = (function($) {
         return;
       }
 
-      // if (State.url !== original_url && relative_url.match(/^\/(comics)\//)) {
+
+
       if (State.url == root_url) {
         $('body').attr('class', '');
+      // } else if (relative_url.match(/^\/(comics|journal|featured)\/(\w)+/)) {
+      //   // Single pages
       } else {
         if (page_cache[encodeURIComponent(State.url)]) {
           _updatePage();
@@ -137,11 +148,17 @@ var Nb = (function($) {
     if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
     }
+
+    // $('[data-page="'+relative_url+'"]').fadeIn();
+
     // page specifics
     if (section_in == 'comics') {
     }
+
     // Refit them vids!
     $('main').fitVids();
+
+    // Reinit masonry
     $('.masonryme:not(.inited)').masonry({
       itemSelector: 'article'
     }).on('layoutComplete', function(){
@@ -171,13 +188,14 @@ var Nb = (function($) {
   // Update modal with cached content for current URL and show it
   function _updatePage() {
     // Has page been loaded?
-    if ($('[data-page="' + relative_url + '"]').length) {
+    // if ($('[data-page="' + relative_url + '"]').length) {
       // Replace if so
-      $('[data-page="' + relative_url + '"]').prop('outerHTML', page_cache[encodeURIComponent(State.url)]);
-    } else {
-      // Otherwise append to <main>
-      $('main').append(page_cache[encodeURIComponent(State.url)]);
-    }
+      // $('[data-page="' + relative_url + '"]').prop('outerHTML', page_cache[encodeURIComponent(State.url)]);
+    // } else {
+      // Otherwise shove page into <main>
+      $('main').find("img").off().attr('src', '').remove();
+      $('main').html(page_cache[encodeURIComponent(State.url)]);
+    // }
     // _trackPage();
     _showPage();
     // $page.fitVids();
@@ -225,16 +243,14 @@ var Nb = (function($) {
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
   function _initBigClicky() {
-    $(document).on('click', '.bigclicky', function(e) {
-      if (!$(e.target).is('a')) {
-        e.preventDefault();
-        var link = $(this).find('h1:first a,h2:first a');
-        if (link.length) {
-          if (e.metaKey || link.attr('target')) {
-            window.open(link[0].href);
-          } else {
-            History.pushState({}, '', link[0].href);
-          }
+    $(document).on('click', '.bigclicky, .journal-list article h1', function(e) {
+      e.preventDefault();
+      var link = $(this).find('h1:first a,h2:first a,a');
+      if (link.length) {
+        if (e.metaKey || link.attr('target')) {
+          window.open(link[0].href);
+        } else {
+          History.pushState({}, '', link[0].href);
         }
       }
     });

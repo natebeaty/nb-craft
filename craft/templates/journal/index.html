@@ -4,7 +4,7 @@
 {% block content %}
 	<section class="journal-list page-content" data-page="/journal" data-page-title="{{ title }}">
 		{% for entry in craft.entries.section('journal').limit(5) %}
-			{% include "journal/_article" %}
+			{% include "journal/_article" with {'modalClass': ''}  %}
 		{% endfor %}
 	</section>
 {% endblock %}
