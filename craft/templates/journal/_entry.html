@@ -6,6 +6,6 @@
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
-	{% include "journal/_article" with {'modalClass': 'modal-content'} %}
+	{% include "journal/_article" with {'modalClass': 'is-single'} %}
 	{% include "partials/_pagination" %}
 {% endblock %}

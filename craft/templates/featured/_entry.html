@@ -6,13 +6,13 @@
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
-	<article class="featured modal-content" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
+	<article class="featured is-single" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
 		<h1>{{ entry.title }}</h1>
 		<div class="description">
 			{{ entry.body }}
 		</div>
 		{% for image in entry.featureImages %}
-			<img src="{{ image.getUrl() }}" alt="{{ entry.title }}">
+			<img class="lazy" data-original="{{ image.getUrl() }}" alt="{{ entry.title }}">
 		{% endfor %}
 	</article>
 

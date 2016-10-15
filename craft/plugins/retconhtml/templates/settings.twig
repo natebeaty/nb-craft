@@ -1,0 +1,83 @@
+{% import '_includes/forms' as forms %}
+
+<h2>Settings</h2>
+
+<h3>Image transforms</h3>
+
+<p class="instructions">
+	By default, Retcon HTML will store all transformed images to directories relative to your public basepath.<br/>If this doesn't float your boat, you can set a different basepath and URL below.
+</p>
+
+<div class="field" id="baseTransformPath-field">
+
+	<div class="heading">
+		<label for="baseTransformPath">Base transform path</label>
+		{{ forms.text({
+			id: 'baseTransformPath',
+			name: 'baseTransformPath',
+			value: settings.baseTransformPath,
+			placeholder: '{baseUrl}/something/something/',
+		}) }}
+	</div>
+
+</div>
+
+<div class="field" id="baseTransformUrl-field">
+
+	<div class="heading">
+		<label for="baseTransformUrl">Base transform URL</label>
+		{{ forms.text({
+			id: 'baseTransformUrl',
+			name: 'baseTransformUrl',
+			value: settings.baseTransformUrl,
+			placeholder: '{siteUrl}/something/something/',
+		}) }}
+	</div>
+
+</div>
+
+{% if craft.retconHtml.getImagerPlugin %}
+<div class="field" id="useImager-field">
+	<div class="heading">
+		<label for="useImager">Use <a href="https://github.com/aelvan/Imager-Craft" target="_blank">Imager</a> for image transforms</label>
+		{{ forms.lightswitch({
+			id: 'useImager',
+			name: 'useImager',
+			on: settings.useImager
+		}) }}
+	</div>
+</div>
+{% endif %}
+
+<h3>Other settings</h3>
+
+<div class="field" id="encoding-field">
+
+	<div class="heading">
+		<label for="encoding">HTML encoding</label>
+		{{ forms.text({
+			id: 'encoding',
+			name: 'encoding',
+			value : settings.encoding,
+			placeholder : 'UTF-8',
+		}) }}
+		<p class="instructions">Sets the encoding of HTML output</p>
+	</div>
+
+</div>
+
+<hr />
+
+<div class="retcon-about">
+
+	<h2>About Retcon HTML v. {{ craft.retconHtml.getPlugin.getVersion }}</h2>
+
+	<p><em>Retcon HTML offers a series of convenient Twig filters for manipulating HTML content.</em></p>
+
+	<h3>Documentation & support</h3>
+	<p>See Retcon HTML's <a href="{{ craft.retconHtml.getPlugin.getPluginUrl }}/wiki" target="_blank">Wiki page at GitHub</a> for documentation and examples.</p>
+
+	<h3>Disclaimer</h3>
+	<p>Retcon HTML is provided free of charge. The author is not responsible for data loss or any other problems resulting from the use of this plugin.<br/>Please report any bugs, feature requests or other issues <a href="{{ craft.retconHtml.getPlugin.getPluginUrl }}">here</a>. As Retcon HTML is a hobby project, no promises are made regarding response time, feature implementations or bug amendments.</p>
+
+</div>

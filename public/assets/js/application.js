@@ -8,6 +8,7 @@
 //=include "../bower_components/imagesloaded/imagesloaded.pkgd.min.js"
 //=include "../bower_components/masonry/dist/masonry.pkgd.js"
 //=include "../bower_components/history.js/scripts/bundled/html5/jquery.history.js"
+//=include "../bower_components/vanilla-lazyload/dist/lazyload.min.js"
 
 var Nb = (function($) {
 
@@ -63,7 +64,7 @@ var Nb = (function($) {
 
     // X close/back button
     $('.x').click(function(e) {
-      if ($('main .modal-content').length) {
+      if ($('main .is-single').length) {
         History.pushState({}, '', '/' + section_in);
       } else {
         _showNav();
@@ -150,6 +151,8 @@ var Nb = (function($) {
     if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
     }
+    // Add is-single class
+    $('body').toggleClass('active-single', $('article.is-single').length>0);
 
     // Refit them vids!
     $('main').fitVids();
@@ -164,10 +167,14 @@ var Nb = (function($) {
       $('.masonryme').masonry('layout');
     });
 
-    // Add loaded class to init page transition animations
-    $('main').imagesLoaded(function() {
-      $('main').addClass('loaded');
+    var myLazyLoad = new LazyLoad({
+        show_while_loading: false
     });
+
+    // Add loaded class to init page transition animations
+    setTimeout(function() {
+      $('main').addClass('loaded');
+    }, 150);
 
     // Scroll to top of page (this can be annoying to lose your scroll location...)
     _scrollBody($('body'), 250, 0);

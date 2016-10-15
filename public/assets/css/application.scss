@@ -175,12 +175,12 @@ body:not(.in-section) {
 
 // single pages & journal lists
 .journal-list article,
-.modal-content {
+.is-single {
   @include clearfix;
   max-width: 750px;
   margin: 0 auto;
 }
-.modal-content,
+.is-single,
 .page-content {
   opacity: 0;
   transform-origin: top center;
@@ -188,7 +188,7 @@ body:not(.in-section) {
   transition: all .5s ease-out;
 }
 main.loaded {
-  .modal-content,
+  .is-single,
   .page-content {
     transform: scale(1);
     opacity: 1;
@@ -412,6 +412,9 @@ body.active-comics {
   #natehead {
     transform: scale(.333) translate(-150%, calc(300vh - 400px));
   }
+  &.active-single main {
+    padding: 50px 20px 150px 70px;
+  }
   nav.main a.journal {
     span {
       left: 0;
@@ -423,6 +426,9 @@ body.active-comics {
 // journal
 body.active-journal {
   background: $journal;
+  main {
+    padding: 50px 20px 150px 70px;
+  }
   #natehead {
     transform: scale(.333) translate(-150%, calc(300vh - 400px));
   }
@@ -469,5 +475,27 @@ body.active-featured {
     right: auto;
     left: 60px;
     top: 60px;
+  }
+}
+
+
+// lazyload
+/* Prevents img without src to appear */
+img:not([src]) {
+    visibility: hidden;
+}
+/* Fixes Firefox anomaly */
+@-moz-document url-prefix() {
+    img:-moz-loading {
+        visibility: hidden;
+    }
+}
+img.lazy {
+  opacity: 0;
+  transform: scale(1.02);
+  transition: all .5s ease-out;
+  &.loaded {
+    transform: scale(1);
+    opacity: 1;
   }
 }

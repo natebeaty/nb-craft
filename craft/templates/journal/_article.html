@@ -1,9 +1,9 @@
 	<article class="journal single {{ modalClass }}" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
-		{% if modalClass != 'modal-content' %}
+		{% if modalClass != 'is-single' %}
 			<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 		{% else %}
 			<h1>{{ entry.title }}</h1>
 		{% endif %}
 		<p class="date">{{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.body }}
+		{{ entry.body | retcon('lazy') }}
 	</article>
