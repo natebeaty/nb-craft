@@ -8,3 +8,4 @@ public/assets/bower_components/*
 node_modules/*
 logs/*
 _env.php
+*.pyc
