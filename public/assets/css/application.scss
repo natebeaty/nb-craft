@@ -2,14 +2,6 @@
 @import "variables";
 @import "mixins";
 
-// @include min-screen($breakpoint-medium) {
-//   padding: 214px 30px 0;
-// }
-
-// @include min-screen($breakpoint-nav) {
-//   padding-top: 184px;
-// }
-
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -29,6 +21,9 @@ h2,h3 {
   margin: 1em 0 .5em;
 }
 main {
+  article>h1 {
+    margin-top: 0;
+  }
   h1 a,
   h2 a,
   h3 a{
@@ -66,7 +61,6 @@ nav.main {
     &:hover span {
       text-decoration: underline;
     }
-
     span {
       display: block;
       position: absolute;
@@ -92,10 +86,10 @@ nav.main {
       right: 0;
       background: $journal;
     }
-    &.animation {
+    &.about {
       bottom: 0;
       left: 0;
-      background: $animation;
+      background: $about;
     }
     &.featured {
       bottom: 0;
@@ -107,67 +101,87 @@ nav.main {
 
 // primary content area
 main {
-  padding: 100px 70px 150px 20px;
-}
-
-// rotate offside links 90deg
-body.active-comics nav.main a.journal,
-body.active-journal nav.main a.comics,
-body.active-animation nav.main a.featured,
-body.active-featured nav.main a.animation {
-  height: calc(100% - 50px);
-  width: 50px;
-  span {
-    transform: rotate(90deg);
-    transform-origin: top right;
-    left: 0;
-    right: 20%;
-    top: 70px;
+  overflow-x:hidden;
+  padding: 80px 10px;
+  @include min-screen($breakpoint-medium) {
+    padding: 100px 70px 150px 20px;
   }
 }
 
+// rotate offside links 90deg
+@include min-screen($breakpoint-medium) {
+  body.active-comics nav.main a.journal,
+  body.active-journal nav.main a.comics,
+  body.active-about nav.main a.featured,
+  body.active-featured nav.main a.about {
+    height: calc(100% - 50px);
+    width: 50px;
+    span {
+      transform: rotate(90deg);
+      transform-origin: top right;
+      left: 0;
+      right: 20%;
+      top: 70px;
+    }
+  }
+}
+
+
 // active nav item / headers
-body.active-animation nav.main a.animation,
+body.active-about nav.main a.about,
 body.active-featured nav.main a.featured,
 body.active-journal nav.main a.journal,
 body.active-comics nav.main a.comics {
   font: italic 30px/1 "Anonymous Pro", monospace;
   background: transparent;
   span {
-    // text-shadow: 2px 2px 0 #000;
     text-decoration: underline;
   }
+  // mobile active section headers are absolute top left
+  @include max-screen($breakpoint-medium) {
+    font-size: 24px;
+    position: fixed;
+    top: 0;
+    left: 10px;
+    width: 50%;
+    text-align: left;
+  }
 }
-body.active-animation nav.main a.animation,
-body.active-featured nav.main a.featured {
-  bottom: calc(100vh - 100px);
+
+@include min-screen($breakpoint-medium) {
+  body.active-about nav.main a.about,
+  body.active-featured nav.main a.featured {
+    bottom: calc(100vh - 100px);
+  }
 }
 
 // homepage hover effect giant oldskool border madness
-body:not(.in-section) {
-  nav.main a {
-    &.comics {
-      &:hover {
-        border-bottom: 25vh solid darken($comics, 10%);
-        border-right: 25vh solid lighten($comics, 10%);
+@include min-screen($breakpoint-medium) {
+  body:not(.in-section) {
+    nav.main a {
+      &.comics {
+        &:hover {
+          border-bottom: 25vh solid darken($comics, 10%);
+          border-right: 25vh solid lighten($comics, 10%);
+        }
       }
-    }
-    &.journal {
-      &:hover {
-        border-bottom: 25vh solid darken($journal, 10%);
-        border-left: 25vh solid lighten($journal, 10%);
+      &.journal {
+        &:hover {
+          border-bottom: 25vh solid darken($journal, 10%);
+          border-left: 25vh solid lighten($journal, 10%);
+        }
       }
-    }
-    &.animation {
-      &:hover {
-        border-top: 25vh solid lighten($animation, 10%);
-        border-right: 25vh solid darken($animation, 10%);
+      &.about {
+        &:hover {
+          border-top: 25vh solid lighten($about, 10%);
+          border-right: 25vh solid darken($about, 10%);
+        }
       }
-    }
-    &.featured {
-      &:hover {
-        border-top: 25vh solid lighten($featured, 10%);
-        border-left: 25vh solid darken($featured, 10%);
+      &.featured {
+        &:hover {
+          border-top: 25vh solid lighten($featured, 10%);
+          border-left: 25vh solid darken($featured, 10%);
+        }
       }
     }
   }
@@ -201,12 +215,18 @@ main.loaded {
   position: fixed;
   transition: all .25s ease-out;
   transform-origin: top center;
-  transform: scale(1) translate(-50%,calc(50vh - 250px));
   left: 50%;
   top: 0;
-  width: 500px;
-  height: 500px;
   z-index: 10;
+  width: 150px;
+  height: 150px;
+  transform: scale(1) translate(-50%,calc(50vh - 50%));
+
+  @include min-screen($breakpoint-medium) {
+    width: 500px;
+    height: 500px;
+    transform: scale(1) translate(-50%,calc(50vh - 250px));
+  }
 }
 
 // "nate beaty" title
@@ -237,7 +257,10 @@ h1.title {
 // X close/back button
 .x {
   position: fixed;
-  right: 80px;
+  right: 10px;
+  @include min-screen($breakpoint-medium) {
+    right: 80px;
+  }
   top: 10px;
   width: 30px;
   height: 30px;
@@ -268,27 +291,50 @@ body.in-section {
     display: block;
   }
   #natehead {
-    cursor: pointer;
     pointer-events: auto;
-    transform: scale(.333) translate(-150%, calc(-150px));
-    // top: 50px;
+    transform: scale(.5) translate(-100%, calc(-25px));
+    @include min-screen($breakpoint-medium) {
+      cursor: pointer;
+      transform: scale(.333) translate(-150%, calc(-150px));
+      // top: 50px;
+    }
   }
   h1.title {
     display: none;
   }
   nav.main {
     height: 0;
-    a {
-      height: 50px;
-      span {
-        left: 20px;
-      }
-      &.journal,
-      &.featured {
+    @include max-screen($breakpoint-medium) {
+      a {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        text-align: center;
         span {
+          position: relative;
           left: auto;
-          right: 20px;
+          right: auto;
+          top: auto;
+          transform: none;
+          line-height: 50px;
+        }
+      }
+    }
 
+    @include min-screen($breakpoint-medium) {
+      height: 0;
+      a {
+        height: 50px;
+        span {
+          left: 20px;
+        }
+        &.journal,
+        &.featured {
+          span {
+            left: auto;
+            right: 20px;
+
+          }
         }
       }
     }
@@ -298,14 +344,11 @@ body.in-section {
 // general image masonry list (used on comics, featured)
 .image-list {
   article {
-    width: 25%;
+    width: 100%;
     float: left;
-    .wrap {
-      padding: 0 10px 0 0;
-    }
-    margin: 0 0 10px;
+    margin: 0 0 40px;
     position: relative;
-    cursor: pointer;
+
     a {
       display: block;
     }
@@ -313,18 +356,10 @@ body.in-section {
       display: block;
     }
     h1 {
-      visibility: hidden;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      margin-right: 20px;
+      margin: 0;
       font: normal 18px/1 "Anonymous Pro", monospace;
       color: #fff;
       background: rgba(0,0,0,.8);
-      z-index: 3;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .15s, visibility 0s .15s;
       a {
         display: block;
         padding: 8px 10px;
@@ -332,26 +367,30 @@ body.in-section {
         text-decoration: none;
       }
     }
-    // &:before {
-    //   content: '';
-    //   display: block;
-    //   opacity: 0;
-    //   position: absolute;
-    //   left: 0;
-    //   top: 100%;
-    //   width: 100%;
-    //   // background: linear-gradient(8deg, rgba(0, 0, 0, 0.65) 0%, transparent 58%, transparent 50%);
-    //   background: rgba(0,0,0,.8);
-    //   padding: 10px;
-    // }
-    &:hover {
-      // &:before {
-      //   opacity: 1;
-      // }
+    @include min-screen($breakpoint-medium) {
+      width: 25%;
+      cursor: pointer;
+      margin: 0 0 10px;
+      .wrap {
+        padding: 0 10px 0 0;
+      }
       h1 {
-        visibility: visible;
-        max-height: 50px;
-        transition: max-height .15s, visibility 0s;
+        visibility: hidden;
+        max-height: 0;
+      }
+      &:hover {
+        h1 {
+          z-index: 3;
+          overflow: hidden;
+          transition: max-height .15s, visibility 0s .15s;
+          margin-right: 20px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          visibility: visible;
+          max-height: 50px;
+          transition: max-height .15s, visibility 0s;
+        }
       }
     }
   }
@@ -409,16 +448,18 @@ body.in-section {
 
 // comics
 body.active-comics {
-  #natehead {
-    transform: scale(.333) translate(-150%, calc(300vh - 400px));
-  }
-  &.active-single main {
-    padding: 50px 20px 150px 70px;
-  }
-  nav.main a.journal {
-    span {
-      left: 0;
-      right: 20%
+  @include min-screen($breakpoint-medium) {
+    #natehead {
+      transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    }
+    &.active-single main {
+      padding: 50px 20px 150px 70px;
+    }
+    nav.main a.journal {
+      span {
+        left: 0;
+        right: 20%
+      }
     }
   }
 }
@@ -426,17 +467,21 @@ body.active-comics {
 // journal
 body.active-journal {
   background: $journal;
-  main {
-    padding: 50px 20px 150px 70px;
-  }
-  #natehead {
-    transform: scale(.333) translate(-150%, calc(300vh - 400px));
-  }
-  .x {
-    right: auto;
-    left: 60px;
+
+  @include min-screen($breakpoint-medium) {
+    #natehead {
+      transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    }
+    main {
+      padding: 50px 20px 150px 70px;
+    }
+    .x {
+      right: auto;
+      left: 60px;
+    }
   }
 }
+.user-content,
 article.journal {
   a {
     color: #6ccdf5;
@@ -450,31 +495,38 @@ article.journal {
   color: #ccc;
 }
 
-// animation
-body.active-animation {
-  background: $animation;
-  main {
-    padding-top: 150px;
-  }
-  .x {
-    top: 60px;
-  }
-  nav.main a.featured span {
-    left: 0;
-    right: 20%
+// about
+body.active-about {
+  background: $about;
+  @include min-screen($breakpoint-medium) {
+    main {
+      padding-top: 150px;
+    }
+    .x {
+      top: 60px;
+    }
+    nav.main a.featured span {
+      left: 0;
+      right: 20%
+    }
   }
 }
 
 // featured
 body.active-featured {
   background: $featured;
-  main {
-    padding: 150px 20px 150px 70px;
-  }
-  .x {
-    right: auto;
-    left: 60px;
-    top: 60px;
+  @include min-screen($breakpoint-medium) {
+    main {
+      padding: 150px 20px 150px 70px;
+    }
+    &.active-single main {
+      padding: 120px 20px 150px 70px;
+    }
+    .x {
+      right: auto;
+      left: 60px;
+      top: 60px;
+    }
   }
 }
 
@@ -492,7 +544,7 @@ img:not([src]) {
 }
 img.lazy {
   opacity: 0;
-  transform: scale(1.02);
+  transform: scale(.98);
   transition: all .5s ease-out;
   &.loaded {
     transform: scale(1);

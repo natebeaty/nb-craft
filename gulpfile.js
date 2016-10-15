@@ -19,10 +19,13 @@ gulp.task('styles', function() {
 	return gulp.src([
 			'public/assets/css/application.scss',
 		])
+		.pipe(gulpif(!isProduction, sourcemaps.init()))
 		.pipe(sass())
 		.pipe(autoprefixer())
 		.pipe(gulpif(isProduction, cssnano()))
 		.pipe(gulp.dest('public/assets/dist/css'))
+		.pipe(gulpif(!isProduction, sourcemaps.write('maps')))
+		.pipe(gulpif(!isProduction, gulp.dest('public/assets/dist/css')))
 		.pipe(notify({message: 'Styles smashed.', onLast: true}));
 });
 
@@ -32,11 +35,11 @@ gulp.task('scripts', function() {
 			'public/assets/js/application.js',
 		])
 		.pipe(include())
-		.pipe(sourcemaps.init())
+		.pipe(gulpif(!isProduction, sourcemaps.init()))
 		.pipe(uglify())
 		.pipe(gulp.dest('public/assets/dist/js'))
-		.pipe(sourcemaps.write('maps'))
-		.pipe(gulp.dest('public/assets/dist/js'))
+		.pipe(gulpif(!isProduction, sourcemaps.write('maps')))
+		.pipe(gulpif(!isProduction, gulp.dest('public/assets/dist/js')))
 		.pipe(notify({message: 'Scripts smashed.', onLast: true}));
 });
 
