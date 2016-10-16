@@ -19,5 +19,6 @@
  */
 
 return array(
-
+	// 'feed/journal' => 'journal/feed.rss',
+	'rss/blog.xml' => 'journal/feed.rss',
 );
