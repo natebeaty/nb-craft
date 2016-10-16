@@ -12,11 +12,12 @@ body {
   // letter-spacing: .1em;
   color: #fff;
 }
-h1 {
+.h1,h1 {
   font: italic 24px/1 "Anonymous Pro", monospace;
   margin: 1em 0 .5em;
 }
-h2,h3 {
+.h2,h2,
+.h3,h3 {
   font: italic 18px/1 "Anonymous Pro", monospace;
   margin: 1em 0 .5em;
 }
@@ -358,12 +359,16 @@ body.in-section {
 
 // general image masonry list (used on comics, featured)
 .image-list {
+  .category-shorts article,
   .category-oldies article,
   .category-kids article {
     width: 50%;
     @include min-screen($breakpoint-medium) {
       width: 20%;
     }
+  }
+  &.inited article img {
+    min-height: none;
   }
   article {
     width: 100%;
@@ -376,6 +381,7 @@ body.in-section {
     }
     img {
       display: block;
+      min-height: 150px;
     }
     h1 {
       margin: 0;
@@ -489,7 +495,9 @@ body.in-section {
 // comics
 body.active-comics {
   background: $comics;
-
+  .comic img {
+    margin-bottom: 10px;
+  }
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
@@ -523,10 +531,22 @@ body.active-journal {
     }
   }
 }
+// archives
+body.active-journal .archives {
+  h2.date {
+    font: 15px/1.5 "Anonymous Pro", monospace;
+  }
+  li {
+    a {
+      @extend .h2;
+      color: $link;
+    }
+  }
+}
 .user-content,
 article.journal {
   a {
-    color: #6ccdf5;
+    color: $link;
     text-decoration: underline;
   }
 }
@@ -577,7 +597,9 @@ body.active-about {
 // featured
 body.active-featured {
   background: $featured;
-
+  .featured img {
+    margin-bottom: 10px;
+  }
   @include min-screen($breakpoint-medium) {
     main {
       padding: 150px 20px 50px 70px;
@@ -624,20 +646,29 @@ img.lazy {
     content: '';
     display: block;
     border-top: 1px solid #fff;
+    width: 100%;
+    height: 150px;
   }
   &.loaded {
     &:before {
       border-top: 1px solid rgba(255,255,255,0);
+      height: 0;
     }
     transform: scale(1);
     opacity: 1;
   }
 }
-.dizzy {
+#natehead.dizzy {
   transform-origin: center;
-  animation: spin .5s infinite ease-out;
+}
+.dizzy svg {
+  animation: spin 2s forwards ease-out;
 }
 @keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+    from {
+      transform:rotate(0deg);
+    }
+    to {
+      transform:rotate(18000deg);
+    }
 }
