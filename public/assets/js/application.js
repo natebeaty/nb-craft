@@ -45,16 +45,19 @@ var Nb = (function($) {
       }
     });
 
-    // primary nav
-    $('nav.main a').hover(function() {
-      // Magical color-changing moustache
-      var bg = $(this).css('background-color');
-      var hex = _rgb2hex(bg);
-      if (hex) {
-        $('#stache').stop().velocity({ fill: hex });
-      }
-    }).on('click', function(e) {
+    // colorize the stache on hover on non-touch clients
+    if (!Modernizr.touchevents) {
+      $('nav.main a').hover(function() {
+        // Magical color-changing moustache
+        _colorStache(this);
+      });
+    }
+
+    // main nav click: scroll page up or push URL into history
+    $('nav.main a').on('touchstart click', function(e) {
+      e.stopPropagation();
       e.preventDefault();
+      _colorStache(this);
       if (State.url==this.href) {
         // If clicking nav header when in a section, just scroll to top
         _scrollBody($('body'), 250, 0);
@@ -93,6 +96,15 @@ var Nb = (function($) {
     $('#stache').velocity({ fill: '#93604b' });
 
   } // end init()
+
+  // Totally useful stache colors
+  function _colorStache(el) {
+    var bg = $(el).css('background-color');
+    var hex = _rgb2hex(bg);
+    if (hex) {
+      $('#stache').stop().velocity({ fill: hex });
+    }
+  }
 
   // Set section_in var for various logic, denotes primary section being shown
   function _getSectionVar() {
