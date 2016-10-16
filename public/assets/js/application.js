@@ -9,6 +9,7 @@
 //=include "../bower_components/masonry/dist/masonry.pkgd.js"
 //=include "../bower_components/history.js/scripts/bundled/html5/jquery.history.js"
 //=include "../bower_components/vanilla-lazyload/dist/lazyload.min.js"
+//=include "../bower_components/fastclick/lib/fastclick.js"
 
 var Nb = (function($) {
 
@@ -27,12 +28,14 @@ var Nb = (function($) {
   function _init() {
     $('html').addClass('loaded');
 
+    // Fastclick
+    FastClick.attach(document.body);
+
     // Fit them vids!
     $('main').fitVids();
 
     // natehead clicks
-    $(document).on('touchstart click', '#natehead', function(e) {
-      e.stopPropagation();
+    $(document).on('click', '#natehead', function(e) {
       e.preventDefault();
       _showNav();
     });
@@ -54,8 +57,7 @@ var Nb = (function($) {
     }
 
     // main nav click: scroll page up or push URL into history
-    $('nav.main a').on('touchstart click', function(e) {
-      e.stopPropagation();
+    $('nav.main a').on('click', function(e) {
       e.preventDefault();
       _colorStache(this);
       if (State.url==this.href) {
@@ -68,10 +70,13 @@ var Nb = (function($) {
     });
 
     // X close/back button
-    $('.x').click(function(e) {
+    $('.x').on('click', function(e) {
+      e.preventDefault();
+      // if we're on a single page, go back to section_in landing (e.g. /comics)
       if ($('main .is-single').length) {
         History.pushState({}, '', '/' + section_in);
       } else {
+        // If we're on a landing page, go to the homepage
         _showNav();
       }
     });
