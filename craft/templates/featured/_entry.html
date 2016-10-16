@@ -8,7 +8,7 @@
 {% block content %}
 	<article class="featured is-single" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
 		<h1>{{ entry.title }}</h1>
-		<div class="description">
+		<div class="description user-content">
 			{{ entry.body }}
 		</div>
 		{% for image in entry.featureImages %}

@@ -88,13 +88,14 @@ var Nb = (function($) {
     });
 
     // user-content linking internally
-    $('document').on('click', '.user-content a', function(e) {
-      // if we're on a single page, go back to section_in landing (e.g. /comics)
-      if ($('main .is-single').length) {
-        History.pushState({}, '', '/' + section_in);
+    $(document).on('click', '.user-content a', function(e) {
+      var href = this.href;
+      // if not external, push to history
+      if (!_isExternal(href)) {
+        e.preventDefault();
+        History.pushState({}, '', href);
       } else {
-        // If we're on a landing page, go to the homepage
-        _showNav();
+        return true;
       }
     });
 
@@ -302,6 +303,14 @@ var Nb = (function($) {
     if (typeof ga !== 'undefined') {
       ga('send', 'event', category, action);
     }
+  }
+
+  // External URL?
+  function _isExternal(url) {
+    var domain = function(url) {
+      return url.replace('http://','').replace('https://','').split('/')[0];
+    };
+    return domain(location.href) !== domain(url);
   }
 
   // Public functions
