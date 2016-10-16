@@ -1,20 +1,35 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = "Comics" %}
 
+{% set entries = craft.entries.section('comics') %}
+{% set relatedCats = craft.categories.relatedTo(entries) %}
+
 {% block content %}
 	<section class="comics-list image-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
-		<div class="masonryme">
-		{% for entry in craft.entries.section('comics').find() %}
-			{% set front_image = entry.featuredImage.last() %}
-			{% if front_image|length %}
-				<article class="bigclicky">
-					<div class="wrap">
-						<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
-					</div>
-					<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
-				</article>
-			{% endif %}
-		{% endfor %}
+	{# Loop the categories #}
+	{% for category in relatedCats %}
+
+		<div class="comic-group category-{{ category.slug }}">
+		  <h2>{{ category.title }}</h2>
+			<div class="masonryme">
+		  {% set relatedEntries = craft.entries.relatedTo(category) %}
+		  {% for entry in relatedEntries %}
+
+				{% set front_image = entry.featuredImage.last() %}
+				{% if front_image|length %}
+					<article class="bigclicky {{ (entry.slug=='wolfman') ? "wide" : "" }}">
+						<div class="wrap">
+							<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+						</div>
+						<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+					</article>
+				{% endif %}
+
+		  {% endfor %}
+			</div>
 		</div>
+
+	{% endfor %}
+
 	</section>
 {% endblock %}

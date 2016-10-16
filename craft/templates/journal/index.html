@@ -1,17 +1,24 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = "Journal" %}
 
-{% paginate craft.entries.section('journal').limit(1) as pageInfo, pageEntries %}
+{% paginate craft.entries.section('journal').limit(25) as pageInfo, pageEntries %}
 
 {% block content %}
 	<section class="journal-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
 
 		{% for entry in pageEntries %}
-			{% include "journal/_article" with {'modalClass': ''}  %}
+			{# include "journal/_article" with {'modalClass': ''}  #}
+			<article class="journal">
+				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+				<p class="date">{{ entry.postDate.format('F d, Y') }}</p>
+				{{ entry.body | trimit(250) }}
+			</article>
+
 		{% endfor %}
 
 		<div class="pagination">
 			{% if pageInfo.prevUrl %}<a rel="nofollow" class="previous" href="{{ pageInfo.prevUrl }}"><span>Previous</span></a>{% endif %}
+			<a class="archives" href="/journal/archives">Archives</a>
 			{% if pageInfo.nextUrl %}<a rel="nofollow" class="next" href="{{ pageInfo.nextUrl }}"><span>Next</span></a>{% endif %}
 		</div>
 	</section>

@@ -47,7 +47,7 @@ nav.main {
   a {
     font: italic 24px/1 "Anonymous Pro", monospace;
     -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    // -webkit-tap-highlight-color: rgba(0,0,0,0);
     color: #fff;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -197,6 +197,9 @@ body.active-comics nav.main a.comics {
   @include clearfix;
   max-width: 750px;
   margin: 0 auto;
+}
+.journal-list article {
+  margin-bottom: 40px;
 }
 .is-single,
 .page-content {
@@ -355,6 +358,13 @@ body.in-section {
 
 // general image masonry list (used on comics, featured)
 .image-list {
+  .category-oldies article,
+  .category-kids article {
+    width: 50%;
+    @include min-screen($breakpoint-medium) {
+      width: 20%;
+    }
+  }
   article {
     width: 100%;
     float: left;
@@ -380,6 +390,12 @@ body.in-section {
       }
     }
     @include min-screen($breakpoint-medium) {
+      &.wide {
+        width: 50%;
+        img {
+          width: 100%;
+        }
+      }
       width: 25%;
       cursor: pointer;
       margin: 0 0 10px;
@@ -409,11 +425,23 @@ body.in-section {
 }
 
 .pagination {
-  width: 750px;
+  max-width: 750px;
   height: 40px;
   margin: 20px auto;
   position: relative;
-  a {
+  a.archives {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    font: italic 24px/1 "Anonymous Pro", monospace;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+  }
+  a:not(.archives) {
     display: block;
     position: absolute;
     width: 30px;
@@ -460,12 +488,14 @@ body.in-section {
 
 // comics
 body.active-comics {
+  background: $comics;
+
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
     }
     &.active-single main {
-      padding: 50px 20px 150px 70px;
+      padding: 80px 70px 150px 20px;
     }
     nav.main a.journal {
       span {
@@ -537,6 +567,7 @@ body.active-about {
   padding: 0;
   li a {
     font: italic 18px/1 "Anonymous Pro", monospace;
+    text-decoration: underline;
     color: #fff;
     display: inline-block;
     padding: 6px 10px;
@@ -546,9 +577,10 @@ body.active-about {
 // featured
 body.active-featured {
   background: $featured;
+
   @include min-screen($breakpoint-medium) {
     main {
-      padding: 150px 20px 150px 70px;
+      padding: 150px 20px 50px 70px;
     }
     &.active-single main {
       padding: 120px 20px 150px 70px;
@@ -561,24 +593,51 @@ body.active-featured {
   }
 }
 
-
+// better centered images on large screens
+@include min-screen(960px) {
+  body.active-comics.active-single,
+  body.active-featured.active-single,
+  body.active-journal {
+    main {
+      padding-right: 70px;
+    }
+  }
+}
 // lazyload
-/* Prevents img without src to appear */
+// Prevents img without src to appear
 img:not([src]) {
     visibility: hidden;
 }
-/* Fixes Firefox anomaly */
+// Fixes Firefox anomaly
 @-moz-document url-prefix() {
-    img:-moz-loading {
-        visibility: hidden;
-    }
+  img:-moz-loading {
+      visibility: hidden;
+  }
 }
 img.lazy {
+  display: block;
+  min-height: 150px;
   opacity: 0;
   transform: scale(.98);
-  transition: all .5s ease-out;
+  transition: transform .5s ease-out;
+  &:before {
+    content: '';
+    display: block;
+    border-top: 1px solid #fff;
+  }
   &.loaded {
+    &:before {
+      border-top: 1px solid rgba(255,255,255,0);
+    }
     transform: scale(1);
     opacity: 1;
   }
+}
+.dizzy {
+  transform-origin: center;
+  animation: spin .5s infinite ease-out;
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

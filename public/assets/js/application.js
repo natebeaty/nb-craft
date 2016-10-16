@@ -55,6 +55,11 @@ var Nb = (function($) {
         _colorStache(this);
       });
     }
+    $('h1.title').on('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $('#natehead').toggleClass('dizzy');
+    })
 
     // main nav click: scroll page up or push URL into history
     $('nav.main a').on('click', function(e) {
@@ -72,6 +77,17 @@ var Nb = (function($) {
     // X close/back button
     $('.x').on('click', function(e) {
       e.preventDefault();
+      // if we're on a single page, go back to section_in landing (e.g. /comics)
+      if ($('main .is-single').length) {
+        History.pushState({}, '', '/' + section_in);
+      } else {
+        // If we're on a landing page, go to the homepage
+        _showNav();
+      }
+    });
+
+    // user-content linking internally
+    $('document').on('click', '.user-content a', function(e) {
       // if we're on a single page, go back to section_in landing (e.g. /comics)
       if ($('main .is-single').length) {
         History.pushState({}, '', '/' + section_in);
@@ -187,7 +203,7 @@ var Nb = (function($) {
     });
 
     var myLazyLoad = new LazyLoad({
-        show_while_loading: false
+        // show_while_loading: false
     });
 
     // Add loaded class to init page transition animations

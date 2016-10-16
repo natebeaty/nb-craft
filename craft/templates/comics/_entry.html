@@ -8,6 +8,10 @@
 {% block content %}
 	<article class="comic is-single" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
 		<h1>{{ entry.title }}</h1>
+		<div class="meta user-content">
+			<div class="body">{{ entry.body }}</div>
+			<div class="info">{{ entry.shortDescription }}</div>
+		</div>
 		{% for image in entry.comicPages %}
 			<img class="lazy" data-original="{{ image.getUrl() }}" alt="{{ entry.title }}">
 		{% endfor %}
