@@ -7,11 +7,11 @@
 		{{ entry.body }}
 	</div>
 	{% for block in entry.socialBlocks %}
+		<ul class="social">
 		{% if block.type == "social" %}
-			<div class="social">
-				<h2><a target="_blank" href="{{ block.socialURL }}">{{ block.header }}</a></h2>
-			</div>
+			<li><a target="_blank" href="{{ block.socialURL }}">{{ block.header }}</a></li>
 		{% endif %}
+		</ul>
 	{% endfor %}
 	</section>
 {% endblock %}

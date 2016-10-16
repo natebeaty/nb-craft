@@ -220,10 +220,14 @@ main.loaded {
   transform-origin: top center;
   left: 50%;
   top: 0;
-  z-index: 20;
+  z-index: 10;
   width: 150px;
   height: 150px;
   transform: scale(1) translate(-50%,calc(50vh - 50%));
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 
   @include min-screen($breakpoint-medium) {
     width: 500px;
@@ -234,13 +238,17 @@ main.loaded {
 
 // "nate beaty" title
 h1.title {
-  font: italic 24px/1 "Anonymous Pro";
+  font: italic 20px/1 "Anonymous Pro";
   -webkit-font-smoothing: antialiased;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
   position: fixed;
-  top: 30%;
+  top: 32%;
+  @include min-screen($breakpoint-medium) {
+    font: italic 24px/1 "Anonymous Pro";
+    top: 25%;
+  }
   left: 50%;
   z-index: 11;
   .nate {
@@ -503,7 +511,15 @@ body.active-about {
   background: $about;
   @include min-screen($breakpoint-medium) {
     main {
-      padding-top: 150px;
+      padding: 150px 70px 50px 20px;
+      .user-content {
+        p:not(.photo) {
+          max-width: 50%;
+        }
+        img {
+          width: 100%;
+        }
+      }
     }
     .x {
       top: 60px;
@@ -512,6 +528,17 @@ body.active-about {
       left: 0;
       right: 20%
     }
+  }
+}
+.social {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  li a {
+    font: italic 18px/1 "Anonymous Pro", monospace;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 10px;
   }
 }
 

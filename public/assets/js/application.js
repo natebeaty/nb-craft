@@ -223,7 +223,8 @@ var Nb = (function($) {
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
   function _initBigClicky() {
-    $(document).on('click', '.bigclicky, .journal-list article h1', function(e) {
+    $(document).on('touchstart click', '.bigclicky, .journal-list article h1', function(e) {
+      e.stopPropagation();
       e.preventDefault();
       var link = $(this).find('h1:first a,h2:first a,a');
       if (link.length) {
