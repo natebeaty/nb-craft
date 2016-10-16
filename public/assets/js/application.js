@@ -31,7 +31,9 @@ var Nb = (function($) {
     $('main').fitVids();
 
     // natehead clicks
-    $(document).on('click', '#natehead', function(e) {
+    $(document).on('touchstart click', '#natehead', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
       _showNav();
     });
 
