@@ -509,7 +509,7 @@ body.active-comics {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
     }
-    &.active-single main {
+    main {
       padding: 80px 70px 150px 20px;
     }
     nav.main a.journal {
@@ -535,7 +535,7 @@ body.active-journal {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
     }
     main {
-      padding: 50px 20px 150px 70px;
+      padding: 80px 20px 150px 70px;
     }
     .x {
       right: auto;
