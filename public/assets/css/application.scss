@@ -362,12 +362,17 @@ body.in-section {
   .category-shorts article,
   .category-oldies article,
   .category-kids article {
+    opacity: .9;
+    transition: opacity .25s ease-out;
     width: 50%;
     @include min-screen($breakpoint-medium) {
       width: 20%;
     }
+    &:hover {
+      opacity: 1;
+    }
   }
-  &.inited article img {
+  .images-loaded article img {
     min-height: 0;
   }
   article {
@@ -442,9 +447,8 @@ body.in-section {
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
-    font: italic 24px/1 "Anonymous Pro", monospace;
+    font: italic 20px/1 "Anonymous Pro", monospace;
     text-transform: uppercase;
-    -webkit-font-smoothing: antialiased;
     color: #fff;
   }
   a:not(.archives) {
@@ -498,6 +502,9 @@ body.active-comics {
   .comic img {
     margin-bottom: 10px;
   }
+  .info {
+    opacity: .5;
+  }
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
@@ -516,7 +523,13 @@ body.active-comics {
 
 // journal
 body.active-journal {
+  p.date {
+    opacity: .5;
+  }
   background: $journal;
+  article.journal h1 {
+    margin-bottom: .25em;
+  }
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
@@ -530,7 +543,7 @@ body.active-journal {
     }
   }
 }
-// archives
+// journal archives
 body.active-journal .archives {
   h2.date {
     font: 15px/1.5 "Anonymous Pro", monospace;

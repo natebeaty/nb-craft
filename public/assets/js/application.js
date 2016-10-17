@@ -200,8 +200,11 @@ var Nb = (function($) {
     }).on('layoutComplete', function(){
       $(this).addClass('inited');
     });
-    $('.masonryme').imagesLoaded(function() {
-      $('.masonryme').masonry('layout');
+    $('.masonryme').each(function() {
+      var $this = $(this);
+      $this.imagesLoaded(function() {
+        $this.addClass('images-loaded').masonry('layout');
+      });
     });
 
     var myLazyLoad = new LazyLoad({
