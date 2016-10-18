@@ -45,7 +45,7 @@ img {
 // big ol' primary nav
 nav.main {
   height: 100vh;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   @include min-screen($breakpoint-medium) {
     margin-bottom: 0;
   }
