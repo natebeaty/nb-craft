@@ -13,56 +13,53 @@
 
 var Nb = (function($) {
 
-  var breakpoint_small = false,
-      breakpoint_medium = false,
-      breakpoint_large = false,
-      breakpoint_array = [480,1000,1200],
-      History = window.History,
+  var History = window.History,
       State,
       root_url = History.getRootUrl(),
       relative_url,
-      original_url,
       section_in,
       scroll_to_top = false,
       page_cache = {};
 
   function _init() {
-    $('html').addClass('loaded');
-
     // Fastclick
     FastClick.attach(document.body);
 
     // Fit them vids!
     $('main').fitVids();
 
-    // natehead clicks
+    // Natehead clicks
     $(document).on('click', '#natehead', function(e) {
       e.preventDefault();
       _showNav();
     });
 
-    // keyboard support
+    // Keyboard nerds rejoice
     $(document).keyup(function(e) {
-      // esc
+      // esc = go back
       if (e.keyCode === 27) {
-        _showNav();
+        if (section_in != 'home') {
+          $('.x').trigger('click');
+        }
       }
     });
 
-    // colorize the stache on hover on non-touch clients
+    // Colorize the stache on hover on non-touch clients
     if (!Modernizr.touchevents) {
       $('nav.main a').hover(function() {
-        // Magical color-changing moustache
         _colorStache(this);
       });
     }
+
+    // Easter egg
     $('h1.title').on('click', function(e) {
-      e.stopPropagation();
       e.preventDefault();
-      $('#natehead').toggleClass('dizzy');
+      if ($('#natehead').hasClass('dizzy')) { return; }
+      $('#natehead').addClass('dizzy');
+      setTimeout(function() { $('#natehead').removeClass('dizzy'); }, 2000);
     })
 
-    // main nav click: scroll page up or push URL into history
+    // Main nav click: scroll page up or push URL into history
     $('nav.main a').on('click', function(e) {
       e.preventDefault();
       _colorStache(this);
@@ -79,7 +76,7 @@ var Nb = (function($) {
     // X close/back button
     $('.x').on('click', function(e) {
       e.preventDefault();
-      // if we're on a single page, go back to section_in landing (e.g. /comics)
+      // If we're on a single page, go back to section_in landing (e.g. /comics)
       if ($('main .is-single').length) {
         History.pushState({}, '', '/' + section_in);
       } else {
@@ -88,7 +85,7 @@ var Nb = (function($) {
       }
     });
 
-    // user-content linking internally
+    // User-content linking internally
     $(document).on('click', '.user-content a', function(e) {
       var href = this.href;
       // if not external, push to history
@@ -103,7 +100,6 @@ var Nb = (function($) {
     // Init state
     State = History.getState();
     relative_url = '/' + State.url.replace(root_url,'');
-    original_url = State.url;
 
     // Cache any pages already loaded
     $('section[data-page]').each(function() {
@@ -143,16 +139,15 @@ var Nb = (function($) {
       relative_url = '/' + State.url.replace(root_url,'');
       _getSectionVar();
 
-      if (State.data.ignore_change) {
-        return;
-      }
-
       if (State.url == root_url) {
+        // Remove any active-* body classes to return to main nav
         $('body').attr('class', '');
       } else {
+        // Page cached?
         if (page_cache[encodeURIComponent(State.url)]) {
           _updatePage();
         } else {
+          // If not, scroll to top and load the page
           scroll_to_top = true;
           _loadPage();
         }
@@ -174,7 +169,7 @@ var Nb = (function($) {
     });
   }
 
-  // Update modal with cached content for current URL and show it
+  // Update page with cached content for current URL, track it, show it
   function _updatePage() {
     $('main').removeClass('loaded');
     $('main').html(page_cache[encodeURIComponent(State.url)]);
@@ -184,49 +179,42 @@ var Nb = (function($) {
     _updateTitle();
   }
 
-  // Show active page bucket
+  // Show active page
   function _showPage() {
+
     // Add section class to body
     if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
     }
+
     // Add is-single class?
     $('body').toggleClass('active-single', $('article.is-single').length>0);
 
     // Refit them vids!
     $('main').fitVids();
 
-    // Reinit masonry
+    // Re-init masonry
     $('.masonryme:not(.inited)').masonry({
       itemSelector: 'article',
       gutter: 10
     }).on('layoutComplete', function(){
       $(this).addClass('inited');
     });
-    $('.masonryme').each(function() {
-      var $this = $(this);
-      $this.imagesLoaded(function() {
-        $this.addClass('images-loaded').masonry('layout');
-      });
-    });
 
-    // loading new page, scroll body to top
+    // Loading new page, scroll body to top
     if (scroll_to_top) {
       _scrollBody($('body'), 250, 0);
       scroll_to_top = false;
     }
 
-    var myLazyLoad = new LazyLoad({
-        // show_while_loading: false
-    });
+    // Trigger lazyload
+    var myLazyLoad = new LazyLoad();
 
     // Add loaded class to init page transition animations
     setTimeout(function() {
       $('main').addClass('loaded');
     }, 150);
 
-    // Scroll to top of page (this can be annoying to lose your scroll location...)
-    // _scrollBody($('body'), 250, 0);
   }
 
   // Function to update document title after state change
@@ -241,23 +229,17 @@ var Nb = (function($) {
     } else {
       title = title + ' – Nate Beaty';
     }
-    // Snippet from Ajaxify to update title
+
+    // Snippet from Ajaxify to update title tag
     document.title = title;
     try {
       document.getElementsByTagName('title')[0].innerHTML = document.title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
     } catch (Exception) {}
   }
 
+  // Go home
   function _showNav() {
     History.pushState({}, '', root_url);
-  }
-
-  // Called in quick succession as window is resized
-  function _resize() {
-    screenWidth = document.documentElement.clientWidth;
-    breakpoint_small = (screenWidth > breakpoint_array[0]);
-    breakpoint_medium = (screenWidth > breakpoint_array[1]);
-    breakpoint_large = (screenWidth > breakpoint_array[2]);
   }
 
   // Scroll to location in body or container element
@@ -272,6 +254,7 @@ var Nb = (function($) {
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
   function _initBigClicky() {
+    // Also shoving in general ajax link hijacking here — todo: move this to its own function for all content links
     $(document).on('click', '.bigclicky, .journal-list article h1, .journal-list.archives li a', function(e) {
       e.preventDefault();
       var link = $(e.target).is('a') ? $(e.target) : $(this).find('h1:first a,h2:first a,a');
@@ -285,6 +268,7 @@ var Nb = (function($) {
     });
   }
 
+  // Ajaxify pagination links
   function _initPagination() {
     $(document).on('click', '.pagination a', function(e) {
       e.preventDefault();
@@ -292,6 +276,7 @@ var Nb = (function($) {
     });
   }
 
+  // Silly function to convert RGB -> hex
   function _rgb2hex(rgb) {
     rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     if (rgb == null) {
@@ -327,14 +312,10 @@ var Nb = (function($) {
 
   // Public functions
   return {
-    init: _init,
-    resize: _resize
+    init: _init
   };
 
 })(jQuery);
 
 // Fire up the mothership
 jQuery(document).ready(Nb.init);
-
-// Zig-zag the mothership
-jQuery(window).resize(Nb.resize);
