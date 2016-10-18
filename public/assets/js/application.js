@@ -23,6 +23,7 @@ var Nb = (function($) {
       relative_url,
       original_url,
       section_in,
+      scroll_to_top = false,
       page_cache = {};
 
   function _init() {
@@ -152,6 +153,7 @@ var Nb = (function($) {
         if (page_cache[encodeURIComponent(State.url)]) {
           _updatePage();
         } else {
+          scroll_to_top = true;
           _loadPage();
         }
       }
@@ -174,7 +176,7 @@ var Nb = (function($) {
 
   // Update modal with cached content for current URL and show it
   function _updatePage() {
-    $('main').removeClass('loaded'); // .find('img').off().attr('src', '').remove();
+    $('main').removeClass('loaded');
     $('main').html(page_cache[encodeURIComponent(State.url)]);
 
     _trackPage();
@@ -188,7 +190,7 @@ var Nb = (function($) {
     if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
     }
-    // Add is-single class
+    // Add is-single class?
     $('body').toggleClass('active-single', $('article.is-single').length>0);
 
     // Refit them vids!
@@ -208,6 +210,12 @@ var Nb = (function($) {
       });
     });
 
+    // loading new page, scroll body to top
+    if (scroll_to_top) {
+      _scrollBody($('body'), 250, 0);
+      scroll_to_top = false;
+    }
+
     var myLazyLoad = new LazyLoad({
         // show_while_loading: false
     });
@@ -218,7 +226,7 @@ var Nb = (function($) {
     }, 150);
 
     // Scroll to top of page (this can be annoying to lose your scroll location...)
-    _scrollBody($('body'), 250, 0);
+    // _scrollBody($('body'), 250, 0);
   }
 
   // Function to update document title after state change
@@ -264,9 +272,9 @@ var Nb = (function($) {
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
   function _initBigClicky() {
-    $(document).on('click', '.bigclicky, .journal-list article h1', function(e) {
+    $(document).on('click', '.bigclicky, .journal-list article h1, .journal-list.archives li a', function(e) {
       e.preventDefault();
-      var link = $(this).find('h1:first a,h2:first a,a');
+      var link = $(e.target).is('a') ? $(this) : $(this).find('h1:first a,h2:first a,a');
       if (link.length) {
         if (e.metaKey || link.attr('target')) {
           window.open(link[0].href);
