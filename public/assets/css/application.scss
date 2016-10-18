@@ -45,6 +45,10 @@ img {
 // big ol' primary nav
 nav.main {
   height: 100vh;
+  margin-bottom: 100px;
+  @include min-screen($breakpoint-medium) {
+    margin-bottom: 0;
+  }
   a {
     font: italic 24px/1 "Anonymous Pro", monospace;
     -webkit-font-smoothing: antialiased;
@@ -321,6 +325,7 @@ body.in-section {
   nav.main {
     height: 0;
     @include max-screen($breakpoint-medium) {
+      height: auto;
       a {
         position: relative;
         width: 100%;
@@ -364,9 +369,11 @@ body.in-section {
   .category-kids article {
     opacity: .9;
     transition: opacity .25s ease-out;
-    width: 50%;
+    // width: 50%;
+    width: calc( (100% - 10px) / 2 );
     @include min-screen($breakpoint-medium) {
-      width: 20%;
+      // width: 20%;
+      width: calc( (100% - 50px) / 5 );
     }
     &:hover {
       opacity: 1;
@@ -378,7 +385,7 @@ body.in-section {
   article {
     width: 100%;
     float: left;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     position: relative;
 
     a {
@@ -402,16 +409,18 @@ body.in-section {
     }
     @include min-screen($breakpoint-medium) {
       &.wide {
-        width: 50%;
+        // width: 50%;
+        width: calc( (100% - 10px) / 2 );
         img {
           width: 100%;
         }
       }
-      width: 25%;
+      // width: 25%;
+      width: calc( (100% - 30px) / 4 );
       cursor: pointer;
-      margin: 0 0 10px;
-      .wrap {
-        padding: 0 10px 0 0;
+      // margin: 0 0 10px;
+      .pad {
+        // padding: 0 10px 0 0;
       }
       h1 {
         visibility: hidden;
@@ -445,7 +454,7 @@ body.in-section {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-40%);
     width: 100px;
     font: italic 20px/1 "Anonymous Pro", monospace;
     text-transform: uppercase;
@@ -499,7 +508,7 @@ body.in-section {
 // comics
 body.active-comics {
   background: $comics;
-  .comic img {
+  .comic .ratiowrap {
     margin-bottom: 10px;
   }
   .info {
@@ -624,7 +633,7 @@ body.active-about {
 // featured
 body.active-featured {
   background: $featured;
-  .featured img {
+  .featured .ratiowrap {
     margin-bottom: 10px;
   }
   @include min-screen($breakpoint-medium) {
@@ -688,4 +697,16 @@ img.lazy {
     to {
       transform:rotate(18000deg);
     }
+}
+.ratiowrap {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }

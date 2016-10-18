@@ -196,7 +196,8 @@ var Nb = (function($) {
 
     // Reinit masonry
     $('.masonryme:not(.inited)').masonry({
-      itemSelector: 'article'
+      itemSelector: 'article',
+      gutter: 10
     }).on('layoutComplete', function(){
       $(this).addClass('inited');
     });
