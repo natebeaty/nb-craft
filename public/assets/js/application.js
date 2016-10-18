@@ -274,7 +274,7 @@ var Nb = (function($) {
   function _initBigClicky() {
     $(document).on('click', '.bigclicky, .journal-list article h1, .journal-list.archives li a', function(e) {
       e.preventDefault();
-      var link = $(e.target).is('a') ? $(this) : $(this).find('h1:first a,h2:first a,a');
+      var link = $(e.target).is('a') ? $(e.target) : $(this).find('h1:first a,h2:first a,a');
       if (link.length) {
         if (e.metaKey || link.attr('target')) {
           window.open(link[0].href);
