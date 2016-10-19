@@ -661,10 +661,11 @@ body.active-featured {
     }
   }
 }
-// lazyload
+
+// Lazyload
 // Prevents img without src to appear
 img:not([src]) {
-    visibility: hidden;
+  visibility: hidden;
 }
 // Fixes Firefox anomaly
 @-moz-document url-prefix() {
@@ -684,6 +685,8 @@ img.lazy {
     opacity: 1;
   }
 }
+
+// Easter egg
 #natehead.dizzy {
   transform-origin: center;
 }
@@ -691,13 +694,15 @@ img.lazy {
   animation: spin 2s forwards ease-out;
 }
 @keyframes spin {
-    from {
-      transform:rotate(0deg);
-    }
-    to {
-      transform:rotate(18000deg);
-    }
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(18000deg);
+  }
 }
+
+// Wrap for images to force layout based on image ratio
 .ratiowrap {
   position: relative;
   height: 0;
@@ -709,4 +714,8 @@ img.lazy {
     width: 100%;
     height: 100%;
   }
+}
+
+.fluid-width-video-wrapper {
+  margin-bottom: 10px;
 }
