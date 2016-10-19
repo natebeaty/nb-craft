@@ -30,7 +30,12 @@ var Nb = (function($) {
     $('main').fitVids();
 
     // Trigger lazyload
-    lazyloader = new LazyLoad();
+    lazyloader = new LazyLoad({
+      callback_load: function(el) {
+        // Add class to wrap to remove loading display
+        $(el).parents('.ratiowrap:first').addClass('loaded');
+      }
+    });
 
     // Natehead clicks
     $(document).on('click', '#natehead', function(e) {
