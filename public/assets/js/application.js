@@ -19,7 +19,8 @@ var Nb = (function($) {
       relative_url,
       section_in,
       scroll_to_top = false,
-      page_cache = {};
+      page_cache = {},
+      lazyloader;
 
   function _init() {
     // Fastclick
@@ -27,6 +28,9 @@ var Nb = (function($) {
 
     // Fit them vids!
     $('main').fitVids();
+
+    // Trigger lazyload
+    lazyloader = new LazyLoad();
 
     // Natehead clicks
     $(document).on('click', '#natehead', function(e) {
@@ -206,9 +210,15 @@ var Nb = (function($) {
       _scrollBody($('body'), 250, 0);
       scroll_to_top = false;
     }
+    $('.lazy[width]').each(function() {
+      if (this.getAttribute('height')>0 && this.getAttribute('width')>0) {
+        var ratio = this.getAttribute('height') / this.getAttribute('width') * 100;
+        $(this).wrap('<div class="ratiowrap" style="padding-bottom:' + ratio + '%"></div>');
+      }
+    })
 
-    // Trigger lazyload
-    var myLazyLoad = new LazyLoad();
+    // Re-init lazyload
+    lazyloader.update();
 
     // Add loaded class to init page transition animations
     setTimeout(function() {
