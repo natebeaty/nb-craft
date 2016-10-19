@@ -34,6 +34,10 @@ var Nb = (function($) {
       callback_load: function(el) {
         // Add class to wrap to remove loading display
         $(el).parents('.ratiowrap:first').addClass('loaded');
+        var h = $(el).attr('height');
+        if (h>0) {
+          $(el).parents('.ratiowrap:first').css({'padding-bottom':'','max-height': h + 'px'});
+        }
       }
     });
 
@@ -215,10 +219,12 @@ var Nb = (function($) {
       _scrollBody($('body'), 250, 0);
       scroll_to_top = false;
     }
-    $('.lazy[width]').each(function() {
-      if (this.getAttribute('height')>0 && this.getAttribute('width')>0) {
-        var ratio = this.getAttribute('height') / this.getAttribute('width') * 100;
-        $(this).wrap('<div class="ratiowrap" style="padding-bottom:' + ratio + '%"></div>');
+    $('.lazy[width]:not(.wrapped)').each(function() {
+      var w = this.getAttribute('width');
+      var h = this.getAttribute('height');
+      if (h>0 && w>0) {
+        var ratio = h / w * 100;
+        $(this).wrap('<div class="ratiowrap" style="padding-bottom:' + ratio + '%;max-width:' + w + 'px;"></div>');
       }
     })
 
