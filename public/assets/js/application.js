@@ -159,21 +159,25 @@ var Nb = (function($) {
     var cost = 0,
         total = 0;
     $('.cart-items,.cart-total').empty();
-    $('.cart').toggleClass('cart-active', cart.length>0);
     // Loop through cart items and build rudimentary HTML cart
     if (cart.length) {
+      $('.cart').addClass('cart-active');
       for (var i = cart.length - 1; i >= 0; i--) {
         cost = cart[i].quantity * parseFloat(cart[i].price);
         $('<li>' + cart[i].title + ' x ' + cart[i].quantity + ': $' + cost + '</li>').appendTo('.cart-items');
         total += cost;
       }
       $('.cart-total').text('Total: $' + total);
+
+      // Triggers showing of cart, along with handling of $('.x') to close cart
+      $('body').addClass('active-cart');
+
     } else {
+      $('.cart').removeClass('cart-active');
       // This isn't ever shown currently
       $('.cart-items').text('Cart empty.');
+      _hideCart();
     }
-    // Triggers showing of cart, along with handling of $('.x') to close cart
-    $('body').addClass('active-cart');
   }
 
   // Build PayPal form and submit checkout
