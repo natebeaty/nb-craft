@@ -50,3 +50,8 @@
 .flip .card .back {
   transform: rotateY(-180deg);
 }
+@keyframes popout {
+  from{transform:scale(1)}
+  80%{transform:scale(1.15)}
+  to{transform:scale(1)}
+}

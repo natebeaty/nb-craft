@@ -1,6 +1,21 @@
 @import "reset";
 @import "variables";
 @import "mixins";
+@import "cart";
+
+%loading {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 0 0 -15px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.1);
+  border-top-color: rgba(255,255,255,1);
+  animation: spinner 1s linear infinite;
+}
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -10,7 +25,7 @@ body {
   transition: background-color .25s ease-out;
   font: 15px/1.5 "Anonymous Pro", monospace;
   // letter-spacing: .1em;
-  color: #fff;
+  color: white;
 }
 .h1,h1 {
   font: italic 24px/1 "Anonymous Pro", monospace;
@@ -28,7 +43,7 @@ main {
   h1 a,
   h2 a,
   h3 a{
-    color: #fff;
+    color: white;
   }
 }
 p {
@@ -52,8 +67,7 @@ nav.main {
   a {
     font: italic 24px/1 "Anonymous Pro", monospace;
     -webkit-font-smoothing: antialiased;
-    // -webkit-tap-highlight-color: rgba(0,0,0,0);
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     letter-spacing: -1px;
     text-decoration: none;
@@ -249,7 +263,7 @@ main.loaded {
 h1.title {
   font: italic 20px/1 "Anonymous Pro";
   -webkit-font-smoothing: antialiased;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   position: fixed;
@@ -296,7 +310,7 @@ h1.title {
   display: block;
   width: 30px;
   height: 2px;
-  background: #fff;
+  background: white;
 }
 .x::after{
   transform: rotate(45deg);
@@ -368,7 +382,6 @@ body.in-section {
   .category-oldies article,
   .category-kids article {
     opacity: .9;
-    transition: opacity .25s ease-out;
     // width: 50%;
     width: calc( (100% - 10px) / 2 );
     @include min-screen($breakpoint-medium) {
@@ -398,12 +411,12 @@ body.in-section {
     h1 {
       margin: 0;
       font: normal 18px/1 "Anonymous Pro", monospace;
-      color: #fff;
+      color: white;
       background: rgba(0,0,0,.8);
       a {
         display: block;
         padding: 8px 10px;
-        color: #fff;
+        color: white;
         text-decoration: none;
       }
     }
@@ -458,7 +471,7 @@ body.in-section {
     width: 100px;
     font: italic 20px/1 "Anonymous Pro", monospace;
     text-transform: uppercase;
-    color: #fff;
+    color: white;
   }
   a:not(.archives) {
     display: block;
@@ -488,7 +501,7 @@ body.in-section {
       display: block;
       width: 20px;
       height: 2px;
-      background: #fff;
+      background: white;
     }
     &.previous::after,
     &.next::after {
@@ -546,9 +559,17 @@ body.active-journal {
     main {
       padding: 80px 20px 150px 70px;
     }
+    .cart,
     .x {
       right: auto;
       left: 60px;
+    }
+    .cart {
+      left: 100px;
+      .cart-wrap {
+        left: 0;
+        right: auto;
+      }
     }
   }
 }
@@ -589,7 +610,7 @@ article.journal {
     margin-bottom: 1em;
   }
   // p.answer {
-  //   color: #fff;
+  //   color: white;
   // }
 }
 
@@ -608,6 +629,7 @@ body.active-about {
         }
       }
     }
+    .cart,
     .x {
       top: 60px;
     }
@@ -624,7 +646,7 @@ body.active-about {
   li a {
     font: italic 18px/1 "Anonymous Pro", monospace;
     text-decoration: underline;
-    color: #fff;
+    color: white;
     display: inline-block;
     padding: 6px 10px;
   }
@@ -643,10 +665,18 @@ body.active-featured {
     &.active-single main {
       padding: 120px 20px 150px 70px;
     }
+    .cart,
     .x {
       right: auto;
       left: 60px;
       top: 60px;
+    }
+    .cart {
+      left: 100px;
+      .cart-wrap {
+        left: 0;
+        right: auto;
+      }
     }
   }
 }
@@ -717,17 +747,7 @@ img.lazy {
     height: auto;
   }
   &::before {
-    content: '';
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    margin: 0 0 0 -15px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,.1);
-    border-top-color: rgba(255,255,255,1);
-    animation: spinner 1s linear infinite;
+    @extend %loading;
   }
   &.loaded {
     background: none;

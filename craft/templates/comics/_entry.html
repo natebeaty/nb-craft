@@ -11,6 +11,9 @@
 		<div class="meta user-content">
 			<div class="body">{{ entry.body }}</div>
 			<div class="info">{{ entry.shortDescription }}</div>
+			{% if entry.price > 0 %}
+				<a class="buy" href="#" data-price="{{ entry.price }}" data-title="{{ entry.title|escape }}" data-id="{{ entry.id }}">Buy</a>
+			{% endif %}
 		</div>
 		{% for image in entry.comicPages %}
 			<div class="ratiowrap" style="padding-bottom:{{ image.height / image.width * 100 }}%;max-width:{{ image.width }}px;max-height:{{ image.height }}px">

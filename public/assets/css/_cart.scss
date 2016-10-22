@@ -1,0 +1,108 @@
+// Cart
+
+// Cart icon
+.cart {
+  position: fixed;
+  right: 50px;
+  @include min-screen($breakpoint-medium) {
+    right: 120px;
+  }
+  top: 11px;
+  cursor: pointer;
+  .icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// Cart buttons
+.cart button,
+a.buy {
+	border: none;
+	padding: 4px 8px;
+	background: black;
+	display: inline-block;
+	text-decoration: none !important;
+	color: white !important;
+	text-transform: uppercase;
+	font: 15px/1 "Anonymous Pro", monospace;
+	margin: 8px 10px 4px 0;
+	outline: none;
+	cursor: pointer;
+}
+a.buy {
+	margin: 10px 0;
+}
+.cart.loading {
+	.flip {
+		&::before {
+			@extend %loading;
+		}
+	}
+	.cart-items,
+	.cart-total,
+	button {
+		opacity: .2;
+	}
+}
+
+.cart-wrap {
+	position: absolute;
+	pointer-events: none;
+	top: 50px;
+	color: black;
+  perspective: 1200;
+  right: -40px;
+  @include min-screen($breakpoint-medium) {
+  	right: 0;
+  }
+}
+.cart-contents {
+	transition: .5s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.flip {
+	margin-top: -40px;
+	background: #41A343;
+	width: calc(100vw - 20px);
+	padding: 10px;
+	backface-visibility: hidden;
+	transform-origin: 20px center;
+	transition: all .25s ease-in-out;
+	opacity: 0;
+	transform: rotateX(-95deg);
+	@include min-screen($breakpoint-medium) {
+		width: 300px;
+		transform: rotateX(-95deg);
+	}
+}
+.cart {
+	display: none;
+	&.cart-active {
+		display: block;
+	}
+	li {
+		list-style: none;
+	}
+	.cart-total {
+		padding-top: 10px;
+		margin-top: 10px;
+		border-top: 1px solid black;
+	}
+}
+.active-cart .cart-wrap {
+	pointer-events: auto;
+	.flip {
+		margin-top: 10px;
+		transform: rotateX(0deg);
+		opacity: 1;
+	}
+	display: block;
+	@include min-screen($breakpoint-medium) {
+		.flip {
+			margin-top: 0;
+		}
+	}
+}

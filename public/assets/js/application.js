@@ -20,11 +20,16 @@ var Nb = (function($) {
       section_in,
       scroll_to_top = false,
       page_cache = {},
-      lazyloader;
+      lazyloader,
+      cart;
 
   function _init() {
     // Fastclick
     FastClick.attach(document.body);
+
+    // Localstorage cart
+    cart = localStorage.getItem('Nb.cart') ? JSON.parse(localStorage.getItem('Nb.cart')) : [];
+    $('.cart').toggleClass('cart-active', cart.length>0);
 
     // Fit them vids!
     $('main').fitVids();
@@ -89,8 +94,10 @@ var Nb = (function($) {
     // X close/back button
     $('.x').on('click', function(e) {
       e.preventDefault();
-      // If we're on a single page, go back to section_in landing (e.g. /comics)
-      if ($('main .is-single').length) {
+      if ($('body').hasClass('active-cart')) {
+        _hideCart();
+      } else if ($('main .is-single').length) {
+        // If we're on a single page, go back to section_in landing (e.g. /comics)
         History.pushState({}, '', '/' + section_in);
       } else {
         // If we're on a landing page, go to the homepage
@@ -120,6 +127,7 @@ var Nb = (function($) {
       page_cache[encodeURIComponent(History.getRootUrl().replace(/\/$/,'') + $(this).attr('data-page'))] = $(this).prop('outerHTML');
     });
 
+    _initCart();
     _initBigClicky();
     _initPagination();
     _getSectionVar();
@@ -129,6 +137,59 @@ var Nb = (function($) {
     $('#stache').velocity({ fill: '#93604b' });
 
   } // end init()
+
+  function _addToCart(product) {
+    var exists = $.grep(cart, function(obj) {
+      return obj.title === product.title;
+    });
+    if (!exists.length) {
+      cart.push(product);
+    } else {
+      exists[0].quantity += 1;
+    }
+    localStorage.setItem('Nb.cart', JSON.stringify(cart));
+    _showCart();
+  }
+
+  // Hide/show cart functions
+  function _hideCart() {
+    $('body').removeClass('active-cart');
+  }
+  function _showCart() {
+    var cost = 0,
+        total = 0;
+    $('.cart-items,.cart-total').empty();
+    $('.cart').toggleClass('cart-active', cart.length>0);
+    // Loop through cart items and build rudimentary HTML cart
+    if (cart.length) {
+      for (var i = cart.length - 1; i >= 0; i--) {
+        cost = cart[i].quantity * parseFloat(cart[i].price);
+        $('<li>' + cart[i].title + ' x ' + cart[i].quantity + ': $' + cost + '</li>').appendTo('.cart-items');
+        total += cost;
+      }
+      $('.cart-total').text('Total: $' + total);
+    } else {
+      // This isn't ever shown currently
+      $('.cart-items').text('Cart empty.');
+    }
+    // Triggers showing of cart, along with handling of $('.x') to close cart
+    $('body').addClass('active-cart');
+  }
+
+  // Build PayPal form and submit checkout
+  function _checkoutCart() {
+    var $form = $('form.cart-wrap');
+    for(var i = 0; i < cart.length; ++i) {
+      $("<input type='hidden' name='quantity_" + (i+1) + "' value='" + cart[i].quantity + "'>" +
+        "<input type='hidden' name='item_name_" + (i+1) + "' value='" + cart[i].title + "'>" +
+        "<input type='hidden' name='item_number_" + (i+1) + "' value='nb-" + cart[i].id + "'>" +
+        "<input type='hidden' name='amount_" + (i+1) + "' value='" + cart[i].price + "'>")
+      .appendTo($form);
+    }
+    // PayPal so goddamn slow
+    $('.cart').addClass('loading');
+    $form.submit();
+  }
 
   // Totally useful stache colors
   function _colorStache(el) {
@@ -194,6 +255,8 @@ var Nb = (function($) {
 
   // Show active page
   function _showPage() {
+    // Hide cart
+    _hideCart();
 
     // Add section class to body
     if (section_in != 'home') {
@@ -287,6 +350,34 @@ var Nb = (function($) {
         }
       }
     });
+  }
+
+  // Janky li'l cart
+  function _initCart() {
+    // Toggle cart overlay
+    $(document).on('click', '.cart .icon', function() {
+      if ($('body').hasClass('active-cart')) {
+        _hideCart();
+      } else {
+        _showCart();
+      }
+    });
+    // Buy buttons
+    $(document).on('click', 'a.buy', function() {
+      _addToCart({ title: $(this).attr('data-title'), price: $(this).attr('data-price'), 'quantity': 1, id: $(this).attr('data-id') });
+    });
+    // Cart actions
+    $(document).on('click', '.cart button', function(e) {
+      e.preventDefault();
+      if ($(this).text() === 'Clear') {
+        cart = [];
+        localStorage.setItem('Nb.cart', JSON.stringify(cart));
+        _showCart();
+      } else if ($(this).text() === 'Checkout') {
+        // submit form
+        _checkoutCart();
+      }
+    })
   }
 
   // Ajaxify pagination links
