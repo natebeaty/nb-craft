@@ -170,11 +170,11 @@ var Nb = (function($) {
       $('.cart-total').text('Total: $' + total);
 
       // Triggers showing of cart, along with handling of $('.x') to close cart
-      $('body').addClass('active-cart');
+      setTimeout(function() {
+        $('body').addClass('active-cart');
+      }, 50);
     } else {
       $('.cart').removeClass('cart-active');
-      // This isn't ever shown currently
-      $('.cart-items').text('Cart empty.');
       _hideCart();
     }
   }
@@ -375,7 +375,10 @@ var Nb = (function($) {
       if ($(this).text() === 'Clear') {
         cart = [];
         localStorage.setItem('Nb.cart', JSON.stringify(cart));
-        _showCart();
+        _hideCart();
+        setTimeout(function() {
+          $('.cart').removeClass('cart-active');
+        }, 250);
       } else if ($(this).text() === 'Checkout') {
         // submit form
         _checkoutCart();
