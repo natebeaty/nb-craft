@@ -12,7 +12,7 @@
 			<div class="body">{{ entry.body }}</div>
 			<div class="info">{{ entry.shortDescription }}</div>
 			{% if entry.price > 0 %}
-				<a class="buy" href="#" data-price="{{ entry.price }}" data-title="{{ entry.title|escape }}" data-id="{{ entry.id }}">Buy</a>
+				<a class="buy" href="#" data-price="{{ entry.price }}" data-title="{{ entry.title|escape }}" data-id="{{ entry.id }}">Buy — ${{ entry.price + 0 }} CHEAP!</a>
 			{% endif %}
 		</div>
 		{% for image in entry.comicPages %}
