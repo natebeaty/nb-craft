@@ -161,7 +161,7 @@ var Nb = (function($) {
     $('.cart-items,.cart-total').empty();
     // Loop through cart items and build rudimentary HTML cart
     if (cart.length) {
-      $('.cart').addClass('cart-active');
+      $('.cart').addClass('cart-active').removeClass('loading');
       for (var i = cart.length - 1; i >= 0; i--) {
         cost = cart[i].quantity * parseFloat(cart[i].price);
         $('<li>' + cart[i].title + ' x ' + cart[i].quantity + ': $' + cost + '</li>').appendTo('.cart-items');
@@ -171,7 +171,6 @@ var Nb = (function($) {
 
       // Triggers showing of cart, along with handling of $('.x') to close cart
       $('body').addClass('active-cart');
-
     } else {
       $('.cart').removeClass('cart-active');
       // This isn't ever shown currently
