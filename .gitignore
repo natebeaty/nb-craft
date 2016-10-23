@@ -7,5 +7,7 @@ public/assets/bower_components/*
 .gulp-scss-cache/*
 node_modules/*
 logs/*
+.env
 _env.php
 *.pyc
+_thumbs/*
