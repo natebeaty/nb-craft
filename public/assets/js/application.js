@@ -172,6 +172,7 @@ var Nb = (function($) {
       // Triggers showing of cart, along with handling of $('.x') to close cart
       setTimeout(function() {
         $('body').addClass('active-cart');
+
       }, 50);
     } else {
       $('.cart').removeClass('cart-active');

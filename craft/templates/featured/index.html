@@ -8,8 +8,8 @@
 			{% set front_image = entry.featuredImage.last() %}
 			{% if front_image %}
 			<article class="bigclicky">
-				<div class="ratiowrap" style="padding-bottom: {{ front_image.height / front_image.width * 100 }}%">
-					<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+				<div class="ratiowrap" style="padding-bottom: {{ front_image.getHeight('thumb') / front_image.getWidth('thumb') * 100 }}%">
+					<img src="{{ front_image.getUrl('thumb') }}" alt="{{ front_image.title }}">
 				</div>
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 			</article>

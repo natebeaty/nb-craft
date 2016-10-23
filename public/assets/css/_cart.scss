@@ -70,7 +70,7 @@ a.buy {
 	padding: 10px;
 	backface-visibility: hidden;
 	transform-origin: 20px center;
-	transition: all .3s ease-in;
+	transition: all .25s ease-in;
 	opacity: 0;
 	transform: rotateX(-95deg);
 	@include min-screen($breakpoint-medium) {
