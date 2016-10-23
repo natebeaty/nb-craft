@@ -59,6 +59,14 @@ var Nb = (function($) {
         if (section_in != 'home') {
           $('.x').trigger('click');
         }
+      } else if (e.keyCode === 37) {
+        if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
+          $('.pagination a[rel=previous]').trigger('click');
+        }
+      } else if (e.keyCode === 39) {
+        if (section_in != 'home' && $('.pagination a[rel=next]').length) {
+          $('.pagination a[rel=next]').trigger('click');
+        }
       }
     });
 
