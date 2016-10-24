@@ -85,6 +85,9 @@ a.buy {
 	}
 	li {
 		list-style: none;
+		&:hover {
+			text-decoration: line-through;
+		}
 	}
 	.cart-total {
 		padding-top: 10px;

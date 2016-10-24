@@ -157,6 +157,7 @@ body.active-journal nav.main a.journal,
 body.active-comics nav.main a.comics {
   font: italic 30px/1 "Anonymous Pro", monospace;
   background: transparent;
+  width: auto;
   span {
     text-decoration: underline;
   }
@@ -408,7 +409,6 @@ body.in-section {
     }
     img {
       display: block;
-      min-height: 150px;
     }
     h1 {
       margin: 0;

@@ -146,6 +146,7 @@ var Nb = (function($) {
 
   } // end init()
 
+  // Add item to cart
   function _addToCart(product) {
     var exists = $.grep(cart, function(obj) {
       return obj.title === product.title;
@@ -153,12 +154,29 @@ var Nb = (function($) {
     if (!exists.length) {
       cart.push(product);
     } else {
-      exists[0].quantity += 1;
+      exists[0].quantity +=1;
     }
-    localStorage.setItem('Nb.cart', JSON.stringify(cart));
+    _saveCart();
     _showCart();
   }
-
+  // Remove item from cart
+  function _removeFromCart(id) {
+    if (cart[id]) {
+      if (cart[id].quantity > 1) {
+        cart[id].quantity +=-1;
+      } else {
+        cart.splice(id,1);
+      }
+    }
+    _saveCart();
+    _showCart();
+  }
+  // Save cart if localStorage
+  function _saveCart() {
+    if (Modernizr.localstorage) {
+      localStorage.setItem('Nb.cart', JSON.stringify(cart));
+    }
+  }
   // Hide/show cart functions
   function _hideCart() {
     $('body').removeClass('active-cart');
@@ -172,7 +190,7 @@ var Nb = (function($) {
       $('.cart').addClass('cart-active').removeClass('loading');
       for (var i = cart.length - 1; i >= 0; i--) {
         cost = cart[i].quantity * parseFloat(cart[i].price);
-        $('<li>' + cart[i].title + ' x ' + cart[i].quantity + ': $' + cost + '</li>').appendTo('.cart-items');
+        $('<li data-id="' + i + '">' + cart[i].title + ' x ' + cart[i].quantity + ': $' + cost + '</li>').appendTo('.cart-items');
         total += cost;
       }
       $('.cart-total').text('Total: $' + total);
@@ -180,11 +198,12 @@ var Nb = (function($) {
       // Triggers showing of cart, along with handling of $('.x') to close cart
       setTimeout(function() {
         $('body').addClass('active-cart');
-
       }, 50);
     } else {
-      $('.cart').removeClass('cart-active');
       _hideCart();
+      setTimeout(function() {
+        $('.cart').removeClass('cart-active');
+      }, 250);
     }
   }
 
@@ -200,7 +219,9 @@ var Nb = (function($) {
     }
     // PayPal so goddamn slow
     $('.cart').addClass('loading');
-    $form.submit();
+    setTimeout(function() {
+      $form.submit();
+    }, 150);
   }
 
   // Totally useful stache colors
@@ -374,6 +395,10 @@ var Nb = (function($) {
         _showCart();
       }
     });
+    // Clicking on line items
+    $(document).on('click', '.cart li', function() {
+      _removeFromCart($(this).attr('data-id'));
+    });
     // Buy buttons
     $(document).on('click', 'a.buy', function() {
       _addToCart({ title: $(this).attr('data-title'), price: $(this).attr('data-price'), 'quantity': 1, id: $(this).attr('data-id') });
@@ -383,11 +408,8 @@ var Nb = (function($) {
       e.preventDefault();
       if ($(this).text() === 'Clear') {
         cart = [];
-        localStorage.setItem('Nb.cart', JSON.stringify(cart));
+        _saveCart();
         _hideCart();
-        setTimeout(function() {
-          $('.cart').removeClass('cart-active');
-        }, 250);
       } else if ($(this).text() === 'Checkout') {
         // submit form
         _checkoutCart();
