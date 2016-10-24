@@ -90,9 +90,21 @@ nav.main {
       position: absolute;
       left: 30%;
       top: 50%;
+      @include max-screen($breakpoint-small) {
+        top: 60%;
+      }
       transition: top .5s, left .5s, right .5s, bottom .5s;
       transform: translateY(-50%);
     }
+    @include max-screen($breakpoint-small) {
+      &.journal,
+      &.comics {
+        span {
+          top: 30%;
+        }
+      }
+    }
+
     &.journal,
     &.featured {
       span {
@@ -270,10 +282,10 @@ h1.title {
   text-transform: uppercase;
   letter-spacing: -1px;
   position: fixed;
-  top: 32%;
+  top: 50%;
+  margin-top: -100px;
   @include min-screen($breakpoint-medium) {
     font: italic 24px/1 "Anonymous Pro";
-    top: 25%;
   }
   left: 50%;
   z-index: 11;
