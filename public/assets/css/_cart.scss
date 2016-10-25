@@ -16,19 +16,27 @@
 }
 
 // Cart buttons
+.user-content .cart button,
+.user-content a.buy,
 .cart button,
 a.buy {
 	border: none;
 	padding: 8px 12px 8px 10px;
 	background: black;
 	display: inline-block;
-	text-decoration: none !important;
-	color: white !important;
+	text-decoration: none;
+	color: white;
 	text-transform: uppercase;
 	font: italic 18px/1 "Anonymous Pro", monospace;
 	margin: 8px 10px 4px 0;
 	outline: none;
 	cursor: pointer;
+}
+.no-touchevents {
+	.cart button:hover,
+	a.buy:hover {
+		text-decoration: underline;
+	}
 }
 a.buy {
 	margin: 10px 0;
