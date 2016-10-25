@@ -102,9 +102,7 @@ var Nb = (function($) {
     // X close/back button
     $('.x').on('click', function(e) {
       e.preventDefault();
-      if ($('body').hasClass('active-cart')) {
-        _hideCart();
-      } else if ($('main .is-single').length) {
+      if ($('main .is-single').length) {
         // If we're on a single page, go back to section_in landing (e.g. /comics)
         History.pushState({}, '', '/' + section_in);
       } else {
