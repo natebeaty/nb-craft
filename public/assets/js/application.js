@@ -201,7 +201,7 @@ var Nb = (function($) {
       _hideCart();
       setTimeout(function() {
         $('.cart').removeClass('cart-active');
-      }, 250);
+      }, 150);
     }
   }
 
