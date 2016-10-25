@@ -407,7 +407,7 @@ var Nb = (function($) {
       if ($(this).text() === 'Clear') {
         cart = [];
         _saveCart();
-        _hideCart();
+        _showCart();
       } else if ($(this).text() === 'Checkout') {
         // submit form
         _checkoutCart();
