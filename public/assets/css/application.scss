@@ -426,7 +426,7 @@ body.in-section {
       margin: 0;
       font: normal 18px/1 "Anonymous Pro", monospace;
       color: white;
-      background: rgba(0,0,0,.8);
+      background: black;
       a {
         display: block;
         padding: 8px 10px;
@@ -593,9 +593,23 @@ body.active-journal .archives {
     font: 15px/1.5 "Anonymous Pro", monospace;
   }
   li {
+    position: relative;
+    .len {
+      width: 100px;
+      border-top: 2px dotted black;
+      display: inline-block;
+
+      @include min-screen($breakpoint-medium) {
+        display: block;
+        position: absolute;
+        right: 101%;
+        top: 8px;
+      }
+    }
     a {
       @extend .h2;
       color: $link;
+      text-decoration: underline;
     }
   }
 }
@@ -603,7 +617,7 @@ body.active-journal .archives {
 // journal custom classes:
 .user-content,
 article.journal {
-  a {
+  a:not(.buy) {
     color: $link;
     text-decoration: underline;
   }

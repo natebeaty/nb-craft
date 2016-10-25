@@ -14,7 +14,7 @@
     <h2 class="date">{{ date }}</h2>
     <ul>
       {% for entry in entries %}
-        <li>{{ entry.getLink() }}</li>
+        <li>{{ entry.getLink() }} <i class="len" style="width: {{ 100 * (entry.body|length / 10000) }}px;"></i></li>
       {% endfor %}
     </ul>
 	{% endfor %}

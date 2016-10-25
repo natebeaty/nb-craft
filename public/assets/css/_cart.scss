@@ -16,8 +16,6 @@
 }
 
 // Cart buttons
-.user-content .cart button,
-.user-content a.buy,
 .cart button,
 a.buy {
 	border: none;
@@ -31,12 +29,6 @@ a.buy {
 	margin: 8px 10px 4px 0;
 	outline: none;
 	cursor: pointer;
-}
-.no-touchevents {
-	.cart button:hover,
-	a.buy:hover {
-		text-decoration: underline;
-	}
 }
 a.buy {
 	margin: 10px 0;
@@ -78,12 +70,11 @@ a.buy {
 	padding: 10px;
 	backface-visibility: hidden;
 	transform-origin: 20px center;
-	transition: all .25s ease-in;
+	transition: all .2s;
 	opacity: 0;
-	transform: rotateX(-95deg);
+	transform: rotateX(35deg);
 	@include min-screen($breakpoint-medium) {
 		width: 300px;
-		transform: rotateX(-95deg);
 	}
 }
 .cart {
