@@ -1,5 +1,6 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = "Comics" %}
+{% set description = "Diddling with sequential doodles." %}
 
 {% set entries = craft.entries.section('comics') %}
 {% set relatedCats = craft.categories.relatedTo(entries) %}

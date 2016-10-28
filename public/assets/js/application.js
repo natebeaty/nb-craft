@@ -247,6 +247,7 @@ var Nb = (function($) {
       if (State.url == root_url) {
         // Remove any active-* body classes to return to main nav
         $('body').attr('class', '');
+        _updateTitle();
       } else {
         // Page cached?
         if (page_cache[encodeURIComponent(State.url)]) {
@@ -335,12 +336,11 @@ var Nb = (function($) {
   // Function to update document title after state change
   function _updateTitle() {
     var title = '';
-    if ($('[data-page-title]').length) {
+    if (State.url != root_url && $('[data-page-title]').length) {
       title = $('[data-page-title]').first().attr('data-page-title');
     }
-
     if (title == '') {
-      title = 'Nate Beaty';
+      title = 'Nate Beaty’s Head in the Clouds';
     } else {
       title = title + ' – Nate Beaty';
     }

@@ -1,5 +1,6 @@
 {% extends (craft.request.isAjax and not craft.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = "Journal" %}
+{% set description = "Blather makes brains into blubber." %}
 
 {% paginate craft.entries.section('journal').limit(25) as pageInfo, pageEntries %}
 
@@ -11,7 +12,7 @@
 			<article class="journal">
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 				<p class="date">{{ entry.postDate.format('F d, Y') }}</p>
-				{{ entry.body | trimit(250) }}
+				<p>{{ entry.body | trimit(250) }}</p>
 			</article>
 
 		{% endfor %}

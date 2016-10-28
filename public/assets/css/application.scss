@@ -26,7 +26,9 @@ body {
   background: $comics;
   transition: background-color .25s ease-out;
   font: 15px/1.5 "Anonymous Pro", monospace;
-  // letter-spacing: .1em;
+  @include min-screen($breakpoint-large) {
+    font: 17px/1.5 "Anonymous Pro", monospace;
+  }
   color: white;
 }
 .h1,h1 {
@@ -230,6 +232,9 @@ body.active-comics nav.main a.comics {
 .is-single {
   @include clearfix;
   max-width: 750px;
+  @include min-screen($breakpoint-large) {
+    max-width: 960px;
+  }
   margin: 0 auto;
 }
 .journal-list article {
@@ -410,6 +415,7 @@ body.in-section {
   .images-loaded article img {
     min-height: 0;
   }
+
   article {
     width: 100%;
     float: left;
@@ -473,6 +479,9 @@ body.in-section {
 
 .pagination {
   max-width: 750px;
+  @include min-screen($breakpoint-large) {
+    max-width: 960px;
+  }
   height: 40px;
   margin: 20px auto;
   position: relative;
