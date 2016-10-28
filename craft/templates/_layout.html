@@ -1,13 +1,6 @@
 {# Set base SEO vars #}
 {% set seoTitle = globalSeo.seoTitle %}
 {% set seoDescription = globalSeo.seoDescription %}
-{# Set HTTP Cache headers #}
-{% if not craft.config.devMode %}
-	{% set expiry = now|date_modify('+1 days') %}
-	{% header "Cache-Control: max-age=" ~ expiry.timestamp %}
-	{% header "Pragma: cache" %}
-	{% header "Expires: " ~ expiry|date('D, d M Y H:i:s', 'GMT') ~ " GMT" %}
-{% endif %}
 
 {% includeCssFile craft.config.devMode ? "/assets/dist/css/application.css" : rev('css/application.css') %}
 {% includeJsFile craft.config.devMode ? "/assets/dist/js/application.js" : rev('js/application.js') %}
