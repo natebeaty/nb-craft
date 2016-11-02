@@ -64,6 +64,10 @@ var Nb = (function($) {
           $('.x').trigger('click');
         }
 
+      } else if (e.keyCode === 191 && !searching) {
+        searching = true;
+        $('input[name=s]')[0].focus();
+        _checkSearch();
       } else if (e.keyCode === 37 && !searching) {
         if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
           $('.pagination a[rel=previous]').trigger('click');
