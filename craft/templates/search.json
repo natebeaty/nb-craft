@@ -1,1 +1,14 @@
-{% redirect craft.config.postCpLoginRedirect ?: 'dashboard' %}
+{% set query = craft.request.getParam('q') %}
+
+{# Pass the search query directly into the search param: #}
+{% set results = craft.entries({
+    search: query,
+    order: 'score'
+}) %}
+{
+	"entries" : [
+		{% for entry in results %}
+			{ "title": "{{ entry.title|escape }}", "url": "{{ entry.url }}" }{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}
