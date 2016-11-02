@@ -807,3 +807,59 @@ img.lazy {
 .fluid-width-video-wrapper {
   margin-bottom: 10px;
 }
+
+.search {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,0,0,.9);
+  z-index: 15;
+  input[name=s] {
+    font: 150px/1.2 "Anonymous Pro", monospace;
+    letter-spacing: -.03em;
+    padding: 0;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 6%;
+    border: none;
+    background: none;
+    outline: none;
+    text-indent: .05em;
+  }
+  .results {
+    position: absolute;
+    top: 220px;
+    left: 6%;
+    font: italic 24px/1.2 "Anonymous Pro", monospace;
+    padding: 10px;
+    color: white;
+    a {
+      display: block;
+      text-decoration: underline;
+      margin-bottom: 10px;
+      color: $link;
+      position: relative;
+      &.active::before {
+        content: '>';
+        display: block;
+        position: absolute;
+        left: -20px;
+        top: 0;
+        color: white;
+        font: italic 24px/1.2 "Anonymous Pro", monospace;
+      }
+    }
+  }
+  input[type=submit] {
+    border: none;
+    background: none;
+    text-indent: -100em;
+  }
+}
+body.searching .search {
+  display: block;
+}

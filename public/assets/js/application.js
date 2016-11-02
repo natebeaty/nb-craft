@@ -21,7 +21,9 @@ var Nb = (function($) {
       scroll_to_top = false,
       page_cache = {},
       lazyloader,
-      cart;
+      cart,
+      searching = false,
+      search_timer;
 
   function _init() {
     // Fastclick
@@ -56,17 +58,49 @@ var Nb = (function($) {
     $(document).keyup(function(e) {
       // esc = go back
       if (e.keyCode === 27) {
-        if (section_in != 'home') {
+        if (searching) {
+          _clearSearch();
+        } else if (section_in != 'home') {
           $('.x').trigger('click');
         }
-      } else if (e.keyCode === 37) {
+
+      } else if (e.keyCode === 37 && !searching) {
         if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
           $('.pagination a[rel=previous]').trigger('click');
         }
-      } else if (e.keyCode === 39) {
+      } else if (e.keyCode === 39 && !searching) {
         if (section_in != 'home' && $('.pagination a[rel=next]').length) {
           $('.pagination a[rel=next]').trigger('click');
         }
+      } else if (e.keyCode >= 48 && e.keyCode <= 90 && !searching) {
+        searching = true;
+        $('input[name=s]').val(String.fromCharCode(e.keyCode).toLowerCase(e))[0].focus();
+        _checkSearch();
+      } else if (e.keyCode === 13 && searching) {
+        if ($('.search .results').length) {
+          var url = $('.search .results a.active').attr('href');
+          _clearSearch();
+          History.pushState({}, '', url);
+        }
+      } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
+        if ($('.search .results').length) {
+          var $active = $('.search .results a.active').removeClass('active');
+          var $next;
+          if (e.keyCode===40) {
+            $next = $active.next('a').length ? $active.next('a') : $active;
+          } else {
+            $next = $active.prev('a').length ? $active.prev('a') : $active;
+          }
+          $next.addClass('active');
+        }
+      }
+    });
+    $('.search').on('submit', function(e) {
+      e.preventDefault();
+    });
+    $('input[name=s]').on('keyup', function(e) {
+      if (e.keyCode!==38 && e.keyCode!==40 && e.keyCode!==13) {
+        _checkSearch();
       }
     });
 
@@ -140,9 +174,57 @@ var Nb = (function($) {
     _initStateHandling();
     setTimeout(_showPage, 150);
 
-    $('#stache').velocity({ fill: '#93604b' });
+    $('#stache').velocity({ fill: '#3F2004' });
 
   } // end init()
+
+  // Clear the search man!
+  function _clearSearch() {
+    if (searching) {
+      searching = false;
+      $('input[name=s]').val('')[0].blur();
+      _checkSearch();
+    }
+  }
+
+  // Check if searching, set timeout to show search results if so
+  function _checkSearch() {
+    $('body').toggleClass('searching', searching);
+    if (searching) {
+      $('input[name=s]')[0].focus();
+      if (search_timer) {
+        clearTimeout(search_timer);
+      }
+      search_timer = setTimeout(_searchSearch, 250);
+    }
+  }
+
+  // Actually execute search
+  function _searchSearch() {
+    var s = $('input[name=s]').val();
+    var bait = new RegExp('^' + s.toLowerCase(), 'i');
+    $('.search .results').empty();
+    if (s !== '') {
+      // Search main nav sections
+      $('nav.main a').each(function() {
+        if($(this).text().match(bait)) {
+          $(this).clone().appendTo('.search .results');
+        }
+      });
+
+      // Search Craft entries
+      $.ajax('/search.json?q=' + s,{
+        dataType: 'json'
+      }).done(function(data){
+        $.each( data.entries, function( i, entry ) {
+          $('<a>').attr('href', entry.url).text(entry.title).appendTo('.search .results');
+        });
+        $('.search .results a:first').addClass('active');
+      }).fail(function(xhr, status, error){
+          console.log('FAIL: ' + status + ' Error: ' + error);
+      });
+    }
+  }
 
   // Add item to cart
   function _addToCart(product) {
@@ -314,7 +396,7 @@ var Nb = (function($) {
       _scrollBody($('body'), 250, 0);
       scroll_to_top = false;
     }
-    $('.lazy[width]:not(.wrapped)').each(function() {
+    $('.lazy[width]:not(.wrapped):not(.loaded)').each(function() {
       var w = this.getAttribute('width');
       var h = this.getAttribute('height');
       if (h>0 && w>0) {
@@ -385,6 +467,14 @@ var Nb = (function($) {
 
   // Janky li'l cart
   function _initCart() {
+    // braintree.setup(client_id, "custom", {
+    //   paypal: {
+    //     container: "paypal-container",
+    //   },
+    //   onPaymentMethodReceived: function (obj) {
+    //     console.log(obj, obj.nonce);
+    //   }
+    // });
     // Toggle cart overlay
     $(document).on('click', '.cart .icon', function() {
       if ($('body').hasClass('active-cart')) {
@@ -409,7 +499,7 @@ var Nb = (function($) {
         _saveCart();
         _showCart();
       } else if ($(this).text() === 'Checkout') {
-        // submit form
+        // Build PayPal fields and submit form
         _checkoutCart();
       }
     })
