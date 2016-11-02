@@ -56,15 +56,16 @@ var Nb = (function($) {
 
     // Keyboard nerds rejoice
     $(document).keyup(function(e) {
-      // esc = go back
       if (e.keyCode === 27) {
         if (searching) {
+          // Esc just closes search if open
           _clearSearch();
         } else if (section_in != 'home') {
+          // Otherwise trigger X click
           $('.x').trigger('click');
         }
-
       } else if (e.keyCode === 191 && !searching) {
+        // Pressing forward-slash opens search
         searching = true;
         $('input[name=s]')[0].focus();
         _checkSearch();
@@ -76,17 +77,20 @@ var Nb = (function($) {
         if (section_in != 'home' && $('.pagination a[rel=next]').length) {
           $('.pagination a[rel=next]').trigger('click');
         }
-      } else if (e.keyCode >= 48 && e.keyCode <= 90 && !searching) {
+      } else if (!e.metaKey && !e.shiftKey && e.keyCode >= 48 && e.keyCode <= 90 && !searching) {
+        // Pressing any letter starts searching ... annoying?
         searching = true;
         $('input[name=s]').val(String.fromCharCode(e.keyCode).toLowerCase(e))[0].focus();
         _checkSearch();
       } else if (e.keyCode === 13 && searching) {
+        // Pressing enter when searching opens the active link
         if ($('.search .results').length) {
           var url = $('.search .results a.active').attr('href');
           _clearSearch();
           History.pushState({}, '', url);
         }
       } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
+        // Arrow up and down to change active link in search results
         if ($('.search .results').length) {
           var $active = $('.search .results a.active').removeClass('active');
           var $next;
@@ -99,9 +103,11 @@ var Nb = (function($) {
         }
       }
     });
+    // Search submit does nothing
     $('.search').on('submit', function(e) {
       e.preventDefault();
     });
+    // Update search results on keyup of search field
     $('input[name=s]').on('keyup', function(e) {
       if (e.keyCode!==38 && e.keyCode!==40 && e.keyCode!==13) {
         _checkSearch();
