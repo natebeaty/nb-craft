@@ -12,3 +12,4 @@ _env.php
 *.pyc
 _thumbs/*
 vendor/*
+public/.well-known
