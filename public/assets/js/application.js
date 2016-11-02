@@ -213,7 +213,7 @@ var Nb = (function($) {
       });
 
       // Search Craft entries
-      $.ajax('/search.json?q=' + s,{
+      $.ajax('/search?q=' + s,{
         dataType: 'json'
       }).done(function(data){
         $.each( data.entries, function( i, entry ) {
