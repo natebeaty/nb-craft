@@ -11,3 +11,4 @@ logs/*
 _env.php
 *.pyc
 _thumbs/*
+vendor/*
