@@ -8,7 +8,7 @@
 {
 	"entries" : [
 		{% for entry in results %}
-			{ "title": "{{ entry.title|escape }}", "url": "{{ entry.url }}" }{% if not loop.last %},{% endif %}
+			{ "title": "{{ entry.title }}", "url": "{{ entry.url }}" }{% if not loop.last %},{% endif %}
 		{% endfor %}
 	]
 }

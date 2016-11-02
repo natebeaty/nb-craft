@@ -109,7 +109,7 @@ var Nb = (function($) {
     });
     // Update search results on keyup of search field
     $('input[name=s]').on('keyup', function(e) {
-      if (e.keyCode!==38 && e.keyCode!==40 && e.keyCode!==13) {
+      if (!(e.keyCode>36 && e.keyCode<41) && e.keyCode!==13) {
         _checkSearch();
       }
     });
