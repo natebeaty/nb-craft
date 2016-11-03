@@ -75,9 +75,8 @@ var Nb = (function($) {
       } else if (e.keyCode === 13 && searching) {
         // Pressing enter when searching opens the active link
         if ($('.search .results').length) {
-          var url = $('.search .results a.active').attr('href');
           _hideSearch();
-          History.pushState({}, '', url);
+          $('.search .results a.active').trigger('click');
         }
       } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
         // Arrow up and down to change active link in search results
@@ -97,6 +96,14 @@ var Nb = (function($) {
     $('.search').on('submit', function(e) {
       e.preventDefault();
     });
+    // Clicking on search result pushes to state
+    $(document).on('click', '.search .results a', function(e) {
+      if (!e.metaKey) {
+        e.preventDefault();
+        History.pushState({}, '', $(this).attr('href'));
+      }
+    });
+
     // Update search results on keyup of search field
     $('input[name=s]').on('keyup', function(e) {
       if (!(e.keyCode>36 && e.keyCode<41) && e.keyCode!==13) {
