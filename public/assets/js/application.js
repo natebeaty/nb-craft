@@ -50,12 +50,6 @@ var Nb = (function($) {
       }
     });
 
-    // Natehead clicks
-    $(document).on('click', '#natehead', function(e) {
-      e.preventDefault();
-      _showNav();
-    });
-
     // Keyboard nerds rejoice
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
@@ -123,15 +117,19 @@ var Nb = (function($) {
       });
     }
 
-    // Easter egg
-    $('h1.title').on('click', function(e) {
+    // Natehead clicks
+    $(document).on('click', '#natehead,h1.title', function(e) {
       e.preventDefault();
-      var easter = eggs[egg_at];
-      $('#natehead').addClass(easter);
-      egg_at = (egg_at === eggs.length - 1) ? 0 : egg_at + 1;
-      setTimeout(function() {
-        $('#natehead').removeClass(easter);
-      }, 2000);
+      if (document.body.className==='') {
+        var easter = eggs[egg_at];
+        $('#natehead').addClass(easter);
+        egg_at = (egg_at === eggs.length - 1) ? 0 : egg_at + 1;
+        setTimeout(function() {
+          $('#natehead').removeClass(easter);
+        }, 2000);
+      } else {
+        _showNav();
+      }
     })
 
     // Main nav click: scroll page up or push URL into history

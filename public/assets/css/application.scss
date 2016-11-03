@@ -257,10 +257,6 @@ main.loaded {
 
 // giant SVG head
 #natehead {
-  pointer-events: none;
-  &.peppy {
-    pointer-events: auto;
-  }
   position: fixed;
   transition: all .25s ease-out;
   transform-origin: top center;
@@ -276,6 +272,7 @@ main.loaded {
   }
 
   @include min-screen($breakpoint-medium) {
+    pointer-events: none;
     width: 500px;
     height: 500px;
     transform: scale(1) translate(-50%,calc(50vh - 250px));
