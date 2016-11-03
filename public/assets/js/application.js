@@ -24,7 +24,7 @@ var Nb = (function($) {
       cart,
       searching = false,
       search_timer,
-      eggs = ['wizard', 'dizzy', 'jab', 'pow']
+      eggs = ['dizzy', 'jab', 'pow', 'wizard'],
       egg_at = 0;
 
   function _init() {
