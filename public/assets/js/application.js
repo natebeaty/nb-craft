@@ -499,7 +499,7 @@ var Nb = (function($) {
     //   }
     // });
     // SEO-useless
-    $('<button class="checkout">Checkout</button><button>Clear</button>').before('#paypal-container');
+    $('<button class="checkout">Checkout</button><button>Clear</button>').insertBefore('#paypal-container');
     // Toggle cart overlay
     $(document).on('click', '.cart .icon', function() {
       if ($('body').hasClass('active-cart')) {
