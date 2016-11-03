@@ -258,6 +258,9 @@ main.loaded {
 // giant SVG head
 #natehead {
   pointer-events: none;
+  &.peppy {
+    pointer-events: auto;
+  }
   position: fixed;
   transition: all .25s ease-out;
   transform-origin: top center;
@@ -757,20 +760,43 @@ img.lazy {
   }
 }
 
-// Easter egg
-#natehead.dizzy {
-  transform-origin: center;
-}
-.dizzy svg {
-  animation: spin 2s forwards ease-out;
-}
-@keyframes spin {
-  from {
-    transform:rotate(0deg);
+// Easter eggs
+#natehead {
+  .dizzy,.jab,.pow {
+    transform-origin: center;
   }
-  to {
-    transform:rotate(18000deg);
-  }
+}
+.dizzy svg { animation: dizzy 2s forwards ease-out; }
+.jab svg { animation: jab 2s forwards ease-in-out; }
+.pow svg { animation: pow 2s forwards ease-in-out; }
+.wizard svg { animation: wizard 2s forwards ease-in-out; }
+
+@keyframes dizzy {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(18000deg); }
+}
+@keyframes jab {
+  10%, 90% { transform: translate3d(-100px, 0, 0); }
+  20%, 80% { transform: translate3d(100px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-200px, 0, 0); }
+  40%, 60% { transform: translate3d(200px, 0, 0); }
+}
+@keyframes pow {
+  10%, 90% { transform: scale(.5); }
+  20%, 80% { transform: scale(1.5); }
+  30%, 50%, 70% { transform: scale(.2); }
+  40%, 60% { transform: scale(2.2); }
+}
+@keyframes wizard {
+  19.999% { transform: translate(0,0) scale(1); opacity: 1;}
+  20% { transform: translate(20vw,-20vh); }
+  39.999% { transform: translate(20vw,-20vh) scale(.9); opacity: 0; }
+  40% { transform: translate(-20vw,20vh) scale(1); opacity: 1; }
+  59.999% { transform: translate(-20vw,20vh) scale(.9); opacity: 0; }
+  60% { transform: translate(-20vw,-20vh) scale(1); opacity: 1; }
+  79.999% { transform: translate(-20vw,-20vh) scale(.9); opacity: 0; }
+  80% { transform: translate(20vw,20vh) scale(1); opacity: 1; }
+  99.999% { transform: translate(20vw,20vh) scale(.9); opacity: 0; }
 }
 
 // Wrap for images to force layout based on image ratio

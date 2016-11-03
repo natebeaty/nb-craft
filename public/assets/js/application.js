@@ -23,7 +23,9 @@ var Nb = (function($) {
       lazyloader,
       cart,
       searching = false,
-      search_timer;
+      search_timer,
+      eggs = ['wizard', 'dizzy', 'jab', 'pow']
+      egg_at = 0;
 
   function _init() {
     // Fastclick
@@ -124,9 +126,12 @@ var Nb = (function($) {
     // Easter egg
     $('h1.title').on('click', function(e) {
       e.preventDefault();
-      if ($('#natehead').hasClass('dizzy')) { return; }
-      $('#natehead').addClass('dizzy');
-      setTimeout(function() { $('#natehead').removeClass('dizzy'); }, 2000);
+      var easter = eggs[egg_at];
+      $('#natehead').addClass(easter);
+      egg_at = (egg_at === eggs.length - 1) ? 0 : egg_at + 1;
+      setTimeout(function() {
+        $('#natehead').removeClass(easter);
+      }, 2000);
     })
 
     // Main nav click: scroll page up or push URL into history
