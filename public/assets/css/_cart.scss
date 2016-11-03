@@ -18,93 +18,93 @@
 // Cart buttons
 .cart button,
 a.buy {
-	border: none;
-	padding: 8px 12px 8px 10px;
-	background: black;
-	display: inline-block;
-	text-decoration: none;
-	color: white;
-	text-transform: uppercase;
-	font: italic 18px/1 "Anonymous Pro", monospace;
-	margin: 8px 10px 4px 0;
-	outline: none;
-	cursor: pointer;
+  border: none;
+  padding: 8px 12px 8px 10px;
+  background: black;
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font: italic 18px/1 "Anonymous Pro", monospace;
+  margin: 8px 10px 4px 0;
+  outline: none;
+  cursor: pointer;
 }
 a.buy {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 .cart.loading {
-	.flip {
-		&::before {
-			@extend %loading;
-		}
-	}
-	.cart-items,
-	.cart-total,
-	button {
-		opacity: .2;
-	}
+  .flip {
+    &::before {
+      @extend %loading;
+    }
+  }
+  .cart-items,
+  .cart-total,
+  button {
+    opacity: .2;
+  }
 }
 
 .cart-wrap {
-	position: absolute;
-	pointer-events: none;
-	top: 50px;
-	color: black;
+  position: absolute;
+  pointer-events: none;
+  top: 50px;
+  color: black;
   perspective: 1200;
   right: -75px;
   @include min-screen($breakpoint-medium) {
-  	right: 0;
+    right: 0;
   }
 }
 .cart-contents {
-	transition: .5s;
-	transform-style: preserve-3d;
-	position: relative;
+  transition: .5s;
+  transform-style: preserve-3d;
+  position: relative;
 }
 
 .flip {
-	margin-top: -40px;
-	background: #41A343;
-	width: calc(100vw - 20px);
-	padding: 10px;
-	backface-visibility: hidden;
-	transform-origin: 20px center;
-	transition: all .2s;
-	opacity: 0;
-	transform: rotateX(35deg);
-	@include min-screen($breakpoint-medium) {
-		width: 300px;
-	}
+  margin-top: -40px;
+  background: #41A343;
+  width: calc(100vw - 20px);
+  padding: 10px;
+  backface-visibility: hidden;
+  transform-origin: 20px center;
+  transition: all .2s;
+  opacity: 0;
+  transform: rotateX(35deg);
+  @include min-screen($breakpoint-medium) {
+    width: 300px;
+  }
 }
 .cart {
-	display: none;
-	&.cart-active {
-		display: block;
-	}
-	li {
-		list-style: none;
-		&:hover {
-			text-decoration: line-through;
-		}
-	}
-	.cart-total {
-		padding-top: 10px;
-		margin-top: 10px;
-		border-top: 1px solid black;
-	}
+  display: none;
+  &.cart-active {
+    display: block;
+  }
+  li {
+    list-style: none;
+    &:hover {
+      text-decoration: line-through;
+    }
+  }
+  .cart-total {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid black;
+  }
 }
 .active-cart .cart-wrap {
-	pointer-events: auto;
-	.flip {
-		margin-top: 10px;
-		transform: rotateX(0deg);
-		opacity: 1;
-	}
-	display: block;
-	@include min-screen($breakpoint-medium) {
-		.flip {
-			margin-top: 0;
-		}
-	}
+  pointer-events: auto;
+  .flip {
+    margin-top: 10px;
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  display: block;
+  @include min-screen($breakpoint-medium) {
+    .flip {
+      margin-top: 0;
+    }
+  }
 }
