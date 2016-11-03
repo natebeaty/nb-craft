@@ -10,6 +10,6 @@ logs/*
 .env
 _env.php
 *.pyc
-_thumbs/*
+_thumb/*
 vendor/*
 public/.well-known

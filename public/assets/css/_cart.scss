@@ -3,15 +3,15 @@
 // Cart icon
 .cart {
   position: fixed;
-  right: 50px;
+  right: 85px;
   @include min-screen($breakpoint-medium) {
-    right: 120px;
+    right: 155px;
   }
-  top: 11px;
+  top: 12px;
   cursor: pointer;
   .icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 }
 

@@ -309,38 +309,47 @@ h1.title {
 }
 
 // X close/back button
+.s,
 .x {
   position: fixed;
   right: 10px;
   @include min-screen($breakpoint-medium) {
-    right: 80px;
+    right: 70px;
   }
-  top: 10px;
-  width: 30px;
-  height: 30px;
+  top: 14px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
   display: none;
 }
-.x::after,
-.x::before {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  content: '';
-  display: block;
-  width: 30px;
-  height: 2px;
-  background: white;
+.s {
+  right: 45px;
+  @include min-screen($breakpoint-medium) {
+    right: 110px;
+  }
 }
-.x::after{
-  transform: rotate(45deg);
-}
-.x::before{
-  transform: rotate(-45deg);
-}
+// .x::after,
+// .x::before {
+//   position: absolute;
+//   top: 50%;
+//   left: 0;
+//   content: '';
+//   display: block;
+//   width: 30px;
+//   height: 2px;
+//   background: white;
+//   display: none;
+// }
+// .x::after{
+//   transform: rotate(45deg);
+// }
+// .x::before{
+//   transform: rotate(-45deg);
+// }
 
 // general "in a section" body state
 body.in-section {
+  .s,
   .x {
     display: block;
   }
@@ -582,13 +591,17 @@ body.active-journal {
     main {
       padding: 80px 20px 150px 70px;
     }
+    .s,
     .cart,
     .x {
       right: auto;
-      left: 60px;
+      left: 65px;
+    }
+    .s {
+      left: 105px;
     }
     .cart {
-      left: 100px;
+      left: 143px;
       .cart-wrap {
         left: 0;
         right: auto;
@@ -675,9 +688,13 @@ body.active-about {
         }
       }
     }
+    .s,
     .cart,
     .x {
       top: 60px;
+    }
+    .cart {
+      top: 58px;
     }
     nav.main a.featured span {
       left: 0;
@@ -711,14 +728,19 @@ body.active-featured {
     &.active-single main {
       padding: 120px 20px 150px 70px;
     }
+    .s,
     .cart,
     .x {
       right: auto;
-      left: 60px;
+      left: 65px;
       top: 60px;
     }
+    .s {
+      left: 105px;
+    }
     .cart {
-      left: 100px;
+      top: 58px;
+      left: 143px;
       .cart-wrap {
         left: 0;
         right: auto;

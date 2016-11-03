@@ -62,9 +62,7 @@ var Nb = (function($) {
         }
       } else if (e.keyCode === 191 && !searching) {
         // Pressing forward-slash opens search
-        searching = true;
-        $('input[name=s]')[0].focus();
-        _checkSearch();
+        _openSearch();
       } else if (e.keyCode === 37 && !searching) {
         if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
           $('.pagination a[rel=previous]').trigger('click');
@@ -157,6 +155,12 @@ var Nb = (function($) {
       }
     });
 
+    // Search button
+    $('.s').on('click', function(e) {
+      e.preventDefault();
+      _openSearch();
+    });
+
     // User-content linking internally
     $(document).on('click', '.user-content a', function(e) {
       var href = this.href;
@@ -189,6 +193,13 @@ var Nb = (function($) {
     $('#stache').velocity({ fill: '#3F2004' });
 
   } // end init()
+
+  // Open the search man!
+  function _openSearch() {
+    searching = true;
+    $('input[name=s]')[0].focus();
+    _checkSearch();
+  }
 
   // Clear the search man!
   function _clearSearch() {
@@ -487,6 +498,8 @@ var Nb = (function($) {
     //     console.log(obj, obj.nonce);
     //   }
     // });
+    // SEO-useless
+    $('<button class="checkout">Checkout</button><button>Clear</button>').before('#paypal-container');
     // Toggle cart overlay
     $(document).on('click', '.cart .icon', function() {
       if ($('body').hasClass('active-cart')) {
