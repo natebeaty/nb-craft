@@ -643,6 +643,11 @@ article.journal {
     border-left: 2px solid #ddd;
     color: #ddd;
   }
+  p.caption {
+    margin-top: -.5em;
+    opacity: .5;
+    font-size: small;
+  }
   .video-container {
     margin-bottom: 1em;
   }
