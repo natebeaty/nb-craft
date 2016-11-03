@@ -75,7 +75,6 @@ var Nb = (function($) {
       } else if (e.keyCode === 13 && searching) {
         // Pressing enter when searching opens the active link
         if ($('.search .results').length) {
-          _hideSearch();
           $('.search .results a.active').trigger('click');
         }
       } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
@@ -100,6 +99,7 @@ var Nb = (function($) {
     $(document).on('click', '.search .results a', function(e) {
       if (!e.metaKey) {
         e.preventDefault();
+        _hideSearch();
         History.pushState({}, '', $(this).attr('href'));
       }
     });
@@ -215,6 +215,7 @@ var Nb = (function($) {
     if (searching) {
       searching = false;
       $('input[name=s]').val('')[0].blur();
+      $('.search .results').empty();
       _checkSearch();
     }
   }
