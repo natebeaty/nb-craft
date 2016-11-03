@@ -1,9 +1,10 @@
 {% set query = craft.request.getParam('q') %}
-
-{# Pass the search query directly into the search param: #}
 {% set results = craft.entries({
-    search: query,
-    order: 'score'
+	search: {
+	    query: query,
+	    subLeft: true,
+	    subRight: true
+	}
 }) %}
 {
 	"entries" : [
