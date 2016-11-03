@@ -138,7 +138,6 @@ var Nb = (function($) {
     $('nav.main a').on('click', function(e) {
       e.preventDefault();
       _colorStache(this);
-      $('#natehead').removeClass('dizzy');
       if (State.url==this.href) {
         // If clicking nav header when in a section, just scroll to top
         _scrollBody($('body'), 250, 0);
