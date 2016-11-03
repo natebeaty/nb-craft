@@ -52,7 +52,7 @@ a.buy {
 	top: 50px;
 	color: black;
   perspective: 1200;
-  right: -40px;
+  right: -75px;
   @include min-screen($breakpoint-medium) {
   	right: 0;
   }
