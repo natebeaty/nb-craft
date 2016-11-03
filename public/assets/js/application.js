@@ -10,6 +10,7 @@
 //=include "../bower_components/history.js/scripts/bundled/html5/jquery.history.js"
 //=include "../bower_components/vanilla-lazyload/dist/lazyload.min.js"
 //=include "../bower_components/fastclick/lib/fastclick.js"
+//=include "../bower_components/jquery-touchswipe/jquery.touchSwipe.js"
 
 var Nb = (function($) {
 
@@ -508,6 +509,15 @@ var Nb = (function($) {
       } else {
         _showCart();
       }
+    });
+    // Swipe up to close cart on mobile
+    $('.cart-wrap').swipe({
+      swipeUp:function(event, direction, distance, duration, fingerCount) {
+        if ($('body').hasClass('active-cart')) {
+          _hideCart();
+        }
+      },
+      threshold: 10
     });
     // Clicking on line items
     $(document).on('click', '.cart li', function() {
