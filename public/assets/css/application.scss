@@ -316,7 +316,7 @@ h1.title {
   @include min-screen($breakpoint-medium) {
     right: 70px;
   }
-  top: 14px;
+  top: 15px;
   width: 22px;
   height: 22px;
   cursor: pointer;
@@ -580,13 +580,13 @@ body.active-journal {
     .cart,
     .x {
       right: auto;
-      left: 65px;
+      left: 68px;
     }
     .s {
-      left: 106px;
+      left: 108px;
     }
     .cart {
-      left: 143px;
+      left: 145px;
       .cart-wrap {
         left: 0;
         right: auto;
@@ -676,10 +676,10 @@ body.active-about {
     .s,
     .cart,
     .x {
-      top: 65px;
+      top: 68px;
     }
     .cart {
-      top: 63px;
+      top: 65px;
     }
     nav.main a.featured span {
       left: 0;
@@ -717,15 +717,15 @@ body.active-featured {
     .cart,
     .x {
       right: auto;
-      left: 65px;
-      top: 65px;
+      top: 68px;
+      left: 68px;
     }
     .s {
-      left: 106px;
+      left: 108px;
     }
     .cart {
-      top: 63px;
-      left: 143px;
+      top: 65px;
+      left: 145px;
       .cart-wrap {
         left: 0;
         right: auto;
