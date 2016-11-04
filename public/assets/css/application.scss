@@ -482,7 +482,7 @@ body.in-section {
   a.archives {
     display: block;
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 50%;
     transform: translateX(-40%);
     width: 100px;
@@ -679,7 +679,7 @@ body.active-about {
       top: 68px;
     }
     .cart {
-      top: 65px;
+      top: 66px;
     }
     nav.main a.featured span {
       left: 0;
@@ -724,7 +724,7 @@ body.active-featured {
       left: 108px;
     }
     .cart {
-      top: 65px;
+      top: 66px;
       left: 145px;
       .cart-wrap {
         left: 0;
