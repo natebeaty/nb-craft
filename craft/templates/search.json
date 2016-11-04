@@ -2,7 +2,6 @@
 {% set results = craft.entries({
   search: {
       query: query,
-      subLeft: true,
       subRight: true
   }
 }) %}
