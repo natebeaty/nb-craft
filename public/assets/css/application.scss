@@ -289,9 +289,7 @@ h1.title {
   position: fixed;
   top: 50%;
   margin-top: -100px;
-  @include min-screen($breakpoint-medium) {
-    font: italic 24px/1 "Anonymous Pro";
-  }
+  user-select: none;
   left: 50%;
   z-index: 11;
   .nate {
@@ -306,6 +304,10 @@ h1.title {
     display: block;
     position: absolute;
   }
+
+  @include min-screen($breakpoint-medium) {
+    font: italic 24px/1 "Anonymous Pro";
+  }
 }
 
 // X close/back button
@@ -313,20 +315,22 @@ h1.title {
 .x {
   position: fixed;
   right: 10px;
-  @include min-screen($breakpoint-medium) {
-    right: 70px;
-  }
   top: 15px;
   width: 22px;
   height: 22px;
   cursor: pointer;
   display: none;
+
+  @include min-screen($breakpoint-medium) {
+    right: 70px;
+  }
 }
-.x {
+body.searching .x {
   z-index: 50;
 }
 .s {
   right: 45px;
+
   @include min-screen($breakpoint-medium) {
     right: 111px;
   }
@@ -341,6 +345,7 @@ body.in-section {
   #natehead {
     pointer-events: auto;
     transform: scale(.5) translate(-100%, calc(-25px));
+
     @include min-screen($breakpoint-medium) {
       cursor: pointer;
       transform: scale(.333) translate(-150%, calc(-150px));

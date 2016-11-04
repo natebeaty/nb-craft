@@ -52,34 +52,42 @@ var Nb = (function($) {
     });
 
     // Keyboard nerds rejoice
-    $(document).keyup(function(e) {
+    $(document).keydown(function(e) {
       if (e.keyCode === 27) {
         // Trigger X click to close search/cart/go back/go home
         $('.x').trigger('click');
+
       } else if (e.keyCode === 191 && !searching) {
+        e.preventDefault();
         // Pressing forward-slash opens search
         _showSearch();
+
       } else if (e.keyCode === 37 && !searching) {
+        // Left arrow key triggers previous post
         if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
           $('.pagination a[rel=previous]').trigger('click');
         }
+
       } else if (e.keyCode === 39 && !searching) {
+        // Right arrow key triggers previous post
         if (section_in != 'home' && $('.pagination a[rel=next]').length) {
           $('.pagination a[rel=next]').trigger('click');
         }
+
       } else if (!e.metaKey && !e.shiftKey && e.keyCode >= 48 && e.keyCode <= 90 && !searching) {
         // Pressing any letter starts searching ... annoying?
-        searching = true;
-        $('input[name=s]').val(String.fromCharCode(e.keyCode).toLowerCase(e))[0].focus();
-        _checkSearch();
+        _showSearch();
+
       } else if (e.keyCode === 13 && searching) {
         // Pressing enter when searching opens the active link
         if ($('.search .results').length) {
           $('.search .results a.active').trigger('click');
         }
+
       } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
         // Arrow up and down to change active link in search results
         if ($('.search .results').length) {
+          e.preventDefault();
           var $active = $('.search .results a.active').removeClass('active');
           var $next;
           if (e.keyCode===40) {
@@ -89,6 +97,7 @@ var Nb = (function($) {
           }
           $next.addClass('active');
         }
+
       }
     });
     // Search submit does nothing
@@ -131,7 +140,7 @@ var Nb = (function($) {
       } else {
         _showNav();
       }
-    })
+    });
 
     // Main nav click: scroll page up or push URL into history
     $('nav.main a').on('click', function(e) {
