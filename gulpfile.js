@@ -47,7 +47,7 @@ gulp.task('scripts', function() {
 gulp.task('rev', function() {
 	return gulp.src(['public/assets/dist/**/*.css', 'public/assets/dist/**/*.js'])
 		.pipe(rev())
-		.pipe(gzip({ append: false }))
+		// .pipe(gzip({ append: false }))
 		.pipe(gulp.dest('public/assets/dist/gz'))
 		.pipe(rev.manifest())
 		.pipe(gulp.dest('public/assets/dist'));
