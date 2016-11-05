@@ -13,3 +13,4 @@ _env.php
 _thumb/*
 vendor/*
 public/.well-known
+public/assets/site/_thumb/*
