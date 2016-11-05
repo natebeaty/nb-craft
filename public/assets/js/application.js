@@ -96,6 +96,14 @@ var Nb = (function($) {
             $next = $active.prev('a').length ? $active.prev('a') : $active;
           }
           $next.addClass('active');
+
+          // Scroll results if active is above/below the .results fold
+          var st = $('.search .results').scrollTop();
+          if ($next.position().top > $('.search .results').height() - 100) {
+            $('.search .results').scrollTop(st + $next.position().top - $('.search .results').height() + 100);
+          } else if ($next.position().top < 0) {
+            $('.search .results').scrollTop(st + $next.position().top);
+          }
         }
 
       }
