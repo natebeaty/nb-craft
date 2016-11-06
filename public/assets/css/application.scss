@@ -867,28 +867,31 @@ img.lazy {
   z-index: 15;
   input[name=s] {
     font: 50px/1.2 "Anonymous Pro", monospace;
-    @include min-screen($breakpoint-medium) {
-      font: 150px/1.2 "Anonymous Pro", monospace;
-    }
     letter-spacing: -.03em;
     padding: 0;
     color: white;
     position: absolute;
+    left: 20px;
     top: 28px;
-    left: 8%;
     border: none;
     background: none;
     outline: none;
     text-indent: .05em;
+
+    @include min-screen($breakpoint-medium) {
+      font: 150px/1.2 "Anonymous Pro", monospace;
+      left: 100px;
+    }
   }
   .results {
     position: absolute;
     top: 98px;
-    left: 6%;
+    left: 20px;
     height: calc(100vh - 98px);
     overflow: auto;
     font: italic 16px/1.2 "Anonymous Pro", monospace;
     @include min-screen($breakpoint-medium) {
+      left: 80px;
       width: 80%;
       height: calc(100vh - 220px);
       top: 220px;
