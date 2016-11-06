@@ -152,7 +152,8 @@ main {
   body.active-journal nav.main a.comics,
   body.active-about nav.main a.featured,
   body.active-featured nav.main a.about {
-    height: calc(100% - 50px);
+    top: 50px;
+    height: 100%;
     width: 50px;
     span {
       transform: rotate(90deg);
@@ -559,6 +560,7 @@ body.active-comics {
       padding: 80px 70px 150px 20px;
     }
     nav.main a.journal {
+      top: 0;
       span {
         left: 0;
         right: 20%
@@ -579,6 +581,9 @@ body.active-journal {
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
+    }
+    nav.main a.comics {
+      top: 0;
     }
     main {
       padding: 80px 20px 150px 70px;
@@ -673,7 +678,7 @@ body.active-about {
       padding: 150px 70px 50px 20px;
       .user-content {
         p:not(.photo) {
-          max-width: 50%;
+          max-width: 750px;
         }
         img {
           width: 100%;
