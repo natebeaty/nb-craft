@@ -191,7 +191,9 @@ body.active-comics nav.main a.comics {
 @include min-screen($breakpoint-medium) {
   body.active-about nav.main a.about,
   body.active-featured nav.main a.featured {
-    bottom: calc(100vh - 100px);
+    // bottom: calc(100vh - 100px);
+    bottom: auto;
+    top: 53px;
   }
 }
 
@@ -878,11 +880,11 @@ img.lazy {
     position: absolute;
     top: 98px;
     left: 6%;
-    width: 80%;
     height: calc(100vh - 98px);
     overflow: auto;
     font: italic 16px/1.2 "Anonymous Pro", monospace;
     @include min-screen($breakpoint-medium) {
+      width: 80%;
       height: calc(100vh - 220px);
       top: 220px;
       font: italic 24px/1.2 "Anonymous Pro", monospace;
@@ -895,8 +897,8 @@ img.lazy {
       margin-bottom: 10px;
       color: $link;
       position: relative;
-      padding-left: 20px;
       @include min-screen($breakpoint-medium) {
+        padding-left: 20px;
         &.active::before {
           content: '>';
           display: block;
