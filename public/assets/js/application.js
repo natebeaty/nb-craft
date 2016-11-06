@@ -57,18 +57,18 @@ var Nb = (function($) {
         // Trigger X click to close search/cart/go back/go home
         $('.x').trigger('click');
 
-      } else if (e.keyCode === 191 && !searching) {
+      } else if (!e.metaKey && !e.shiftKey && e.keyCode === 191 && !searching) {
         e.preventDefault();
         // Pressing forward-slash opens search
         _showSearch();
 
-      } else if (e.keyCode === 37 && !searching) {
+      } else if (!e.metaKey && e.keyCode === 37 && !searching) {
         // Left arrow key triggers previous post
         if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
           $('.pagination a[rel=previous]').trigger('click');
         }
 
-      } else if (e.keyCode === 39 && !searching) {
+      } else if (!e.metaKey && e.keyCode === 39 && !searching) {
         // Right arrow key triggers previous post
         if (section_in != 'home' && $('.pagination a[rel=next]').length) {
           $('.pagination a[rel=next]').trigger('click');
@@ -80,7 +80,7 @@ var Nb = (function($) {
 
       } else if (e.keyCode === 13 && searching) {
         // Pressing enter when searching opens the active link
-        if ($('.search .results').length) {
+        if ($('.search .results a.active').length) {
           $('.search .results a.active').trigger('click');
         }
 
