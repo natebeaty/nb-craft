@@ -92,6 +92,8 @@ nav.main {
       position: absolute;
       left: 30%;
       top: 50%;
+      transform: translateZ(0); // trigger gpu
+      -webkit-font-smoothing: antialiased;
       @include max-screen($breakpoint-small) {
         top: 60%;
       }
