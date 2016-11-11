@@ -54,7 +54,7 @@ gulp.task('rev', function() {
 });
 
 // folders to watch for changes
-gulp.task('watch', ['styles', 'scripts'], function() {
+gulp.task('watch', ['build'], function() {
 	gulp.watch('public/assets/css/*.scss', ['styles']);
 	gulp.watch('public/assets/js/*.js', ['scripts']);
 });

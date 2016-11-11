@@ -20,7 +20,7 @@ def production():
 	# s3sync()
 
 def assets():
-	local('gulp --production')
+	local('node_modules/.bin/gulp --production')
 
 def deploy():
 	update()

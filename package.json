@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
     "gulp-scss": "^1.4.0"
   },
