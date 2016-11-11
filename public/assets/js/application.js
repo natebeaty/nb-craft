@@ -24,6 +24,7 @@ var Nb = (function($) {
       lazyloader,
       cart,
       searching = false,
+      checking_out = false,
       search_timer,
       eggs = ['dizzy', 'jab', 'pow', 'wizard'],
       egg_at = 0;
@@ -51,67 +52,75 @@ var Nb = (function($) {
       }
     });
 
-    // Keyboard nerds rejoice
+    // Keyboard nerds rejoice!
     $(document).keydown(function(e) {
+      // Esc
       if (e.keyCode === 27) {
-        // Trigger X click to close search/cart/go back/go home
+        // Trigger X click to close search/cart/checkout/go back/go home
         $('.x').trigger('click');
+      }
 
-      } else if (!e.metaKey && !e.shiftKey && e.keyCode === 191 && !searching) {
-        e.preventDefault();
-        // Pressing forward-slash opens search
-        _showSearch();
-
-      } else if (!e.metaKey && e.keyCode === 37 && !searching) {
-        // Left arrow key triggers previous post
-        if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
-          $('.pagination a[rel=previous]').trigger('click');
-        }
-
-      } else if (!e.metaKey && e.keyCode === 39 && !searching) {
-        // Right arrow key triggers previous post
-        if (section_in != 'home' && $('.pagination a[rel=next]').length) {
-          $('.pagination a[rel=next]').trigger('click');
-        }
-
-      } else if (!e.metaKey && !e.shiftKey && e.keyCode >= 48 && e.keyCode <= 90 && !searching) {
-        // Pressing any letter starts searching ... annoying?
-        _showSearch();
-
-      } else if (e.keyCode === 13 && searching) {
-        // Pressing enter when searching opens the active link
-        if ($('.search .results a.active').length) {
-          $('.search .results a.active').trigger('click');
-        }
-
-      } else if ((e.keyCode === 40 || e.keyCode === 38) && searching) {
-        // Arrow up and down to change active link in search results
-        if ($('.search .results').length) {
+      if (!searching && !checking_out) {
+        if (!e.metaKey && !e.shiftKey && e.keyCode === 191) {
           e.preventDefault();
-          var $active = $('.search .results a.active').removeClass('active');
-          var $next;
-          if (e.keyCode===40) {
-            $next = $active.next('a').length ? $active.next('a') : $active;
-          } else {
-            $next = $active.prev('a').length ? $active.prev('a') : $active;
-          }
-          $next.addClass('active');
+          // Pressing forward-slash opens search
+          _showSearch();
 
-          // Scroll results if active is above/below the .results fold
-          var st = $('.search .results').scrollTop();
-          if ($next.position().top > $('.search .results').height() - 100) {
-            $('.search .results').scrollTop(st + $next.position().top - $('.search .results').height() + 100);
-          } else if ($next.position().top < 0) {
-            $('.search .results').scrollTop(st + $next.position().top);
+        } else if (!e.metaKey && e.keyCode === 37) {
+          // Left arrow key triggers previous post
+          if (section_in != 'home' && $('.pagination a[rel=previous]').length) {
+            $('.pagination a[rel=previous]').trigger('click');
+          }
+
+        } else if (!e.metaKey && e.keyCode === 39) {
+          // Right arrow key triggers previous post
+          if (section_in != 'home' && $('.pagination a[rel=next]').length) {
+            $('.pagination a[rel=next]').trigger('click');
+          }
+
+        } else if (!e.metaKey && !e.shiftKey && e.keyCode >= 48 && e.keyCode <= 90) {
+          // Pressing any letter starts searching ... annoying?
+          _showSearch();
+        }
+      }
+
+      // Pressing enter when searching opens the active link
+      if (searching) {
+        if (e.keyCode === 13) {
+          if ($('.search .results a.active').length) {
+            $('.search .results a.active').trigger('click');
           }
         }
+        if (e.keyCode === 40 || e.keyCode === 38) {
+          // Arrow up and down to change active link in search results
+          if ($('.search .results').length) {
+            e.preventDefault();
+            var $active = $('.search .results a.active').removeClass('active');
+            var $next;
+            if (e.keyCode===40) {
+              $next = $active.next('a').length ? $active.next('a') : $active;
+            } else {
+              $next = $active.prev('a').length ? $active.prev('a') : $active;
+            }
+            $next.addClass('active');
 
+            // Scroll results if active is above/below the .results fold
+            var st = $('.search .results').scrollTop();
+            if ($next.position().top > $('.search .results').height() - 100) {
+              $('.search .results').scrollTop(st + $next.position().top - $('.search .results').height() + 100);
+            } else if ($next.position().top < 0) {
+              $('.search .results').scrollTop(st + $next.position().top);
+            }
+          }
+        }
       }
     });
+
     // Search submit does nothing
     $('.search').on('submit', function(e) {
       e.preventDefault();
     });
+
     // Clicking on search result pushes to state
     $(document).on('click', '.search .results a', function(e) {
       if (!e.metaKey) {
@@ -166,7 +175,11 @@ var Nb = (function($) {
     // X close/back button
     $('.x').on('click', function(e) {
       e.preventDefault();
-      if (searching) {
+      if (checking_out) {
+        // Hide checkout if open
+        _hideCheckout();
+        _hideCart();
+      } else if (searching) {
         // Hide search if open
         _hideSearch();
       } else if ($('body').hasClass('active-cart')) {
@@ -234,6 +247,14 @@ var Nb = (function($) {
       $('input[name=s]').val('')[0].blur();
       $('.search .results').empty();
       _checkSearch();
+    }
+  }
+
+  // Clear the checkout man!
+  function _hideCheckout() {
+    if (checking_out) {
+      checking_out = false;
+      $('body').removeClass('checking-out');
     }
   }
 
@@ -309,6 +330,7 @@ var Nb = (function($) {
   }
   // Hide/show cart functions
   function _hideCart() {
+    _hideCheckout();
     $('body').removeClass('active-cart');
   }
   function _showCart() {
@@ -562,6 +584,8 @@ var Nb = (function($) {
       } else if ($(this).text() === 'Checkout') {
         // Build PayPal fields and submit form
         _checkoutCart();
+        // checking_out = true;
+        // $('body').addClass('checking-out');
       }
     })
   }

@@ -202,7 +202,7 @@ body.active-comics nav.main a.comics {
 
 // homepage hover effect giant oldskool border madness
 @include min-screen($breakpoint-medium) {
-  body:not(.in-section) {
+  .no-touchevents body:not(.in-section) {
     nav.main a {
       &.comics {
         &:hover {
@@ -330,6 +330,7 @@ h1.title {
     right: 70px;
   }
 }
+body.checking-out .x,
 body.searching .x {
   z-index: 50;
 }
@@ -858,6 +859,7 @@ img.lazy {
 }
 
 // Search overlay
+.checkout-form,
 .search {
   display: none;
   position: fixed;
@@ -865,8 +867,11 @@ img.lazy {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255,0,0,.9);
+  background: rgba($comics,.9);
+  // background: rgba(255,0,0,.9);
   z-index: 15;
+}
+.search {
   input[name=s] {
     font: 50px/1.2 "Anonymous Pro", monospace;
     letter-spacing: -.03em;
@@ -930,4 +935,20 @@ img.lazy {
 // Active search state
 body.searching .search {
   display: block;
+}
+body.checking-out {
+  .checkout-form {
+    background: rgba($cart,.9);
+    display: block;
+  }
+  .cart,
+  .cart-wrap {
+    z-index: 50;
+  }
+  .cart svg {
+    display: none;
+  }
+  .flip {
+    background: white;
+  }
 }

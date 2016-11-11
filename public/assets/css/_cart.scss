@@ -65,7 +65,7 @@ a.buy {
 
 .flip {
   margin-top: -40px;
-  background: #41A343;
+  background: $cart;
   width: calc(100vw - 20px);
   padding: 10px;
   backface-visibility: hidden;
@@ -94,6 +94,7 @@ a.buy {
     border-top: 1px solid black;
   }
 }
+.checking-out .cart-wrap,
 .active-cart .cart-wrap {
   pointer-events: auto;
   .flip {
