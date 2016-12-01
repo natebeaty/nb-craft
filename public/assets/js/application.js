@@ -42,6 +42,7 @@ var Nb = (function($) {
 
     // Trigger lazyload
     lazyloader = new LazyLoad({
+      threshold: 500,
       callback_load: function(el) {
         // Add class to wrap to remove loading display
         $(el).parents('.ratiowrap:first').addClass('loaded');
