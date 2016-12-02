@@ -1,0 +1,21 @@
+<h2>Your version of TLS is below the minimum required by Stripe</h2>
+
+<p>You need to upgrade the version of TLS setup on your server to use Charge and Stripe.</p>
+<p>Details about this specific issue can be found <a href="https://stripe.com/blog/upgrading-tls">on the offical Stripe blog</a>.</p>
+
+<p><em>The TLS version is controlled at the server level, and isn't something Charge or Craft can alter. </em></p>
+
+<h3>Steps to Fix</h3>
+<p>Upgrading your TLS version should be failry straight forward. For most setups this involves updating some packages on your server.</p>
+<p><a href="https://support.stripe.com/questions/how-do-i-upgrade-my-stripe-integration-from-tls-1-0-to-tls-1-2">Follow the specific instructions on steps to upgrade for your server</a>.</p>
+
+
+<div class="issue-more-info">
+    <h4>Why SHA-1, TLS 1.0 and 1.1 are insecure</h4>
+    <p>SHA-1 is one of the algorithms you can use to authenticate who you’re talking to. It’s now considered dangerously weak, and might allow an adversary to spoof their identity. This is why all modern browsers have stopped accepting SHA-1 certificates.</p>
+    <p>TLS 1.0 and 1.1 ensure that your communications stay private. In order to do this, they generate a series of random bytes used to encrypt your connection. TLS 1.0 provides two ways of doing this (CBC and RC4), but several vulnerabilities have been discovered in both of them (including BEAST and the RC4 biases). If you kept using old versions of TLS, someone could theoretically sniff your connection.</p>
+    <p>As a result, Stripe and the rest of the internet are moving towards SHA-2 and TLS 1.2. These technologies have few known attacks and were subject to more rigorous security design than their predecessors.</p>
+</div>
+
+<h3>More Help</h3>
+<p>If you're having problems following the steps, get in touch with <a href="mailto:support@squarebit.co.uk">support@squarebit.co.uk</a> and we'll try to point you in the right direction.</p>

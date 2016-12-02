@@ -1,8 +1,9 @@
 <?php
+
 namespace Craft;
 
 /**
- * Charge element type
+ * Charge element type.
  */
 class ChargeElementType extends BaseElementType
 {
@@ -27,7 +28,7 @@ class ChargeElementType extends BaseElementType
     }
 
     /**
-     * @inheritDoc IElementType::hasStatuses()
+     * {@inheritdoc} IElementType::hasStatuses()
      *
      * @return bool
      */
@@ -37,7 +38,7 @@ class ChargeElementType extends BaseElementType
     }
 
     /**
-     * @inheritDoc IElementType::getStatuses()
+     * {@inheritdoc} IElementType::getStatuses()
      *
      * @return array|null
      */
@@ -62,7 +63,7 @@ class ChargeElementType extends BaseElementType
             $deleteAction = craft()->elements->getAction('Delete');
             $deleteAction->setParams([
                 'confirmationMessage' => Craft::t('Are you sure you want to delete the selected charges? This will not refund any payments, cancel subscriptions or alter data on Stripe'),
-                'successMessage'      => Craft::t('Charges deleted.'),
+                'successMessage' => Craft::t('Charges deleted.'),
             ]);
             $actions[] = $deleteAction;
         }
@@ -70,11 +71,11 @@ class ChargeElementType extends BaseElementType
         return $actions;
     }
 
-
     /**
      * Returns this element type's sources.
      *
      * @param string|null $context
+     *
      * @return array|false
      */
     public function getSources($context = null)
@@ -82,8 +83,8 @@ class ChargeElementType extends BaseElementType
         $sources = [
             '*' => [
                 'label' => Craft::t('All Charges'),
-                'defaultSort' => ['dateOrdered', 'desc']
-            ]
+                'defaultSort' => ['dateOrdered', 'desc'],
+            ],
         ];
 
     /*    $sources[] = ['heading' => Craft::t('Charge Type')];
@@ -95,27 +96,28 @@ class ChargeElementType extends BaseElementType
         $sources['mode:test'] = ['label' => Craft::t('Test'), 'criteria' => ['mode' => 'test']];
 
         return $sources;
-
     }
-
 
     /**
      * Returns the attributes that can be shown/sorted by in table views.
      *
      * @param string|null $source
+     *
      * @return array
      */
     public function defineTableAttributes($source = null)
     {
         return [
-            'id'        => Craft::t('ID'),
-            'mode'      => Craft::t('Mode'),
-            'type'      => Craft::t('Type'),
-            'customerId'  => Craft::t('Customer'),
-            'type'      => Craft::t('Type'),
-            'payment'   => Craft::t('Payment'),
+            'id' => Craft::t('ID'),
+            'mode' => Craft::t('Mode'),
+            'type' => Craft::t('Type'),
+            'customerId' => Craft::t('Customer'),
+            'type' => Craft::t('Type'),
+            'payment' => Craft::t('Payment'),
             'timestamp' => Craft::t('Date'),
-            'status'    => Craft::t('Status')];
+            'status' => Craft::t('Status'),
+            'amount' => Craft::t('Amount'),
+            'currency' => Craft::t('Currency'), ];
     }
 
     /**
@@ -128,50 +130,54 @@ class ChargeElementType extends BaseElementType
         return [
             'mode',
             'status',
-            'planAmount',
+            'amount',
             'sourceUrl',
             'customerEmail',
             'type',
             'hash',
-            'meta',];
+            'meta',
+            'currency'];
     }
-
 
     /**
      * Returns the table view HTML for a given attribute.
      *
      * @param BaseElementModel $element
-     * @param string $attribute
+     * @param string           $attribute
+     *
      * @return string
      */
     public function getTableAttributeHtml(BaseElementModel $element, $attribute)
     {
         switch ($attribute) {
 
-
             case 'mode': {
-                return '<span class="modeLabel ' . $element->mode .'">'.$element->mode.'</span>';
+                return '<span class="modeLabel '.$element->mode.'">'.$element->mode.'</span>';
             }
 
-            case 'status' : {
+            case 'status': {
               return $element->getHtmlStatusLabel();
             }
 
-            case 'customerId' : {
+            case 'customerId': {
                 $customer = $element->customer();
-                if ($customer == null) return '';
+                if ($customer == null) {
+                    return '';
+                }
 
                 return $customer->email;
             }
 
-            case 'payment' : {
+            case 'payment': {
                 return $element->eagerpayments;
             }
 
             case 'planAmount': {
                 if ($element->type == 'recurring') {
                     return $element->formatPlanName();
-                } else return $element->formatPlanAmount();
+                } else {
+                    return $element->formatPlanAmount();
+                }
 
             }
 
@@ -181,13 +187,15 @@ class ChargeElementType extends BaseElementType
             */
 
             case 'cardLast4': {
-                return '<span class="cardType type' . $element->cardType . '"></span> ' . $element->formatCard();
+                return '<span class="cardType type'.$element->cardType.'"></span> '.$element->formatCard();
             }
 
             case 'type': {
                 if ($element->type == 'recurring') {
                     return ucwords($element->type);
-                } else return 'One-time';
+                } else {
+                    return 'One-time';
+                }
             }
 
             case 'timestamp': {
@@ -212,40 +220,42 @@ class ChargeElementType extends BaseElementType
     public function defineCriteriaAttributes()
     {
         return [
-            'mode'          => [AttributeType::Mixed],
-            'userId'        => [AttributeType::Mixed],
-            'timestamp'     => [AttributeType::Mixed],
-            'hash'          => [AttributeType::String],
-            'order'         => [AttributeType::String, 'default' => 'timestamp desc'],
-            'customerId'    => [AttributeType::String],
+            'mode' => [AttributeType::Mixed],
+            'userId' => [AttributeType::Mixed],
+            'timestamp' => [AttributeType::Mixed],
+            'hash' => [AttributeType::String],
+            'order' => [AttributeType::String, 'default' => 'timestamp desc'],
+            'customerId' => [AttributeType::String],
             'customerEmail' => [AttributeType::Email],
-            'type'          => [AttributeType::Enum],
-            'sourceUrl'     => [AttributeType::String],
-            'meta'          => [AttributeType::Mixed]];
+            'type' => [AttributeType::Enum],
+            'sourceUrl' => [AttributeType::String],
+            'meta' => [AttributeType::Mixed],
+            'amount' => [AttributeType::Number],
+            'currency' => [AttributeType::String], ];
     }
 
     /**
-     * @inheritDoc IElementType::getElementQueryStatusCondition()
+     * {@inheritdoc} IElementType::getElementQueryStatusCondition()
      *
      * @param DbCommand $query
-     * @param string $status
+     * @param string    $status
      *
      * @return array|false|string|void
      */
     public function getElementQueryStatusCondition(DbCommand $query, $status)
     {
         switch ($status) {
-            case 'live' : {
+            case 'live': {
                 return [
                     'and',
-                    'charges.mode = "live"'
+                    'charges.mode = "live"',
                 ];
             }
 
-            case 'test' : {
+            case 'test': {
                 return [
                     'and',
-                    'charges.mode = "test"'
+                    'charges.mode = "test"',
                 ];
             }
         }
@@ -254,15 +264,16 @@ class ChargeElementType extends BaseElementType
     /**
      * Modifies an element query targeting elements of this type.
      *
-     * @param DbCommand $query
+     * @param DbCommand            $query
      * @param ElementCriteriaModel $criteria
+     *
      * @return mixed
      */
     public function modifyElementsQuery(DbCommand $query, ElementCriteriaModel $criteria)
     {
         $query
             ->addSelect('charges.userId, charges.sourceUrl, charges.type, charges.customerId,charges.mode, charges.description, charges.timestamp, charges.hash, charges.notes,
-            charges.meta, charges.request, charges.actions, group_concat(payments.amount) as eagerpayments')
+            charges.meta, charges.request, charges.actions, group_concat(payments.amount) as eagerpayments, charges.amount as payment, charges.amount, charges.currency')
             ->join('charges charges', 'charges.id = elements.id')
             ->leftJoin('charge_payments payments', 'payments.chargeId = charges.id');
 
@@ -299,6 +310,7 @@ class ChargeElementType extends BaseElementType
      * Populates an element model based on a query result.
      *
      * @param array $row
+     *
      * @return array
      */
     public function populateElementModel($row)
@@ -320,12 +332,11 @@ class ChargeElementType extends BaseElementType
         return array(
             'action' => 'templates/render',
             'params' => array(
-                'template'  => $template,
+                'template' => $template,
                 'variables' => array(
-                    'charge' => $element
-                )
-            )
+                    'charge' => $element,
+                ),
+            ),
         );
     }
-
 }

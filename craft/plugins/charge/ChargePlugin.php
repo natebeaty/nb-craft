@@ -23,12 +23,12 @@ class ChargePlugin extends BasePlugin
 
     function getVersion()
     {
-        return '2.1.5';
+        return '2.1.8';
     }
 
     public function getSchemaVersion()
     {
-        return '2.1.5';
+        return '2.1.8';
     }
 
     function getDeveloper()
@@ -100,6 +100,8 @@ class ChargePlugin extends BasePlugin
             'charge/settings/connect'                               => ['action' => 'charge/settings/connect'],
             'charge/settings/tests'                                 => ['action' => 'charge/settings/tests'],
             'charge/settings/license'                               => ['action' => 'charge/license/edit'],
+
+            'charge/settings/compatibility/(?P<handle>.*)'          => ['action' => 'charge/compatibility/issue']
 
         ];
     }

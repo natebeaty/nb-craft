@@ -1,0 +1,11 @@
+{% extends "charge/_layouts/settings" %}
+
+{% set title = "Compatibilty" %}
+
+{% block content %}
+    <h1>Compatibility</h1>
+    <p>The following issue was found on your installation:</p>
+    <hr/>
+    {% include ['charge/settings/compatibility/_issues/' ~ handle, 'charge/settings/compatibility/fallback'] %}
+
+{% endblock %}

@@ -14,17 +14,19 @@ class ChargeRecord extends BaseRecord
     public function defineAttributes()
     {
         return [
-            'type'        => [AttributeType::Enum, 'values' => 'one-off,recurring', 'required' => true],
-            'customerId'  => [AttributeType::Number],
-            'mode'        => [AttributeType::Enum, 'values' => 'test,live'],
-            'sourceUrl'   => [AttributeType::Url],
-            'hash'        => [AttributeType::String, 'label' => 'Transaction Hash'],
-            'request'     => [AttributeType::Mixed],
-            'actions'     => [AttributeType::Mixed],
-            'meta'        => [AttributeType::Mixed, 'label' => 'Meta Array'],
-            'notes'       => [AttributeType::String, 'column' => ColumnType::Text],
+            'type' => [AttributeType::Enum, 'values' => 'one-off,recurring', 'required' => true],
+            'customerId' => [AttributeType::Number],
+            'mode' => [AttributeType::Enum, 'values' => 'test,live'],
+            'sourceUrl' => [AttributeType::Url],
+            'hash' => [AttributeType::String, 'label' => 'Transaction Hash'],
+            'request' => [AttributeType::Mixed],
+            'actions' => [AttributeType::Mixed],
+            'meta' => [AttributeType::Mixed, 'label' => 'Meta Array'],
+            'notes' => [AttributeType::String, 'column' => ColumnType::Text],
             'description' => [AttributeType::String, 'label' => 'Description'],
-            'timestamp'   => [AttributeType::DateTime, 'label' => 'Time'],
+            'timestamp' => [AttributeType::DateTime, 'label' => 'Time'],
+            'amount' => [AttributeType::String, 'label' => 'Amount'],
+            'currency' => [AttributeType::String, 'label' => 'currency'],
         ];
     }
 
@@ -39,15 +41,14 @@ class ChargeRecord extends BaseRecord
                 'ElementRecord',
                 'id',
                 'required' => true,
-                'onDelete' => static::CASCADE],
-            'user'    => [
+                'onDelete' => static::CASCADE, ],
+            'user' => [
                 static::BELONGS_TO,
                 'UserRecord',
                 'required' => false,
-                'onDelete' => static::SET_NULL]
+                'onDelete' => static::SET_NULL, ],
         ];
     }
-
 
     /**
      * @return array
@@ -58,8 +59,7 @@ class ChargeRecord extends BaseRecord
             ['columns' => ['hash'], 'unique' => true],
             ['columns' => ['customerId']],
             ['columns' => ['mode']],
-            ['columns' => ['timestamp']]
+            ['columns' => ['timestamp']],
         );
     }
-
 }

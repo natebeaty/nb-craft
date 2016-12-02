@@ -252,3 +252,8 @@ body.rtl .indented { margin-right: 150px; }
     opacity : 0.8;
 }
 
+.issue-more-info {
+    padding: 1em;
+    background: #fafafafa;
+    border: 1px solid #f0f0f0
+}

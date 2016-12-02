@@ -18,7 +18,9 @@ class ChargeService extends BaseApplicationComponent
                                     'pen' => ['name' => 'Peruvian NueDdkvo Sol', 'symbol' => 'S/.', 'symbol_long' => 'S/.'],
                                     'jpy' => ['name' => 'Japanese Yen', 'symbol' => '&#165;', 'symbol_long' => '&#165;'],
                                     'nok' => ['name' => 'Norwegian Krone', 'symbol' => 'kr', 'symbol_long' => 'kr'],
-                                    'chf' => ['name' => 'Swiss Franc', 'symbol' => 'chf', 'symbol_long' => 'chf']];
+                                    'chf' => ['name' => 'Swiss Franc', 'symbol' => 'chf', 'symbol_long' => 'chf'],
+                                    'nzd' => ['name' => 'New Zealand Dollar', 'symbol' => '&#36;', 'symbol_long' => 'NZ&#36;'],
+                                ];
 
     public function init()
     {

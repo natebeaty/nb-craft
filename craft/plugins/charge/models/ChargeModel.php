@@ -1,4 +1,5 @@
 <?php
+
 namespace Craft;
 
 class ChargeModel extends BaseElementModel
@@ -23,11 +24,12 @@ class ChargeModel extends BaseElementModel
         $model->setAttribute('planCoupon', $model->coupon);
 
         // Explode the payments
-        if(isset($row['eagerpayments'])) {
+        if (isset($row['eagerpayments'])) {
             $payments = explode(',', $row['eagerpayments']);
             $paymentStr = '<ul>';
-            foreach($payments as $payment) {
-                $currency = 'usd';
+            foreach ($payments as $payment) {
+                
+                $currency = $model->currency;
                 $format = 'symbol';
                 $paymentStr .= '<li>'.ChargePlugin::formatAmount($payment, $currency, $format).'</li>';
             }
@@ -35,19 +37,20 @@ class ChargeModel extends BaseElementModel
 
             $model->setAttribute('eagerpayments', $paymentStr);
         }
+
         return $model;
     }
 
     /**
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->id;
     }
 
     /**
-     * @inheritDoc BaseElementModel::getStatus()
+     * {@inheritdoc} BaseElementModel::getStatus()
      *
      * @return string|null
      */
@@ -65,7 +68,7 @@ class ChargeModel extends BaseElementModel
      */
     public function getCpEditUrl()
     {
-        return UrlHelper::getCpUrl('charge/detail/' . $this->id);
+        return UrlHelper::getCpUrl('charge/detail/'.$this->id);
     }
 
     public function formatCard($char = '&#183;')
@@ -109,7 +112,7 @@ class ChargeModel extends BaseElementModel
 
         $currency = ChargePlugin::getCurrencies($currency);
 
-        return new \Twig_Markup(html_entity_decode($currency[$format] . $amount), $charset);
+        return new \Twig_Markup(html_entity_decode($currency[$format].$amount), $charset);
     }
 
     public function amountFormatted()
@@ -162,9 +165,17 @@ class ChargeModel extends BaseElementModel
             $this->validatePlanCurrency();
         }
 
+        // Validate the element fields
+
+        if (!craft()->content->validateContent($this)) {
+            $this->addErrors($this->getContent()->getErrors());
+        }
+
         parent::validate($attributes, false);
 
-        if ($this->coupon != '') craft()->charge_coupon->handleCoupon($this);
+        if ($this->coupon != '') {
+            craft()->charge_coupon->handleCoupon($this);
+        }
 
         // Setup the planAmountInCents value
         if (is_numeric($this->planAmount)) {
@@ -172,7 +183,7 @@ class ChargeModel extends BaseElementModel
         }
 
         $event = new Event($this, array(
-            'charge' => &$this
+            'charge' => &$this,
         ));
 
         craft()->charge->onValidate($event);
@@ -198,7 +209,7 @@ class ChargeModel extends BaseElementModel
 
         foreach ($selectedPlan as $key => $val) {
             if (in_array($key, ['planAmount', 'planCurrency', 'planInterval', 'planIntervalCount', 'planType',
-                'planName'])) {
+                'planName', ])) {
                 $this->$key = $val;
             } else {
                 //$this->meta = $this->meta[] = array($key => $val); // @todo handle extra attributes
@@ -210,8 +221,9 @@ class ChargeModel extends BaseElementModel
 
     private function validatePlanCurrency()
     {
-        if ($this->planCurrency == '') return;
-
+        if ($this->planCurrency == '') {
+            return;
+        }
 
         $currencyDetails = craft()->charge->getCurrency($this->planCurrency);
 
@@ -224,7 +236,7 @@ class ChargeModel extends BaseElementModel
 
     public function isRecurring()
     {
-        return ($this->paymentType() == 'recurring' ? true : false);
+        return $this->paymentType() == 'recurring' ? true : false;
     }
 
     public function paymentType()
@@ -238,7 +250,7 @@ class ChargeModel extends BaseElementModel
 
     public function isOneOff()
     {
-        return ($this->paymentType() == 'recurring' ? false : true);
+        return $this->paymentType() == 'recurring' ? false : true;
     }
 
     public function payments()
@@ -256,7 +268,7 @@ class ChargeModel extends BaseElementModel
     {
         $customer = $this->getCustomer();
 
-        if($customer) {
+        if ($customer) {
             return $customer->email;
         }
 
@@ -268,12 +280,10 @@ class ChargeModel extends BaseElementModel
         return $this->getCustomer();
     }
 
-
     public function getCustomer()
     {
         return craft()->charge_customer->findById($this->customerId);
     }
-
 
     public function getUrlFormat()
     {
@@ -288,7 +298,6 @@ class ChargeModel extends BaseElementModel
     public function getShortname()
     {
         if ($this->type == 'one-off') {
-
             if ($this->payment == null) {
                 $this->payment = $this->payment();
             }
@@ -300,6 +309,7 @@ class ChargeModel extends BaseElementModel
             return ChargePlugin::formatAmount($this->planAmountInCents, $this->planCurrency);
         } else {
             $this->subscription = $this->subscription();
+
             return $this->subscription->formatPlanNameShort();
         }
     }
@@ -324,9 +334,11 @@ class ChargeModel extends BaseElementModel
     {
         $label = $this->getStatusLabel();
 
-        if ($label == '') return '';
+        if ($label == '') {
+            return '';
+        }
 
-        return '<span class="chargeStatusLabel"><span class="status ' . $this->getStatusColor() . '"></span> ' . ucfirst($this->getStatusLabel()) . '</span>';
+        return '<span class="chargeStatusLabel"><span class="status '.$this->getStatusColor().'"></span> '.ucfirst($this->getStatusLabel()).'</span>';
     }
 
     public function getStatusLabel()
@@ -339,7 +351,6 @@ class ChargeModel extends BaseElementModel
             if ($this->subscription != null) {
                 return $this->subscription->getStatusLabel();
             }
-
         } else {
             // Get the status of the first payment.
             if ($this->payment == null) {
@@ -354,18 +365,25 @@ class ChargeModel extends BaseElementModel
         return '';
     }
 
-
     public function getStatusColor()
     {
         $label = $this->getStatusLabel();
 
-        if ($label == 'refunded') return 'yellow';
+        if ($label == 'refunded') {
+            return 'yellow';
+        }
 
-        if ($label == 'paid') return 'green';
+        if ($label == 'paid') {
+            return 'green';
+        }
 
-        if ($label == 'cancelled') return 'blue';
+        if ($label == 'cancelled') {
+            return 'blue';
+        }
 
-        if ($label == 'active') return 'green';
+        if ($label == 'active') {
+            return 'green';
+        }
 
         return 'white';
     }
@@ -373,54 +391,54 @@ class ChargeModel extends BaseElementModel
     protected function defineAttributes()
     {
         return array_merge(parent::defineAttributes(), [
-            'customerId'           => [AttributeType::Number],
-            'userId'               => [AttributeType::Number, 'label' => 'User ID'],
-            'type'                 => [AttributeType::Enum, 'values' => 'one-time, recurring', 'label' => 'Charge Type'],
-            'mode'                 => [AttributeType::Enum, 'values' => 'test,live', 'label' => 'Transaction Mode'],
-            'customerName'         => [AttributeType::String, 'label' => 'Name'],
-            'customerEmail'        => [AttributeType::Email, 'required' => true, 'label' => 'Email'],
-            'description'          => [AttributeType::String, 'label' => 'Description'],
-            'hash'                 => [AttributeType::String, 'label' => 'Hash'],
-            'notes'                => [AttributeType::String],
-            'meta'                 => [AttributeType::Mixed],
-            'sourceUrl'            => [AttributeType::Url, 'label' => 'Source URL'],
-            'timestamp'            => [AttributeType::DateTime, 'label' => 'Time'],
-            'cardId'               => [AttributeType::String, 'label' => 'Payment Card Id'],
-            'cardToken'            => [AttributeType::String, 'required' => true, 'label' => 'Stripe Card Token'],
-            'cardName'             => [AttributeType::String, 'label' => 'Cardholder Name'],
-            'cardAddressLine1'     => [AttributeType::String, 'label' => 'Card Address 1'],
-            'cardAddressLine2'     => [AttributeType::String, 'label' => 'Card Address 2'],
-            'cardAddressCity'      => [AttributeType::String, 'label' => 'Card Address City'],
-            'cardAddressState'     => [AttributeType::String, 'label' => 'Card Address State'],
-            'cardAddressZip'       => [AttributeType::String, 'label' => 'Card Address Zip'],
-            'cardAddressCountry'   => [AttributeType::String, 'label' => 'Card Address Country'],
-            'cardLast4'            => [AttributeType::String, 'label' => 'Card Last 4'],
-            'cardType'             => [AttributeType::String, 'label' => 'Card Type'],
-            'cardExpMonth'         => [AttributeType::String, 'label' => 'Card Expiry Month'],
-            'cardExpYear'          => [AttributeType::String, 'label' => 'Card Expiry Year'],
-            'planAmount'           => [AttributeType::Number, 'required' => true, 'label' => 'Amount', 'decimals' => 2],
-            'planAmountInCents'    => [AttributeType::Number],
-            'planCurrency'         => [AttributeType::String, 'label' => 'Currency'],
-            'planInterval'         => [AttributeType::String, 'label' => 'Plan Interval'],
-            'planIntervalCount'    => [AttributeType::Number, 'label' => 'Plan Interval Count'],
-            'planName'             => [AttributeType::String],
-            'planDiscount'         => [AttributeType::Number],
-            'planFullAmount'       => [AttributeType::Number],
-            'planChoice'           => [AttributeType::String, 'label' => 'Plan Name'],
-            'planOpts'             => [AttributeType::Mixed, 'label' => 'Plan Options'],
-            'hasDiscount'          => [AttributeType::Bool, 'label' => 'Has a Discount?'],
-            'coupon'               => [AttributeType::String],
-            'planCoupon'           => [AttributeType::String],
-            'couponStripeId'       => [AttributeType::String],
+            'customerId' => [AttributeType::Number],
+            'userId' => [AttributeType::Number, 'label' => 'User ID'],
+            'type' => [AttributeType::Enum, 'values' => 'one-time, recurring', 'label' => 'Charge Type'],
+            'mode' => [AttributeType::Enum, 'values' => 'test,live', 'label' => 'Transaction Mode'],
+            'customerName' => [AttributeType::String, 'label' => 'Name'],
+            'customerEmail' => [AttributeType::Email, 'required' => true, 'label' => 'Email'],
+            'description' => [AttributeType::String, 'label' => 'Description'],
+            'hash' => [AttributeType::String, 'label' => 'Hash'],
+            'notes' => [AttributeType::String],
+            'meta' => [AttributeType::Mixed],
+            'sourceUrl' => [AttributeType::Url, 'label' => 'Source URL'],
+            'timestamp' => [AttributeType::DateTime, 'label' => 'Time'],
+            'cardId' => [AttributeType::String, 'label' => 'Payment Card Id'],
+            'cardToken' => [AttributeType::String, 'required' => true, 'label' => 'Stripe Card Token'],
+            'cardName' => [AttributeType::String, 'label' => 'Cardholder Name'],
+            'cardAddressLine1' => [AttributeType::String, 'label' => 'Card Address 1'],
+            'cardAddressLine2' => [AttributeType::String, 'label' => 'Card Address 2'],
+            'cardAddressCity' => [AttributeType::String, 'label' => 'Card Address City'],
+            'cardAddressState' => [AttributeType::String, 'label' => 'Card Address State'],
+            'cardAddressZip' => [AttributeType::String, 'label' => 'Card Address Zip'],
+            'cardAddressCountry' => [AttributeType::String, 'label' => 'Card Address Country'],
+            'cardLast4' => [AttributeType::String, 'label' => 'Card Last 4'],
+            'cardType' => [AttributeType::String, 'label' => 'Card Type'],
+            'cardExpMonth' => [AttributeType::String, 'label' => 'Card Expiry Month'],
+            'cardExpYear' => [AttributeType::String, 'label' => 'Card Expiry Year'],
+            'planAmount' => [AttributeType::Number, 'required' => true, 'label' => 'Amount', 'decimals' => 2],
+            'planAmountInCents' => [AttributeType::Number],
+            'planCurrency' => [AttributeType::String, 'label' => 'Currency'],
+            'planInterval' => [AttributeType::String, 'label' => 'Plan Interval'],
+            'planIntervalCount' => [AttributeType::Number, 'label' => 'Plan Interval Count'],
+            'planName' => [AttributeType::String],
+            'planDiscount' => [AttributeType::Number],
+            'planFullAmount' => [AttributeType::Number],
+            'planChoice' => [AttributeType::String, 'label' => 'Plan Name'],
+            'planOpts' => [AttributeType::Mixed, 'label' => 'Plan Options'],
+            'hasDiscount' => [AttributeType::Bool, 'label' => 'Has a Discount?'],
+            'coupon' => [AttributeType::String],
+            'planCoupon' => [AttributeType::String],
+            'couponStripeId' => [AttributeType::String],
             'stripeAccountBalance' => [AttributeType::Number, 'label' => 'Account Balance'],
-            'actions'              => [AttributeType::Mixed],
-            'content'              => [AttributeType::Mixed],
-            'request'              => [AttributeType::Mixed],
-            'createAccount'        => [AttributeType::String],
-            'user'                 => [AttributeType::Mixed],
-            'eagerpayments'        => [AttributeType::String]
+            'actions' => [AttributeType::Mixed],
+            'content' => [AttributeType::Mixed],
+            'request' => [AttributeType::Mixed],
+            'createAccount' => [AttributeType::String],
+            'user' => [AttributeType::Mixed],
+            'eagerpayments' => [AttributeType::String],
+            'currency' => [AttributeType::String],
+            'amount' => [AttributeType::String],
         ]);
     }
-
-
 }

@@ -541,8 +541,10 @@
 
     $.payment.validateCardExpiry = function(month, year) {
         var currentTime, expiry, _ref;
-        if (typeof month === 'object' && 'month' in month) {
-            _ref = month, month = _ref.month, year = _ref.year;
+        if(month != null) {
+            if (typeof month === 'object' && 'month' in month) {
+                _ref = month, month = _ref.month, year = _ref.year;
+            }
         }
         if (!(month && year)) {
             return false;
@@ -674,7 +676,8 @@
             $error_container = typeof config.error_container !== 'undefined' ? $(config.error_container) : $('#payment-errors');
             $progress = typeof config.progress !== 'undefined' ? $(config.progress) : $('.charge_indicator'),
             cardType = null,
-            publicKey = typeof config.publicKey !== 'undefined' ? config.publicKey : $form.attr('data-publicKey');
+            publicKey = typeof config.publicKey !== 'undefined' ? config.publicKey : $form.attr('data-publicKey'),
+            errorMessages = typeof config.errorMessages !== 'undefined' ? config.errorMessages : null;
 
         if(typeof publicKey !== 'undefined') {
             Stripe.setPublishableKey(publicKey);
@@ -715,7 +718,9 @@
 
             if (response.error) {
                 // show the errors on the form
-                $error_container.show().text(response.error.message).addClass('alert').addClass('alert-warning');
+                var errorMessage = (errorMessages !== null && typeof(errorMessages[response.error.code]) !== 'undefined') ? errorMessages[response.error.code] : response.error.message;
+                $error_container.show().text(errorMessage).addClass('alert').addClass('alert-warning');
+
                 $form.find('input[type=submit]').prop('disabled', false).removeClass('disabled');
                 $progress.hide();
                 return false;

@@ -17,7 +17,12 @@ class Charge_SettingsController extends Charge_BaseCpController
         $configured = false;
         if(craft()->charge_charge->getUrlFormat() != '') $configured = true;
 
+        // Test for any critical
+        $messages = craft()->charge_compatibility->test();
+
+
         $variables = [
+            'messages'   => $messages,
             'configured' => $configured,
             'status'     => craft()->charge_stripe->validateConnectionModes(),
             'mode'       => craft()->charge->getMode(),

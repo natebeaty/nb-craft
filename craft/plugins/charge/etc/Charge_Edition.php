@@ -40,10 +40,10 @@ class Charge_Edition
             'requestTime' => DateTimeHelper::currentTimeStamp(),
             'requestPort' => craft()->request->getPort(),
 
-            'craftBuild'   => CRAFT_BUILD,
-            'craftVersion' => CRAFT_VERSION,
-            'craftEdition' => craft()->getEdition(),
-            'craftTrack'   => CRAFT_TRACK,
+            //'craftBuild'   => CRAFT_BUILD,
+            'craftVersion' => craft()->getVersion(),
+            //'craftEdition' => craft()->getEdition(),
+            //'craftTrack'   => CRAFT_TRACK,
             'userEmail'    => $userEmail,
 
             'requestProduct' => $this->requestProduct,

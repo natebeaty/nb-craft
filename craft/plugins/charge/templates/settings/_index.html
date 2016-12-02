@@ -6,6 +6,14 @@
 
     <h1>Settings</h1>
 
+    {% if messages %}
+        {% for message in messages %}
+        <ul id="alerts" class="charge-messages-alert {{ message.level }}">
+            <li>{{ message.message }} <a href="{{ url(message.action) }}">More info</a></li>
+        </ul>
+        {% endfor %}
+    {% endif %}
+
     <h2>General</h2>
     {% if configured %}
         <p><span class="status green"></span><span class="title">Charge elements configured</span></p>
