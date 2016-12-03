@@ -18,7 +18,15 @@
 		</div>
 		{% for image in entry.comicPages %}
 			<div class="ratiowrap" style="padding-bottom:{{ image.height / image.width * 100 }}%;max-width:{{ image.width }}px;max-height:{{ image.height }}px">
-				<img class="lazy wrapped" data-original="{{ image.getUrl() }}" alt="{{ entry.title }}">
+				<img class="lazy wrapped"
+					width="{{ image.width }}" height="{{ image.height }}"
+					data-original="{{ image.getUrl('listing') }}"
+					data-original-set="{{ image.getUrl() }} {{ image.width }}w,
+									{{ image.getUrl('listing') }} 750w"
+					sizes="(min-width: 768px) 750px, (min-width: 960px) 960px, 100vw"
+					alt="{{ image.title ? image.title : entry.title }}"
+
+				 data-original="{{ image.getUrl() }}" alt="{{ entry.title }}">
 			</div>
 		{% endfor %}
 	</article>

@@ -10,7 +10,13 @@
 			{% if front_image %}
 			<article class="bigclicky">
 				<div class="ratiowrap" style="padding-bottom: {{ front_image.getHeight('thumb') / front_image.getWidth('thumb') * 100 }}%">
-					<img src="{{ front_image.getUrl('thumb') }}" alt="{{ front_image.title }}">
+					<img class="lazy wrapped"
+						data-original="{{ front_image.getUrl('thumb1x') }}"
+						data-original-set="{{ front_image.getUrl('thumb') }} 500w,
+										{{ front_image.getUrl('thumb1x') }} 250w"
+						sizes="(min-width: 768px) calc((100vw - 90px) / 4), 100vw"
+						alt="{{ front_image.title }}"
+					/>
 				</div>
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 			</article>

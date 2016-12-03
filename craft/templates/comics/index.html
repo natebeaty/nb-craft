@@ -21,7 +21,14 @@
 					<article class="bigclicky {{ (entry.slug=='wolfman') ? "wide" : "" }}">
 						<div class="pad">
 							<div class="ratiowrap" style="padding-bottom: {{ front_image.height / front_image.width * 100 }}%">
-								<img src="{{ front_image.getUrl() }}" alt="{{ front_image.title }}">
+								<img
+									data-original="{{ front_image.getUrl('thumb1x') }}"
+									data-original-set="{{ front_image.getUrl('thumbLarge') }} 1000w,
+													{{ front_image.getUrl('thumb') }} 500w,
+													{{ front_image.getUrl('thumb1x') }} 250w"
+									sizes="(min-width: 768px) {{ (entry.slug=='wolfman') ? "calc((100vw - 90px) / 2)" : "calc((100vw - 90px) / 4)" }}, 100vw"
+									alt="{{ front_image.title }}"
+								/>
 							</div>
 							<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 						</div>

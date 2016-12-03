@@ -14,3 +14,7 @@ _thumb/*
 vendor/*
 public/.well-known
 public/assets/site/_thumb/*
+**/_listing/*
+**/_thumb/*
+**/_thumbLarge/*
+**/_thumb1x/*
