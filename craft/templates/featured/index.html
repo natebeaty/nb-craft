@@ -12,9 +12,8 @@
 				<div class="ratiowrap" style="padding-bottom: {{ front_image.getHeight('thumb') / front_image.getWidth('thumb') * 100 }}%">
 					<img class="lazy wrapped"
 						data-original="{{ front_image.getUrl('thumb1x') }}"
-						data-original-set="{{ front_image.getUrl('thumb') }} 500w,
-										{{ front_image.getUrl('thumb1x') }} 250w"
-						sizes="(min-width: 768px) calc((100vw - 90px) / 4), 100vw"
+						data-original-set="{{ front_image.getUrl('thumb1x') }} 250w, {{ front_image.getUrl('thumb') }} 500w"
+						sizes="(max-width: 768px) 100vw, calc((100vw - 90px) / 4)"
 						alt="{{ front_image.title }}"
 					/>
 				</div>
