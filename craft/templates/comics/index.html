@@ -6,6 +6,7 @@
 {% set relatedCats = craft.categories.relatedTo(entries) %}
 
 {% block content %}
+	{% cache %}
 	<section class="comics-list image-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
 	{# Loop the categories #}
 	{% for category in relatedCats %}
@@ -38,6 +39,6 @@
 		</div>
 
 	{% endfor %}
-
 	</section>
+	{% endcache %}
 {% endblock %}

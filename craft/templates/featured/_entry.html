@@ -7,6 +7,7 @@
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
+	{% cache %}
 	<article class="featured is-single" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
 		<h1>{{ entry.title }}</h1>
 		<div class="description user-content">
@@ -48,4 +49,5 @@
 	</article>
 
 	{% include "partials/_pagination" %}
+	{% endcache %}
 {% endblock %}

@@ -8,6 +8,7 @@
 {% set allEntries = craft.entries.section('journal').limit(null) %}
 
 {% block content %}
+  {% cache %}
 	<section class="journal-list is-single archives page-content"  data-section="journal" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
   <h1>Journal Archives</h1>
 	{% for date, entries in allEntries | group("postDate|date('F Y')") %}
@@ -19,4 +20,5 @@
     </ul>
 	{% endfor %}
 	</section>
+  {% endcache %}
 {% endblock %}

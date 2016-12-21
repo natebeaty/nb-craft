@@ -7,6 +7,8 @@
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
+	{% cache %}
 	{% include "journal/_article" with {'modalClass': 'is-single'} %}
 	{% include "partials/_pagination" %}
+	{% endcache %}
 {% endblock %}

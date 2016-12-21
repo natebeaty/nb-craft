@@ -5,6 +5,7 @@
 {% paginate craft.entries.section('journal').limit(25) as pageInfo, pageEntries %}
 
 {% block content %}
+	{% cache %}
 	<section class="journal-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
 
 		{% for entry in pageEntries %}
@@ -23,4 +24,5 @@
 			{% if pageInfo.nextUrl %}<a rel="nofollow" class="next" href="{{ pageInfo.nextUrl }}"><span>Next</span></a>{% endif %}
 		</div>
 	</section>
+	{% endcache %}
 {% endblock %}
