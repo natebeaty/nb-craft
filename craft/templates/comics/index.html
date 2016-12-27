@@ -23,10 +23,10 @@
 						<div class="pad">
 							<div class="ratiowrap" style="padding-bottom: {{ front_image.height / front_image.width * 100 }}%">
 								<img
-									data-original="{{ front_image.getUrl('thumb1x') }}"
-									data-original-set="{{ front_image.getUrl('thumb1x') }} 250w, {{ front_image.getUrl('thumb') }} 500w, {{ front_image.getUrl('thumbLarge') }} 1000w"
+									data-original="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }}"
+									data-original-set="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }} 250w, {{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb') }} 500w, {{ craft.config.cdnUrl }}{{ front_image.getUrl('thumbLarge') }} 1000w"
 									sizes="(max-width: 768px) 100vw, {{ (entry.slug=='wolfman') ? "calc((100vw - 90px) / 2)" : "calc((100vw - 90px) / 4)" }}"
-									alt="{{ front_image.title }}"
+									alt="{{ front_image.title ? front_image.title : entry.title }}"
 								/>
 							</div>
 							<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>

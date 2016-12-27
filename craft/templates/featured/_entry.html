@@ -18,8 +18,8 @@
 				{# <img class="lazy wrapped" data-original="{{ image.getUrl() }}" alt="{{ entry.title }}" width="{{ image.width }}" height="{{ image.height }}"> #}
 				<img class="lazy wrapped"
 					width="{{ image.width }}" height="{{ image.height }}"
-					data-original="{{ image.getUrl('listing') }}"
-					data-original-set="{{ image.getUrl('listing') }} 750w, {{ image.getUrl() }} {{ image.width }}w,"
+					data-original="{{ craft.config.cdnUrl }}{{ image.getUrl('listing') }}"
+					data-original-set="{{ craft.config.cdnUrl }}{{ image.getUrl('listing') }} 750w, {{ craft.config.cdnUrl }}{{ image.getUrl() }} {{ image.width }}w,"
 					sizes="(max-width: 768px) 100vw, (max-width: 1500px) 750px, 960px"
 					alt="{{ image.title ? image.title : entry.title }}"
 				/>
@@ -33,8 +33,8 @@
 						{# <img class="lazy wrapped" data-original="{{ image.getUrl() }}" alt="{{ entry.title }}" width="{{ image.width }}" height="{{ image.height }}"> #}
 						<img class="lazy wrapped"
 							width="{{ image.width }}" height="{{ image.height }}"
-							data-original="{{ image.getUrl('listing') }}"
-							data-original-set="{{ image.getUrl('listing') }} 750w, {{ image.getUrl() }} {{ image.width }}w,"
+							data-original="{{ craft.config.cdnUrl }}{{ image.getUrl('listing') }}"
+							data-original-set="{{ craft.config.cdnUrl }}{{ image.getUrl('listing') }} 750w, {{ craft.config.cdnUrl }}{{ image.getUrl() }} {{ image.width }}w,"
 							sizes="(max-width: 768px) 100vw, (max-width: 1500px) 750px, 960px"
 							alt="{{ image.title ? image.title : entry.title }}"
 						/>

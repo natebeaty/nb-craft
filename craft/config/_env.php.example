@@ -13,6 +13,9 @@ $customEnv = array(
 
     // General config settings
     'general' => array(
+        'devMode' => true,
+        'cdnUrl' => '',
+        'imageDriver' => 'imagick',
     ),
 
 );
