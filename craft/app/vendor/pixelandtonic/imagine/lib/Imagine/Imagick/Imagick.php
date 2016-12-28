@@ -29,6 +29,11 @@ class Imagick extends \Imagick {
      */
     public function smartResize($columns, $rows, $preserveColorInfo = false, $quality = 82)
     {
+        // From http://stackoverflow.com/a/12835966
+        // Pixel cache max size
+        $this->setResourceLimit(\Imagick::RESOURCETYPE_MEMORY, 256);
+        // Maximum amount of memory map to allocate for the pixel cache
+        $this->setResourceLimit(\Imagick::RESOURCETYPE_MAP, 256);
 
         $this->setOption('filter:support', '2.0');
         $this->thumbnailImage($columns, $rows, false, false, \Imagick::FILTER_TRIANGLE);
