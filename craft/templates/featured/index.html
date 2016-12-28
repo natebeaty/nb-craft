@@ -8,7 +8,7 @@
 		<div class="masonryme">
 		{% for entry in craft.entries.section('featured').find() %}
 			{% set front_image = entry.featuredImage.last() %}
-			{% if front_image %}
+			{% if front_image|length %}
 			<article class="bigclicky">
 				<div class="ratiowrap" style="padding-bottom: {{ front_image.getHeight('thumb') / front_image.getWidth('thumb') * 100 }}%">
 					<img class="lazy wrapped"
