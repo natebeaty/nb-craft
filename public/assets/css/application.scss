@@ -582,6 +582,10 @@ body.active-journal {
   article.journal h1 {
     margin-bottom: .25em;
   }
+  h1 a,
+  .user-content a:not(.buy) {
+    color: $link_dark;
+  }
   @include min-screen($breakpoint-medium) {
     #natehead {
       transform: scale(.333) translate(-150%, calc(300vh - 400px));
@@ -631,21 +635,18 @@ body.active-journal .archives {
     }
     a {
       @extend .h2;
-      color: $link;
+      color: $link_dark;
       text-decoration: underline;
     }
   }
 }
 
-// journal custom classes:
-.user-content,
-article.journal {
+// editable content styles
+.user-content {
   a:not(.buy) {
     color: $link;
     text-decoration: underline;
   }
-}
-.user-content {
   p.question {
     text-decoration: underline;
   }
@@ -686,6 +687,9 @@ body.active-about {
         }
         img {
           width: 100%;
+        }
+        a {
+          color: $link_dark;
         }
       }
     }
