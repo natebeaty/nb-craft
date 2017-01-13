@@ -678,6 +678,9 @@ body.active-journal .archives {
 // about
 body.active-about {
   background: $about;
+  .user-content a {
+    color: $link_dark;
+  }
   @include min-screen($breakpoint-medium) {
     main {
       padding: 150px 70px 50px 20px;
@@ -687,9 +690,6 @@ body.active-about {
         }
         img {
           width: 100%;
-        }
-        a {
-          color: $link_dark;
         }
       }
     }
