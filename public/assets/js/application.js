@@ -424,6 +424,7 @@ var Nb = (function($) {
       method: 'get',
       dataType: 'html',
       success: function(response) {
+        console.log('foo',response);
         page_cache[encodeURIComponent(State.url)] = response;
         _updatePage();
       }
@@ -446,7 +447,9 @@ var Nb = (function($) {
     _hideCart();
 
     // Add section class to body
-    if (section_in != 'home') {
+    if ($('.four-oh-four').length) {
+      $('body').attr('class','in-section active-404');
+    } else if (section_in != 'home') {
       $('body').attr('class','in-section active-' + section_in);
     }
 

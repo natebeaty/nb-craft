@@ -959,31 +959,31 @@ body.checking-out {
 }
 
 // 404
-#soda-404 {
+body.active-404 {
   background: #01A1AF;
   text-align: center;
-  .sodapop {
-    width: 250px;
-    margin: 0 auto;
-    @include min-screen($breakpoint-medium) {
-      margin: 15vh auto 0;
-    }
-    img {
-      display: block;
-      margin: 20px auto 0;
-    }
-    h1 {
-      font-size: 100px;
-      line-height: 1;
-      margin: 0;
-      color: #3F2004;
-    }
-    h2 {
-      background: #AA0C00;
-      color: #F9B6FA;
-      padding: 20px;
-      margin: 0;
-      font-size: 40px;
-    }
+}
+.four-oh-four {
+  width: 250px;
+  margin: 0 auto;
+  @include min-screen($breakpoint-medium) {
+    margin: 15vh auto 0;
+  }
+  img {
+    display: block;
+    margin: 20px auto 0;
+  }
+  h1 {
+    font-size: 100px;
+    line-height: 1;
+    margin: 0;
+    color: #3F2004;
+  }
+  h2 {
+    background: #AA0C00;
+    color: #F9B6FA;
+    padding: 20px;
+    margin: 0;
+    font-size: 40px;
   }
 }
