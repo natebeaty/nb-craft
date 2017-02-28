@@ -1,0 +1,50 @@
+[
+    {
+        "version": "1.0.5",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/1.0.5.zip",
+        "date": "2016-12-15T21:46:04.096Z",
+        "notes": [
+            "Improved functionality with cache duration and hook-before craft"
+        ]
+    }, 
+    {
+        "version": "1.0.4.1",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/1.0.4.1.zip",
+        "date": "2016-03-08T17:06:04.096Z",
+        "notes": [
+            "Improved functionality with cache duration and hook-before craft"
+        ]
+    }, 
+    {
+        "version": "1.0.3",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/1.0.3.zip",
+        "date": "2016-03-04T12:06:04.096Z",
+        "notes": [
+            "Fixed case-sensitivity bug in HtmlcachePlugin.php and Htmlcache_HtmlcacheService.php, causing an (in)visible error that did not enable the plugin"
+        ]
+    }, 
+    {
+        "version": "1.0.2",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/1.0.2.zip",
+        "date": "2016-03-03T22:19:04.096Z",
+        "notes": [
+            "Fixed case-sensitivity bug in HTMLCachePlugin.php, causing an invisible error that did not enable the plugin"
+        ]
+    },
+    {
+        "version": "1.0.1",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/1.0.1.zip",
+        "date": "2016-02-17T12:29:04.096Z",
+        "notes": [
+            "Moved functionality to services, default cache expires after one hour, disabled for DEV-mode, only caches non-cp GET requests"
+        ]
+    },
+    {
+        "version": "1.0.0",
+        "downloadUrl": "https://github.com/craftapi/htmlcache/archive/master.zip",
+        "date": "2016-02-17T12:29:04.096Z",
+        "notes": [
+            "[Added] Initial release"
+        ]
+    }
+]
