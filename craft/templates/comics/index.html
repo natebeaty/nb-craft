@@ -2,11 +2,17 @@
 {% set title = "Comics" %}
 {% set description = "Diddling with sequential doodles." %}
 
-{% set entries = craft.entries.section('comics') %}
-{% set relatedCats = craft.categories.relatedTo(entries) %}
-
 {% block content %}
 	{% cache %}
+	{% set entries = craft.entries({
+			section: 'comics',
+			with: [
+				['featuredImage', {
+						withTransforms: ['thumb','thumb1x','thumbLarge']
+				}]
+			]
+	}) %}
+	{% set relatedCats = craft.categories.relatedTo(entries) %}
 	<section class="comics-list image-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
 	{# Loop the categories #}
 	{% for category in relatedCats %}
@@ -17,16 +23,16 @@
 		  {% set relatedEntries = craft.entries.relatedTo(category) %}
 		  {% for entry in relatedEntries %}
 
-				{% set front_image = entry.featuredImage.last() %}
-				{% if front_image|length %}
+				{% set featuredImage = entry.featuredImage[0] ?? null %}
+				{% if featuredImage %}
 					<article class="bigclicky {{ (entry.slug=='wolfman') ? "wide" : "" }}">
 						<div class="pad">
-							<div class="ratiowrap" style="padding-bottom: {{ front_image.height / front_image.width * 100 }}%">
+							<div class="ratiowrap" style="padding-bottom: {{ featuredImage.height / featuredImage.width * 100 }}%">
 								<img
-									data-original="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }}"
-									data-original-set="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }} 250w, {{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb') }} 500w, {{ craft.config.cdnUrl }}{{ front_image.getUrl('thumbLarge') }} 1000w"
+									data-original="{{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb1x') }}"
+									data-original-set="{{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb1x') }} 250w, {{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb') }} 500w, {{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumbLarge') }} 1000w"
 									sizes="(max-width: 768px) 100vw, {{ (entry.slug=='wolfman') ? "calc((100vw - 90px) / 2)" : "calc((100vw - 90px) / 4)" }}"
-									alt="{{ front_image.title ? front_image.title : entry.title }}"
+									alt="{{ featuredImage.title ? featuredImage.title : entry.title }}"
 								/>
 							</div>
 							<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>

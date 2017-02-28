@@ -6,16 +6,24 @@
 	{% cache %}
 	<section class="featured-list image-list page-content" data-page="{{ craft.request.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
 		<div class="masonryme">
-		{% for entry in craft.entries.section('featured').find() %}
-			{% set front_image = entry.featuredImage.last() %}
-			{% if front_image|length %}
+		{% set entries = craft.entries({
+				section: 'featured',
+				with: [
+					['featuredImage', {
+							withTransforms: ['thumb','thumb1x']
+					}]
+				]
+		}) %}
+		{% for entry in entries %}
+      {% set featuredImage = entry.featuredImage[0] ?? null %}
+			{% if featuredImage %}
 			<article class="bigclicky">
-				<div class="ratiowrap" style="padding-bottom: {{ front_image.getHeight('thumb') / front_image.getWidth('thumb') * 100 }}%">
+				<div class="ratiowrap" style="padding-bottom: {{ featuredImage.getHeight('thumb') / featuredImage.getWidth('thumb') * 100 }}%">
 					<img class="lazy wrapped"
-						data-original="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }}"
-						data-original-set="{{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb1x') }} 250w, {{ craft.config.cdnUrl }}{{ front_image.getUrl('thumb') }} 500w"
+						data-original="{{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb1x') }}"
+						data-original-set="{{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb1x') }} 250w, {{ craft.config.cdnUrl }}{{ featuredImage.getUrl('thumb') }} 500w"
 						sizes="(max-width: 768px) 100vw, calc((100vw - 90px) / 4)"
-						alt="{{ front_image.title }}"
+						alt="{{ featuredImage.title }}"
 					/>
 				</div>
 				<h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
