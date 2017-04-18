@@ -51,6 +51,13 @@ class AssetsFieldType extends BaseElementFieldType
 	 */
 	private $_failedFiles = array();
 
+    /**
+     * Results of the prepValueFromPost method when it was run.
+     *
+     * @var array
+     */
+	private $_prepValueFromPostResults = array();
+
 	// Public Methods
 	// =========================================================================
 
@@ -143,6 +150,14 @@ class AssetsFieldType extends BaseElementFieldType
 	 */
 	public function prepValueFromPost($value)
 	{
+		if (
+			($hash = $this->element ? spl_object_hash($this->element) : null) &&
+			isset($this->_prepValueFromPostResults[$hash])
+		)
+		{
+			return $this->_prepValueFromPostResults[$hash];
+		}
+
 		$dataFiles = array();
 
 		// Grab data strings
@@ -282,6 +297,11 @@ class AssetsFieldType extends BaseElementFieldType
 		// so they make it into entry draft/version data
 		$this->element->setRawPostContent($this->model->handle, $fileIds);
 
+		if ($hash)
+		{
+			$this->_prepValueFromPostResults[$hash] = $fileIds;
+		}
+
 		return $fileIds;
 	}
 
@@ -300,19 +320,15 @@ class AssetsFieldType extends BaseElementFieldType
 			$elementFiles = $elementFiles->find();
 		}
 
-		$filesToMove = array();
-
-		if (is_array($elementFiles) && count($elementFiles))
+		if (is_array($elementFiles) && !empty($elementFiles))
 		{
+			$filesToMove = array();
 			$settings = $this->getSettings();
+			$targetFolderId = $this->_determineUploadFolderId($settings);
 
-			if ($this->getSettings()->useSingleFolder)
+			if ($settings->useSingleFolder)
 			{
-				$targetFolderId = $this->_resolveSourcePathToFolderId(
-					$settings->singleUploadLocationSource,
-					$settings->singleUploadLocationSubpath);
-
-				// Move only the fiels with a changed folder ID.
+				// Move only the files with a changed folder ID.
 				foreach ($elementFiles as $elementFile)
 				{
 					if ($targetFolderId != $elementFile->folderId)
@@ -342,14 +358,6 @@ class AssetsFieldType extends BaseElementFieldType
 				foreach ($filesInTempSource as $file)
 				{
 					$filesToMove[] = $file->id;
-				}
-
-				// If we have some files to move, make sure the folder exists.
-				if (!empty($filesToMove))
-				{
-					$targetFolderId = $this->_resolveSourcePathToFolderId(
-						$settings->defaultUploadLocationSource,
-						$settings->defaultUploadLocationSubpath);
 				}
 			}
 
@@ -700,9 +708,9 @@ class AssetsFieldType extends BaseElementFieldType
 		}
 		catch (InvalidSubpathException $e)
 		{
-			// If this is a new element, the subpath probably just contained a token that returned null, like {id}
+			// If this is a new/disabled element, the subpath probably just contained a token that returned null, like {id}
 			// so use the user's upload folder instead
-			if (empty($this->element->id) || !$createDynamicFolders)
+			if (!isset($this->element) || !$this->element->id || !$this->element->enabled || !$createDynamicFolders)
 			{
 				$userModel = craft()->userSession->getUser();
 				$userFolder = craft()->assets->getUserFolder($userModel);
@@ -722,7 +730,7 @@ class AssetsFieldType extends BaseElementFieldType
 					$folderId = $this->_createSubFolder($userFolder, $folderName);
 				}
 
-				IOHelper::ensureFolderExists(craft()->path->getAssetsTempSourcePath().$folderName);
+				IOHelper::ensureFolderExists(craft()->path->getAssetsTempSourcePath().$userFolder->path.'/'.$folderName);
 			}
 			else
 			{
