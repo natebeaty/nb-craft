@@ -1,4 +1,4 @@
 {
-	"buttons": ["format","bold","italic","lists","link","file","horizontalrule"],
+	"buttons": ["format","bold","italic","lists","link","file","image","horizontalrule"],
 	"plugins": ["source","fullscreen"]
 }
