@@ -762,16 +762,6 @@ class EntriesController extends BaseEntriesController
 				else
 				{
 					$variables['entry'] = craft()->entries->getEntryById($variables['entryId'], $variables['localeId']);
-
-					if ($variables['entry'])
-					{
-						$versions = craft()->entryRevisions->getVersionsByEntryId($variables['entryId'], $variables['localeId'], 1, true);
-
-						if (isset($versions[0]))
-						{
-							$variables['entry']->revisionNotes = $versions[0]->revisionNotes;
-						}
-					}
 				}
 
 				if (!$variables['entry'])
@@ -814,6 +804,24 @@ class EntriesController extends BaseEntriesController
 						}
 						break;
 					}
+				}
+			}
+		}
+
+		if ($variables['entry']->id)
+		{
+			$versions = craft()->entryRevisions->getVersionsByEntryId($variables['entry']->id, $variables['localeId'], 1, true);
+			$currentVersion = reset($versions);
+
+			if ($currentVersion !== false)
+			{
+				$variables['currentVersionCreator'] = $currentVersion->creator;
+				$variables['currentVersionEditTime'] = $currentVersion->dateUpdated;
+
+				// Are we editing the "current" version?
+				if ($variables['entry']->getClassHandle() === 'Entry')
+				{
+					$variables['entry']->revisionNotes = $currentVersion->revisionNotes;
 				}
 			}
 		}
