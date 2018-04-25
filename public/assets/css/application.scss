@@ -642,6 +642,9 @@ body.active-journal .archives {
 
 // editable content styles
 .user-content {
+  em {
+    font-style: italic;
+  }
   a:not(.buy) {
     color: $link;
     text-decoration: underline;
@@ -664,6 +667,9 @@ body.active-journal .archives {
   }
   .video-container {
     margin-bottom: 1em;
+  }
+  ul {
+    list-style: disc;
   }
   // p.answer {
   //   color: white;

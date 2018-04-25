@@ -1,8 +1,5 @@
 from fabric.api import *
 import os
-from dotenv import Dotenv
-dotenv = Dotenv(os.path.join(os.path.dirname(__file__), ".env")) # Of course, replace by your correct path
-os.environ.update(dotenv)
 
 env.hosts = ['natebeaty.com']
 env.user = 'natebeaty'
@@ -45,16 +42,3 @@ def s3sync():
 		env.dir = dir
 		local('s3cmd -P --guess-mime-type --add-header=Cache-Control:max-age=3153600 --delete-removed --rexclude-from=%(path)s/s3exclude sync %(path)s%(dir)s s3://%(s3_bucket)s%(dir)s' % env)
 
-
-def pushdb():
-	local("mysqldump -u "+os.environ.get('DB_USER')+" -p'"+os.environ.get('DB_PASS') +
-		"' "+os.environ.get('DB_NAME')+" | gzip -9 > ~/temp_db.sql.gz")
-	# secure copy to local environment
-	local("scp ~/temp_db.sql.gz "+env.user+"@"+env.hosts[0]+":")
-	# copy remote backups to local database
-	run("zcat ~/temp_db.sql.gz | mysql --user='"+os.environ.get('REMOTE_DB_USER') +
-		"' --password='"+os.environ.get('REMOTE_DB_PASS') +
-		"' --database "+os.environ.get('REMOTE_DB_NAME'))
-	# cleanup files from local & remote environments
-	run("rm ~/temp_db.sql.gz")
-	local("rm ~/temp_db.sql.gz")
