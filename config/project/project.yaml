@@ -1,9 +1,17 @@
-dateModified: 1609093277
+dateModified: 1639178570
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
   template: null
   transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    3ab74c73-4099-4444-85ac-8ee3abd91f6f: General # General
+    65e4b53d-2f6c-4765-a073-49728d4efe85: Featured # Featured
+    72b4fd62-13ca-49fa-b8f1-68fdf4bbce22: 'Global SEO' # Global SEO
+    1572dedb-abf9-460c-9c6c-b7463bdfb4ad: Journal # Journal
+    c29d2f2b-8d65-473a-99e8-9577265744a2: Comics # Comics
+    d91247e3-29d1-4ca7-808f-067fe9a54163: Animation # Animation
 plugins:
   asset-rev:
     enabled: '1'
@@ -61,7 +69,7 @@ system:
   edition: solo
   live: true
   name: 'Nate Beaty'
-  schemaVersion: 3.5.13
+  schemaVersion: 3.7.8
   timeZone: UTC
 users:
   allowPublicRegistration: false

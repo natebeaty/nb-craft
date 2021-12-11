@@ -9,7 +9,7 @@ settings:
   allowUploads: true
   allowedKinds:
     - image
-  defaultUploadLocationSource: 'volume:c29d2f2b-8d65-473a-99e8-9577265744a2'
+  defaultUploadLocationSource: 'volume:c29d2f2b-8d65-473a-99e8-9577265744a2' # Comics
   defaultUploadLocationSubpath: '{slug}'
   limit: ''
   localizeRelations: false
@@ -19,7 +19,7 @@ settings:
   showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: true
-  singleUploadLocationSource: 'volume:c29d2f2b-8d65-473a-99e8-9577265744a2'
+  singleUploadLocationSource: 'volume:c29d2f2b-8d65-473a-99e8-9577265744a2' # Comics
   singleUploadLocationSubpath: '{slug}'
   source: null
   sources: '*'
