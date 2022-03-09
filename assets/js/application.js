@@ -557,7 +557,7 @@ var Nb = (function($) {
 
   // Larger clicker areas ftw (w/ support for target and ctrl/cmd+click)
   function _initBigClicky() {
-    // Also shoving in general ajax link hijacking here — todo: move this to its own function for all content links
+    // Also shoving in general ajax link hijacking here — todo: move this to its own function for all content links
     $(document).on('click', '.bigclicky, .journal-list article h1, .journal-list.archives li a', function(e) {
       e.preventDefault();
       var link = $(e.target).is('a') ? $(e.target) : $(this).find('h1:first a, h2:first a, a');
@@ -573,16 +573,6 @@ var Nb = (function($) {
 
   // Janky li'l cart
   function _initCart() {
-    // braintree.setup(client_id, "custom", {
-    //   paypal: {
-    //     container: "paypal-container",
-    //   },
-    //   onPaymentMethodReceived: function (obj) {
-    //     console.log(obj, obj.nonce);
-    //   }
-    // });
-    // SEO-useless
-    $('<button class="checkout">Checkout</button><button>Clear</button>').insertBefore('#paypal-container');
     // Toggle cart overlay
     $(document).on('click', '.cart .icon', function() {
       if ($('body').hasClass('active-cart')) {
