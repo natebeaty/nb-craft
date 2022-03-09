@@ -1,5 +1,5 @@
   <div class="pagination">
-    {% if prevEntry %}<a rel="previous" class="previous" href="{{ prevEntry.url }}"><svg class="icon icon-arrow" aria-hidden="true"><use xlink:href="#icon-arrow"/></svg></a>{% endif %}
+    {% if prevEntry %}<a title="Previous Comic: {{ prevEntry.title }}" rel="previous" class="previous" href="{{ prevEntry.url }}"><svg class="icon icon-arrow" aria-hidden="true"><use xlink:href="#icon-arrow"/></svg></a>{% endif %}
     {% if entry.type == 'journal' %}<a class="archives" href="/journal/archives">Archives</a> {% endif %}
-    {% if nextEntry %}<a rel="next" class="next" href="{{ nextEntry.url }}"><svg class="icon icon-arrow" aria-hidden="true"><use xlink:href="#icon-arrow"/></svg></a>{% endif %}
+    {% if nextEntry %}<a title="Next Comic: {{ nextEntry.title }}" rel="next" class="next" href="{{ nextEntry.url }}"><svg class="icon icon-arrow" aria-hidden="true"><use xlink:href="#icon-arrow"/></svg></a>{% endif %}
   </div>

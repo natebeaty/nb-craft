@@ -22,7 +22,7 @@ body {
   @include min-screen($breakpoint-large) {
     font: 17px/1.5 "Anonymous Pro", monospace;
   }
-  color: $white;
+  color: $text;
 }
 .h1,h1 {
   font: italic 24px/1 "Anonymous Pro", monospace;
@@ -67,7 +67,7 @@ nav.main {
   -moz-osx-font-smoothing: grayscale;
   a {
     font: italic 24px/1 "Anonymous Pro", monospace;
-    color: $white;
+    // color: $black;
     text-transform: uppercase;
     letter-spacing: -1px;
     text-decoration: none;
@@ -636,9 +636,6 @@ body.in-section {
     padding: 2px 4px;
   }
 }
-
-
-
 
 
 body.active-featured nav.main a.about,

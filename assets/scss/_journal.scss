@@ -13,6 +13,7 @@ body.active-journal {
   }
   h1 a,
   .user-content a:not(.buy) {
+    color: $link;
     @include inline-link($link, $journal);
   }
   h1 a:hover {
