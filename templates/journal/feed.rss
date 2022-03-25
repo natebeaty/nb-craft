@@ -6,14 +6,14 @@
         <atom:link href="{{ craft.app.request.absoluteUrl }}" rel="self" type="application/rss+xml" />
         <description>Comics, illustration, animation and online journal of breathing human Nate Beaty.</description>
         <language>en-us</language>
-        <pubDate>{{ now.rss }}</pubDate>
-        <lastBuildDate>{{ now.rss }}</lastBuildDate>
+        <pubDate>{{ now|rss }}</pubDate>
+        <lastBuildDate>{{ now|rss }}</lastBuildDate>
 
         {% for entry in craft.entries.section('journal').limit(10) %}
             <item>
                 <title>{{ entry.title }}</title>
                 <link>{{ entry.url }}</link>
-                <pubDate>{{ entry.postDate.rss }}</pubDate>
+                <pubDate>{{ entry.postDate|rss }}</pubDate>
                 <author>{{ entry.author }}</author>
                 <guid>{{ entry.url }}</guid>
                 <description><![CDATA[
