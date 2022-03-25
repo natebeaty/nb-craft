@@ -1,4 +1,4 @@
-baseUrl: 'http://craft.dev/'
+baseUrl: $ROOT_URL
 enabled: true
 handle: en_us
 hasUrls: true

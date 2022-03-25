@@ -1,4 +1,4 @@
-dateModified: 1639178570
+dateModified: 1648224469
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -6,6 +6,7 @@ email:
   transportType: craft\mail\transportadapters\Sendmail
 meta:
   __names__:
+    0b61de0c-3eaf-46f8-a16d-d22ea8a17a00: 'Nate Beaty' # Nate Beaty
     3ab74c73-4099-4444-85ac-8ee3abd91f6f: General # General
     65e4b53d-2f6c-4765-a073-49728d4efe85: Featured # Featured
     72b4fd62-13ca-49fa-b8f1-68fdf4bbce22: 'Global SEO' # Global SEO
@@ -69,7 +70,7 @@ system:
   edition: solo
   live: true
   name: 'Nate Beaty'
-  schemaVersion: 3.7.8
+  schemaVersion: 3.7.33
   timeZone: UTC
 users:
   allowPublicRegistration: false

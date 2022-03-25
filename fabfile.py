@@ -1,9 +1,9 @@
 from fabric import task
 from invoke import run as local
 
-remote_path = "/home/natebeaty/apps/nb_craft3"
+remote_path = "/home/natebeaty/apps/nb-craft"
 remote_hosts = ["natebeaty@natebeaty.opalstacked.com"]
-php_command = "php74"
+php_command = "php81"
 
 # set to production
 # @task
@@ -26,8 +26,8 @@ def composer_update(c):
     c.run("cd {} && {} ~/bin/composer.phar install".format(remote_path, php_command))
 
 def clear_cache(c):
-    c.run("cd {} && ./craft clear-caches/compiled-templates".format(remote_path))
-    c.run("cd {} && ./craft clear-caches/data".format(remote_path))
+    c.run("cd {} && {} ./craft clear-caches/compiled-templates".format(remote_path, php_command))
+    c.run("cd {} && {} ./craft clear-caches/data".format(remote_path, php_command))
 
 # local commands
 @task

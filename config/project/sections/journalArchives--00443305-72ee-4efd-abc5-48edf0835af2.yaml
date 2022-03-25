@@ -12,7 +12,7 @@ previewTargets:
         - '{url}'
 propagationMethod: all
 siteSettings:
-  0b61de0c-3eaf-46f8-a16d-d22ea8a17a00:
+  0b61de0c-3eaf-46f8-a16d-d22ea8a17a00: # Nate Beaty
     enabledByDefault: true
     hasUrls: true
     template: journal/archives
