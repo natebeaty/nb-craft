@@ -40,6 +40,24 @@ body.active-featured {
   }
 
   .featured-block {
+    &.threeper {
+      display: flex;
+      flex-flow: row wrap;
+      a {
+        flex: 0 1 50%;
+        @include min-screen($breakpoint-medium) {
+          flex: 0 1 33.3%;
+        }
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .featured-block {
     &.-colored {
       padding: 10px;
       .description {

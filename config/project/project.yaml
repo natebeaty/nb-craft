@@ -1,4 +1,4 @@
-dateModified: 1648413209
+dateModified: 1648418668
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -8,6 +8,7 @@ meta:
   __names__:
     0b61de0c-3eaf-46f8-a16d-d22ea8a17a00: 'Nate Beaty' # Nate Beaty
     3ab74c73-4099-4444-85ac-8ee3abd91f6f: General # General
+    7b01be86-7661-4819-89b0-2761a1190d18: Class # Class
     65e4b53d-2f6c-4765-a073-49728d4efe85: Featured # Featured
     72b4fd62-13ca-49fa-b8f1-68fdf4bbce22: 'Global SEO' # Global SEO
     923dfd91-51c2-4bd8-b91d-88746e94fcad: 'Featured Blocks' # Featured Blocks

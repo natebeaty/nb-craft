@@ -38,7 +38,7 @@
 
     {% for block in entry.featuredBlocks.all() %}
       {% if block.type == "featureBlock" %}
-        <div class="featured-block{{ block.bg ? ' -colored' : '' }}"{% if block.bg %} style="background-color: {{ block.bg }}"{% endif %}>
+        <div class="featured-block{{ block.class ? ' '~block.class : '' }}{{ block.bg ? ' -colored' : '' }}"{% if block.bg %} style="background-color: {{ block.bg }}"{% endif %}>
         {% for image in block.images.all() %}
           <a href="{{ image.getUrl() }}" class="blowup">
             {# Leave GIFs alone #}
