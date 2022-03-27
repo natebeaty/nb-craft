@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: 7ccd7585-e576-4a7c-81bd-999c168264e2
 handle: featuredBlocks
@@ -6,8 +7,9 @@ name: 'Featured Blocks'
 searchable: true
 settings:
   contentTable: '{{%matrixcontent_featuredblocks}}'
-  maxBlocks: null
-  minBlocks: null
+  maxBlocks: ''
+  minBlocks: ''
+  propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site

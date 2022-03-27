@@ -54,7 +54,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 923dfd91-51c2-4bd8-b91d-88746e94fcad
+            fieldUid: 923dfd91-51c2-4bd8-b91d-88746e94fcad # Featured Blocks
             instructions: null
             label: null
             required: '0'

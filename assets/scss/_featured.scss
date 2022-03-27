@@ -38,4 +38,16 @@ body.active-featured {
       }
     }
   }
+
+  .featured-block {
+    &.-colored {
+      padding: 10px;
+      .description {
+        &,
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
