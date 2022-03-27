@@ -42,7 +42,7 @@
           <a href="{{ image.getUrl() }}" class="blowup">
             {# Leave GIFs alone #}
             {% if image.filename matches '/gif$/' %}
-              <img width="{{ image.width }}" height="{{ image.height }}" src="{{ iamge.getUrl() }}" alt="{{ image.title ? image.title : entry.title }}">
+              <img width="{{ image.width }}" height="{{ image.height }}" src="{{ image.getUrl() }}" alt="{{ image.title ? image.title : entry.title }}">
             {% else %}
               <img width="{{ image.width }}" height="{{ image.height }}"
                 data-src="{{ image.getUrl('listing') }}"
