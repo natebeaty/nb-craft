@@ -19,15 +19,15 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "3.7.37",
+    "craftcms/cms": "^4.0.0",
     "vlucas/phpdotenv": "^4.0.0",
-    "topshelfcraft/wordsmith": "3.3.0.1",
-    "clubstudioltd/craft-asset-rev": "6.0.2",
-    "verbb/redactor-tweaks": "2.0.4",
-    "craftcms/redactor": "2.10.5",
-    "mmikkel/retcon": "2.3.0",
-    "verbb/expanded-singles": "1.2.0",
-    "mmikkel/cp-field-inspect": "1.3.1"
+    "topshelfcraft/wordsmith": "^4.0.1",
+    "clubstudioltd/craft-asset-rev": "^7.0.0",
+    "verbb/redactor-tweaks": "^3.0.0-beta.1",
+    "craftcms/redactor": "^3.0.2",
+    "mmikkel/retcon": "^2.4.2",
+    "verbb/expanded-singles": "^2.0.0",
+    "mmikkel/cp-field-inspect": "^1.4.4"
   },
   "autoload": {
     "psr-4": {
