@@ -1,3 +1,3 @@
-{% if entry is defined and entry.isEditable() %}
+{% if currentUser and entry is defined and entry.canSave(currentUser) %}
   <div class="edit-link"><a href="{{ entry.cpEditUrl ~ '?redirect=' ~ craft.app.request.getUrl()|url_encode }}">Edit</a></div>
 {% endif %}
