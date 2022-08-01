@@ -2,6 +2,7 @@ fieldLayouts:
   8a93ca76-3346-4f13-a4fa-3a21e6ec32e7:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,6 +10,7 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
             instructions: null
             label: null
@@ -23,51 +25,80 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\EntryTitleField
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 6b3e7c47-c5c2-42cf-a364-d7a222aa57fa
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7
             instructions: null
             label: null
-            required: '0'
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: d61970f4-36a8-4ac1-945e-ef8340c0cd8d
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: c87b3338-59ec-47e0-b599-8e06a34e3098
             instructions: null
             label: null
-            required: '0'
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: fa196048-8b65-4425-9cc1-ea0a2edd4dc6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: cbb26607-7c56-4513-b381-c775f8647396 # Horn Toots
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2671eb42-cbb8-4eb6-8dc5-ee40c7e0349a
+            userCondition: null
             warning: null
             width: 100
         name: 'Tab 1'
-        sortOrder: 1
+        uid: 39ad7315-8ad5-4807-92c7-9cb7a9928956
+        userCondition: null
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
             instructions: null
             label: null
-            required: '0'
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 24b62c02-dffe-4bca-8701-3871a4ebaff1
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
             instructions: null
             label: null
-            required: '0'
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 3e4a95d6-2baa-4e06-a388-181d5cc7fdf1
+            userCondition: null
             warning: null
             width: 100
         name: SEO
-        sortOrder: 2
+        uid: db7275e0-a7c1-479e-8c28-d9a62b24f0fa
+        userCondition: null
 handle: about
 hasTitleField: false
 name: About

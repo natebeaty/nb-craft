@@ -23,16 +23,14 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\AssetTitleField
+            type: craft\fieldlayoutelements\assets\AssetTitleField
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+fs: journal
 handle: journal
 hasUrls: true
 name: Journal
-settings:
-  path: '@assetsBasePath/journal'
 sortOrder: 3
-type: craft\volumes\Local
 url: '@assetsBaseUrl/journal'

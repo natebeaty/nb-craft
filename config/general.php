@@ -26,9 +26,6 @@ return [
         // The secure key Craft will use for hashing and encrypting data
         'securityKey' => getenv('SECURITY_KEY'),
 
-        // Base site URL
-        'siteUrl' => getenv('SITE_URL'),
-
         'aliases' => [
             '@assetsBaseUrl' => getenv('ASSETS_BASE_URL'),
             '@assetsBasePath' => getenv('ASSETS_BASE_PATH'),

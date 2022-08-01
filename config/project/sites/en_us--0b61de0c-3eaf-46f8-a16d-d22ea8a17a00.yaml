@@ -1,4 +1,4 @@
-baseUrl: $ROOT_URL
+baseUrl: $DEFAULT_SITE_URL
 enabled: true
 handle: en_us
 hasUrls: true

@@ -23,16 +23,14 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\AssetTitleField
+            type: craft\fieldlayoutelements\assets\AssetTitleField
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+fs: animation
 handle: animation
 hasUrls: true
 name: Animation
-settings:
-  path: '@assetsBasePath/animation'
 sortOrder: 5
-type: craft\volumes\Local
 url: '@assetsBaseUrl/animation'

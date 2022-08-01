@@ -23,16 +23,14 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\AssetTitleField
+            type: craft\fieldlayoutelements\assets\AssetTitleField
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+fs: featured
 handle: featured
 hasUrls: true
 name: Featured
-settings:
-  path: '@assetsBasePath/featured'
 sortOrder: 4
-type: craft\volumes\Local
 url: '@assetsBaseUrl/featured'

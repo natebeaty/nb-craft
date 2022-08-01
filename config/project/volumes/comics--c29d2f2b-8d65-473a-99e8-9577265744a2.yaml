@@ -23,16 +23,14 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\AssetTitleField
+            type: craft\fieldlayoutelements\assets\AssetTitleField
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+fs: comics
 handle: comics
 hasUrls: true
 name: Comics
-settings:
-  path: '@assetsBasePath/comics'
 sortOrder: 2
-type: craft\volumes\Local
 url: '@assetsBaseUrl/comics'
