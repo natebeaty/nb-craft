@@ -16,13 +16,13 @@ php_command = "php81"
 @task(hosts=remote_hosts)
 def deploy(c):
     update(c)
-    composer_update(c)
+    composer_install(c)
     clear_cache(c)
 
 def update(c):
     c.run("cd {} && git pull".format(remote_path))
 
-def composer_update(c):
+def composer_install(c):
     c.run("cd {} && {} ~/bin/composer.phar install".format(remote_path, php_command))
 
 def clear_cache(c):
