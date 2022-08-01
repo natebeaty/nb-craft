@@ -13,5 +13,10 @@
         <li><a href="{{ block.socialURL }}">{{ block.header }}</a></li>
       {% endfor %}
     </ul>
+    {% if entry.hornToots %}
+      <div class="horn-toots user-content">
+        {{ entry.hornToots }}
+      </div>
+    {% endif %}
   </section>
 {% endblock %}
