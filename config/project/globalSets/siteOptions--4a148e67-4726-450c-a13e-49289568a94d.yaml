@@ -6,7 +6,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: d55aaee7-5d0f-4353-a670-b68aed12529f # Site Options
+            fieldUid: d55aaee7-5d0f-4353-a670-b68aed12529f # Store
             instructions: null
             label: null
             required: false

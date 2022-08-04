@@ -1,4 +1,4 @@
-dateModified: 1659645304
+dateModified: 1659645968
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -44,22 +44,64 @@ meta:
   __names__:
     0b61de0c-3eaf-46f8-a16d-d22ea8a17a00: 'Nate Beaty' # Nate Beaty
     01cabc32-e6ab-49c1-b259-bc8b98ed911e: About # About
+    1e2efd00-c7cf-4fd0-9773-f7873bc0f42a: 'Journal Archives'
+    1e7deaa3-1a8a-4852-a4b6-f03d86f99e39: 'Short Description'
     3ab74c73-4099-4444-85ac-8ee3abd91f6f: General # General
+    3b5be951-85be-446f-8974-c6e4cbe515c5: Default
     4a148e67-4726-450c-a13e-49289568a94d: 'Site Options' # Site Options
+    4b7aee9a-860d-4d7d-8e51-088345eb928f: 'SEO Description'
+    4e6ac371-6e56-4254-8b04-d4f0aced41bc: Tags
+    5ba3c7cc-05d2-4269-bcca-40322154aee9: 'Feature Images'
+    6c4a6927-1208-49e4-ab3f-1d0045ba1cbd: 'Thumb Large'
     7b01be86-7661-4819-89b0-2761a1190d18: Class # Class
+    7ccd7585-e576-4a7c-81bd-999c168264e2: Default
+    7d9814cd-e9f7-4059-82d9-49120c1e1bbc: 'Nate Beaty (en-US)'
+    9a4b7552-e9c7-4c43-b438-0cfb90308952: Journal
+    20b9f754-6beb-4ada-8c25-50c1453536c0: Shipping
     65e4b53d-2f6c-4765-a073-49728d4efe85: Featured # Featured
     72b4fd62-13ca-49fa-b8f1-68fdf4bbce22: 'Global SEO' # Global SEO
+    99b9f574-b1e5-47f4-8d48-18e64748faef: 'Featured Image'
+    172c9fa4-b30f-46b6-9062-3597545ec631: Size
     923dfd91-51c2-4bd8-b91d-88746e94fcad: 'Featured Blocks' # Featured Blocks
     1572dedb-abf9-460c-9c6c-b7463bdfb4ad: Journal # Journal
+    7577dd2d-1bd5-42b9-8614-5cd507e4596b: Featured
+    32269e19-5931-44fb-a351-4318fa12cf4a: 'Public Schema'
+    055210b5-2633-48be-a17b-a81ecbb643c3: Comics
+    00443305-72ee-4efd-abc5-48edf0835af2: 'Journal Archives'
+    3324109e-f930-40b9-be4d-fde789ca46ad: Homepage
     13126522-02f9-44e4-ac47-078e4a42cee4: 'Buy Now Enabled' # Buy Now Enabled
+    41732311-3a2e-414b-9d4e-e6d4b3ab95b3: Comics
     46044220-4c91-43c8-a145-52ddd272d71e: Description # Description
+    88707667-7b74-4f33-9f86-f861978a6314: Price
+    a1d1e3a8-9bed-4e32-bf3f-0296367f4395: 'Animation Embed'
+    ae906d3d-25e4-450f-a120-f3ba9ebe5102: 'Custom CSS'
+    aeff8d10-5b48-4789-90e3-bbeb5f73ac9c: Comics
+    af8f54e2-871a-4219-8081-55fc8a42f3c7: Headsploog
     b168120a-212b-41d2-b888-5d01268c527e: 'Feature Block' # Feature Block
+    bbdbc318-559b-473f-bb9b-d3c428120920: Thumb
+    c14b803d-ab05-4501-8975-09632862e7d9: URL
     c29d2f2b-8d65-473a-99e8-9577265744a2: Comics # Comics
+    c87b3338-59ec-47e0-b599-8e06a34e3098: 'Social Blocks'
     c93e3857-1ac5-4a18-9f51-f04722779d20: Globals # Globals
+    c539eb18-f49c-416c-a32b-ca32c4fa9fd1: Featured
     cbb26607-7c56-4513-b381-c775f8647396: 'Horn Toots' # Horn Toots
-    d55aaee7-5d0f-4353-a670-b68aed12529f: Store # Site Options
+    d2e79ebf-4ccb-4250-a73d-90ec7524c76b: 'Thumb 1X'
+    d55aaee7-5d0f-4353-a670-b68aed12529f: Store # Store
+    d12834cb-fe92-4e07-869d-249954399d43: 'Comic Pages'
     d91247e3-29d1-4ca7-808f-067fe9a54163: Animation # Animation
+    dd8198bd-9339-4152-911a-2c279336bdd8: 'SEO Title'
+    dd355909-492e-43d5-b79c-ad4178304a99: Listing
+    ddf04915-fb55-44c7-b529-22ef19d29e09: Comics
+    df8cef38-018a-4239-b720-b4313bfc8061: Journal
+    e7c04976-9238-4742-af83-3f8d676c9a3f: Header
+    e44e0ee6-c8d3-4a83-a785-5466e3c37fd4: Weight
+    e98fa039-438e-41bc-b70c-7eaf3c903d61: Homepage
+    e6890102-93bc-4cc6-9f10-a9994de342d4: Category
+    f1fda3e3-ba67-4ab1-8c7c-3ff3dba59a71: About
+    f3e6c86c-39c3-4aa8-9576-58c353cd9f93: Social
     f80a73ba-de41-4c27-af86-c3f04aabb9cd: Bg # Bg
+    f499a594-9217-49ea-b1dc-1893b0561026: SEO
+    fa9fc1f2-faef-4192-a91e-fdef1db4d7a7: Body
     fd62e3fe-23c7-4e02-b892-132c1d4da8e7: Images # Images
 plugins:
   asset-rev:
