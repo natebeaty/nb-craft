@@ -1,0 +1,30 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: c93e3857-1ac5-4a18-9f51-f04722779d20 # Globals
+handle: store
+instructions: null
+name: Store
+searchable: false
+settings:
+  blockTypeFields: 0
+  changedFieldIndicator: 245956171
+  columns:
+    __assoc__:
+      -
+        - 13126522-02f9-44e4-ac47-078e4a42cee4 # Buy Now Enabled
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_store}}'
+  fieldLayout: table
+  maxRows: null
+  minRows: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  selectionLabel: null
+  staticField: true
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

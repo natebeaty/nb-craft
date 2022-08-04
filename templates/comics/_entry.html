@@ -17,7 +17,7 @@
       <div class="body">{{ entry.body }}</div>
       <div class="info">{{ entry.shortDescription }}</div>
       <div class="actions">
-        {% if entry.price > 0 %}
+        {% if siteOptions.store.buyNowEnabled and entry.price > 0 %}
           <button class="buy" data-price="{{ entry.price }}" data-title="{{ entry.title|escape }}" data-id="{{ entry.id }}">Buy — ${{ entry.price + 0 }}</button>
         {% endif %}
         <button class="lightbox-group">

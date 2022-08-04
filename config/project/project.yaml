@@ -1,4 +1,4 @@
-dateModified: 1659375530
+dateModified: 1659645304
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -43,17 +43,21 @@ fs:
 meta:
   __names__:
     0b61de0c-3eaf-46f8-a16d-d22ea8a17a00: 'Nate Beaty' # Nate Beaty
-    01cabc32-e6ab-49c1-b259-bc8b98ed911e: About
+    01cabc32-e6ab-49c1-b259-bc8b98ed911e: About # About
     3ab74c73-4099-4444-85ac-8ee3abd91f6f: General # General
+    4a148e67-4726-450c-a13e-49289568a94d: 'Site Options' # Site Options
     7b01be86-7661-4819-89b0-2761a1190d18: Class # Class
     65e4b53d-2f6c-4765-a073-49728d4efe85: Featured # Featured
     72b4fd62-13ca-49fa-b8f1-68fdf4bbce22: 'Global SEO' # Global SEO
     923dfd91-51c2-4bd8-b91d-88746e94fcad: 'Featured Blocks' # Featured Blocks
     1572dedb-abf9-460c-9c6c-b7463bdfb4ad: Journal # Journal
+    13126522-02f9-44e4-ac47-078e4a42cee4: 'Buy Now Enabled' # Buy Now Enabled
     46044220-4c91-43c8-a145-52ddd272d71e: Description # Description
     b168120a-212b-41d2-b888-5d01268c527e: 'Feature Block' # Feature Block
     c29d2f2b-8d65-473a-99e8-9577265744a2: Comics # Comics
+    c93e3857-1ac5-4a18-9f51-f04722779d20: Globals # Globals
     cbb26607-7c56-4513-b381-c775f8647396: 'Horn Toots' # Horn Toots
+    d55aaee7-5d0f-4353-a670-b68aed12529f: Store # Site Options
     d91247e3-29d1-4ca7-808f-067fe9a54163: Animation # Animation
     f80a73ba-de41-4c27-af86-c3f04aabb9cd: Bg # Bg
     fd62e3fe-23c7-4e02-b892-132c1d4da8e7: Images # Images
@@ -100,6 +104,10 @@ plugins:
     licenseKey: null
     schemaVersion: '1.0'
     settings: null
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.0
   video-embed-utility:
     enabled: '0'
     licenseKey: null
