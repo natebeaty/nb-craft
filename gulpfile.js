@@ -6,6 +6,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
 const include      = require('gulp-include');
 const rev          = require('gulp-rev');
+const revNapkin    = require('gulp-rev-napkin');
 const sourcemaps   = require('gulp-sourcemaps');
 const argv         = require('yargs').argv;
 const notify       = require('gulp-notify');
@@ -61,6 +62,7 @@ function revFiles() {
   return gulp.src(['web/assets/dist/**/*.{css,js,jpg,png,gif}'])
     .pipe(rev())
     .pipe(gulp.dest('web/assets/dist'))
+    .pipe(gulpif(isProduction, revNapkin()))
     .pipe(rev.manifest())
     .pipe(gulp.dest('web/assets/dist'))
 }
@@ -96,7 +98,7 @@ function browserSync() {
 }
 
 const build = gulp.series(clean, gulp.parallel(copy, styles, scripts), revFiles);
-const watch = gulp.series(build, gulp.parallel(watchFiles, browserSync));
+const watch = gulp.series(clean, gulp.parallel(copy, styles, scripts, watchFiles, browserSync));
 
 // export tasks
 exports.build = build;
