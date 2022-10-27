@@ -10,8 +10,7 @@ body.active-comics {
     @include clearfix;
   }
   .user-content a {
-    color: $link_dark;
-    @include inline-link($link_dark, $comics);
+    @include inline-link($link, $comics);
   }
   .meta {
     margin-bottom: 20px;

@@ -9,7 +9,6 @@ body.active-featured {
     @include clearfix;
   }
   .user-content a {
-    color: $link_dark;
     @include inline-link($link_dark, $featured);
   }
   @include min-screen($breakpoint-medium) {

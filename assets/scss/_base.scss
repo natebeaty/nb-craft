@@ -67,7 +67,7 @@ nav.main {
   -moz-osx-font-smoothing: grayscale;
   a {
     font: italic 24px/1 "Anonymous Pro", monospace;
-    // color: $black;
+    color: $black;
     text-transform: uppercase;
     letter-spacing: -1px;
     text-decoration: none;
@@ -602,9 +602,8 @@ body.in-section {
   em {
     font-style: italic;
   }
-  a:not(.buy) {
-    @include inline-link($link_dark, $white);
-    color: $link;
+  a {
+    @include inline-link($link_dark, $link);
     text-decoration: underline;
     display: inline-block;
   }
@@ -617,7 +616,10 @@ body.in-section {
   .writing-excerpt {
     padding: 0 1.5em;
     border-left: 10px solid $link_dark;
-    color: $white;
+    p {
+      font-size: 1.1rem;
+    }
+    // color: $white;
   }
   p.caption {
     margin-top: -0.5em;

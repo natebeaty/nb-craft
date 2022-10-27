@@ -6,7 +6,7 @@ body.active-about {
     margin-bottom: 10px;
   }
   .user-content a {
-    @include inline-link($link, $about);
+    @include inline-link($white, $about);
   }
   @include min-screen($breakpoint-medium) {
     main {

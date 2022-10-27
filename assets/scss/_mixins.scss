@@ -49,6 +49,7 @@ a.button {
 
 // Inline link styles
 @mixin inline-link($hover_bg:$link_dark, $hover_color:$link) {
+  color: $hover_bg;
   // display: inline;
   background-color: rgba($hover_bg, 0);
   transition: all 0.1s;

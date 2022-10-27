@@ -12,8 +12,7 @@ body.active-journal {
     margin-bottom: .25em;
   }
   h1 a,
-  .user-content a:not(.buy) {
-    color: $link;
+  .user-content a {
     @include inline-link($link, $journal);
   }
   h1 a:hover {
