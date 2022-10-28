@@ -1,6 +1,9 @@
 // featured
 body.active-featured {
   background: $featured;
+  svg {
+    stroke: $black;
+  }
   .description {
     margin: 20px 0;
   }

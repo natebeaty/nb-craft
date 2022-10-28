@@ -75,7 +75,6 @@ body.active-journal {
       }
       a {
         @extend .h2;
-        color: $link;
         @include inline-link($link, $journal);
       }
     }
