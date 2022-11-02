@@ -14,6 +14,9 @@ body.active-featured {
   .user-content a {
     @include inline-link($link_dark, $featured);
   }
+  .lightbox-group span {
+    color: $link_dark;
+  }
   @include min-screen($breakpoint-medium) {
     main {
       padding: 150px 20px 50px 70px;
