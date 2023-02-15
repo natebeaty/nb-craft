@@ -1,0 +1,28 @@
+{% set entries = craft.entries()
+  .section('journal')
+  .limit(10)
+  .all() %}
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>{{ url(craft.app.request.pathInfo) }}</id>
+  <title>{{ siteName }}</title>
+  <updated>{{ now|atom }}</updated>
+  <link rel="self" type="application/atom+xml" href="{{ url(craft.app.request.pathInfo) }}" />
+  <link rel="alternate" type="text/html" href="{{ siteUrl }}" />
+
+  {% for entry in entries %}
+    <entry>
+      <id>{{ entry.url }}</id>
+      <title>{{ entry.title }}</title>
+      <published>{{ entry.postDate|atom }}</published>
+      <updated>{{ entry.dateUpdated|atom }}</updated>
+      <link rel="alternate" type="text/html" href="{{ entry.url }}" />
+      <author>
+        <name>{{ entry.author.fullName }}</name>
+      </author>
+      <content type="html">
+        <![CDATA[{{ entry.body }}]]>
+      </content>
+    </entry>
+  {% endfor %}
+</feed>
