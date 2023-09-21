@@ -1,11 +1,11 @@
-field: c87b3338-59ec-47e0-b599-8e06a34e3098
+field: c87b3338-59ec-47e0-b599-8e06a34e3098 # Social Blocks
 fieldLayouts:
   e157011b-7587-44a2-b5c7-9a7d75ecdbd6:
     tabs:
       -
         elements:
           -
-            fieldUid: e7c04976-9238-4742-af83-3f8d676c9a3f
+            fieldUid: e7c04976-9238-4742-af83-3f8d676c9a3f # Header
             instructions: null
             label: null
             required: '0'
@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c14b803d-ab05-4501-8975-09632862e7d9
+            fieldUid: c14b803d-ab05-4501-8975-09632862e7d9 # URL
             instructions: null
             label: null
             required: '0'
@@ -25,7 +25,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  c14b803d-ab05-4501-8975-09632862e7d9:
+  c14b803d-ab05-4501-8975-09632862e7d9: # URL
     contentColumnType: text
     fieldGroup: null
     handle: socialURL
@@ -44,7 +44,7 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\fields\PlainText
-  e7c04976-9238-4742-af83-3f8d676c9a3f:
+  e7c04976-9238-4742-af83-3f8d676c9a3f: # Header
     contentColumnType: text
     fieldGroup: null
     handle: header

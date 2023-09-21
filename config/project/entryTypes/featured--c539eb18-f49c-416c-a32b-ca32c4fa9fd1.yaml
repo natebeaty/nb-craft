@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7
+            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7 # Body
             instructions: null
             label: null
             required: '0'
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 99b9f574-b1e5-47f4-8d48-18e64748faef
+            fieldUid: 99b9f574-b1e5-47f4-8d48-18e64748faef # Featured Image
             instructions: null
             label: null
             required: '0'
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 5ba3c7cc-05d2-4269-bcca-40322154aee9
+            fieldUid: 5ba3c7cc-05d2-4269-bcca-40322154aee9 # Feature Images
             instructions: null
             label: null
             required: '0'
@@ -67,7 +67,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
+            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
             instructions: null
             label: null
             required: '0'
@@ -76,7 +76,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
+            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
             instructions: null
             label: null
             required: '0'
@@ -89,7 +89,7 @@ fieldLayouts:
 handle: featured
 hasTitleField: true
 name: Featured
-section: 7577dd2d-1bd5-42b9-8614-5cd507e4596b
+section: 7577dd2d-1bd5-42b9-8614-5cd507e4596b # Featured
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

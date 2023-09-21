@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7
+            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7 # Body
             instructions: null
             label: null
             required: '0'
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1e7deaa3-1a8a-4852-a4b6-f03d86f99e39
+            fieldUid: 1e7deaa3-1a8a-4852-a4b6-f03d86f99e39 # Short Description
             instructions: null
             label: null
             required: '0'
@@ -45,7 +45,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 88707667-7b74-4f33-9f86-f861978a6314
+            fieldUid: 88707667-7b74-4f33-9f86-f861978a6314 # Price
             instructions: null
             label: null
             required: '0'
@@ -54,7 +54,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 20b9f754-6beb-4ada-8c25-50c1453536c0
+            fieldUid: 20b9f754-6beb-4ada-8c25-50c1453536c0 # Shipping
             instructions: null
             label: null
             required: '0'
@@ -63,7 +63,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: e44e0ee6-c8d3-4a83-a785-5466e3c37fd4
+            fieldUid: e44e0ee6-c8d3-4a83-a785-5466e3c37fd4 # Weight
             instructions: null
             label: null
             required: '0'
@@ -72,7 +72,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: e6890102-93bc-4cc6-9f10-a9994de342d4
+            fieldUid: e6890102-93bc-4cc6-9f10-a9994de342d4 # Category
             instructions: null
             label: null
             required: '0'
@@ -81,7 +81,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 4e6ac371-6e56-4254-8b04-d4f0aced41bc
+            fieldUid: 4e6ac371-6e56-4254-8b04-d4f0aced41bc # Tags
             instructions: null
             label: null
             required: '0'
@@ -90,7 +90,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 99b9f574-b1e5-47f4-8d48-18e64748faef
+            fieldUid: 99b9f574-b1e5-47f4-8d48-18e64748faef # Featured Image
             instructions: null
             label: null
             required: '0'
@@ -99,7 +99,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 172c9fa4-b30f-46b6-9062-3597545ec631
+            fieldUid: 172c9fa4-b30f-46b6-9062-3597545ec631 # Size
             instructions: null
             label: null
             required: '0'
@@ -108,7 +108,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: d12834cb-fe92-4e07-869d-249954399d43
+            fieldUid: d12834cb-fe92-4e07-869d-249954399d43 # Comic Pages
             instructions: null
             label: null
             required: '0'
@@ -121,7 +121,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
+            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
             instructions: null
             label: null
             required: '0'
@@ -130,7 +130,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
+            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
             instructions: null
             label: null
             required: '0'
@@ -143,7 +143,7 @@ fieldLayouts:
 handle: comics
 hasTitleField: true
 name: Comics
-section: aeff8d10-5b48-4789-90e3-bbeb5f73ac9c
+section: aeff8d10-5b48-4789-90e3-bbeb5f73ac9c # Comics
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

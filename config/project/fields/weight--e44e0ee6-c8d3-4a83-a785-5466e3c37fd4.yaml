@@ -1,5 +1,5 @@
 contentColumnType: 'decimal(12,2)'
-fieldGroup: 055210b5-2633-48be-a17b-a81ecbb643c3
+fieldGroup: 055210b5-2633-48be-a17b-a81ecbb643c3 # Comics
 handle: weight
 instructions: ''
 name: Weight

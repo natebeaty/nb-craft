@@ -32,7 +32,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7
+            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7 # Body
             instructions: null
             label: null
             required: false
@@ -44,7 +44,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: c87b3338-59ec-47e0-b599-8e06a34e3098
+            fieldUid: c87b3338-59ec-47e0-b599-8e06a34e3098 # Social Blocks
             instructions: null
             label: null
             required: false
@@ -74,7 +74,7 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
+            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
             instructions: null
             label: null
             required: false
@@ -86,7 +86,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
+            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
             instructions: null
             label: null
             required: false
@@ -102,7 +102,7 @@ fieldLayouts:
 handle: about
 hasTitleField: false
 name: About
-section: f1fda3e3-ba67-4ab1-8c7c-3ff3dba59a71
+section: f1fda3e3-ba67-4ab1-8c7c-3ff3dba59a71 # About
 sortOrder: 1
 titleFormat: '{section.name|raw}'
 titleTranslationKeyFormat: null

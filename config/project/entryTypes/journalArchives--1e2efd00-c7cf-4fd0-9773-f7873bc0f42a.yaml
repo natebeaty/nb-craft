@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7
+            fieldUid: fa9fc1f2-faef-4192-a91e-fdef1db4d7a7 # Body
             instructions: null
             label: null
             required: '0'
@@ -40,7 +40,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
+            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
             instructions: null
             label: null
             required: '0'
@@ -49,7 +49,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
+            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
             instructions: null
             label: null
             required: '0'
@@ -62,7 +62,7 @@ fieldLayouts:
 handle: journalArchives
 hasTitleField: true
 name: 'Journal Archives'
-section: 00443305-72ee-4efd-abc5-48edf0835af2
+section: 00443305-72ee-4efd-abc5-48edf0835af2 # Journal Archives
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

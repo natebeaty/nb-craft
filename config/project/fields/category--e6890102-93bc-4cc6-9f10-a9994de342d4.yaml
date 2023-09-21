@@ -1,5 +1,5 @@
 contentColumnType: string
-fieldGroup: 055210b5-2633-48be-a17b-a81ecbb643c3
+fieldGroup: 055210b5-2633-48be-a17b-a81ecbb643c3 # Comics
 handle: category
 instructions: ''
 name: Category
@@ -13,7 +13,7 @@ settings:
   localizeRelations: false
   selectionLabel: ''
   showSiteMenu: true
-  source: 'group:ddf04915-fb55-44c7-b529-22ef19d29e09'
+  source: 'group:ddf04915-fb55-44c7-b529-22ef19d29e09' # Comics
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false

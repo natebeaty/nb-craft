@@ -4,7 +4,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8
+            fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
             instructions: null
             label: null
             required: '0'
@@ -13,7 +13,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f
+            fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
             instructions: null
             label: null
             required: '0'
