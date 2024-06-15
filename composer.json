@@ -19,16 +19,16 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "4.5.5",
+    "craftcms/cms": "4.10.0",
     "vlucas/phpdotenv": "^4.0.0",
-    "topshelfcraft/wordsmith": "4.2.0",
+    "topshelfcraft/wordsmith": "4.4.0",
     "clubstudioltd/craft-asset-rev": "^7.0.0",
     "verbb/redactor-tweaks": "3.0.1",
-    "craftcms/redactor": "3.0.4",
-    "mmikkel/retcon": "2.7.3",
+    "craftcms/redactor": "3.1.0",
+    "mmikkel/retcon": "2.7.5",
     "verbb/expanded-singles": "2.0.5",
     "mmikkel/cp-field-inspect": "^1.4.4",
-    "verbb/super-table": "3.0.9"
+    "verbb/super-table": "3.0.14"
   },
   "autoload": {
     "psr-4": {
@@ -53,5 +53,12 @@
       "@composer dump-autoload -o",
       "@php craft setup/welcome"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.craftcms.com",
+      "canonical": false
+    }
+  ]
 }
