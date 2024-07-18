@@ -76,6 +76,15 @@ body.active-featured {
         }
       }
     }
+    &.oneper {
+      a.blowup {
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 
   .featured-block {
