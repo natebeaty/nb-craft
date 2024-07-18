@@ -19,13 +19,13 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "require": {
-    "craftcms/cms": "4.10.0",
+    "craftcms/cms": "4.10.6",
     "vlucas/phpdotenv": "^4.0.0",
-    "topshelfcraft/wordsmith": "4.4.0",
+    "topshelfcraft/wordsmith": "4.5.0",
     "clubstudioltd/craft-asset-rev": "^7.0.0",
     "verbb/redactor-tweaks": "3.0.1",
     "craftcms/redactor": "3.1.0",
-    "mmikkel/retcon": "2.7.5",
+    "mmikkel/retcon": "2.8.1",
     "verbb/expanded-singles": "2.0.5",
     "mmikkel/cp-field-inspect": "^1.4.4",
     "verbb/super-table": "3.0.14"

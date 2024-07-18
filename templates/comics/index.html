@@ -33,7 +33,7 @@
                 alt="{{ featuredImage.title ? featuredImage.title : entry.title }}"
                 loading="lazy"
               />
-              <h3><a href="{{ entry.url }}">{{ entry.title }}</a></h3>
+              <h3><a href="{{ entry.getUrl() }}">{{ entry.title }}</a></h3>
             </div>
           </article>
         {% endif %}
