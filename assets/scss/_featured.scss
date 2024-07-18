@@ -62,6 +62,20 @@ body.active-featured {
         }
       }
     }
+    &.twoper {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 10px;
+      a {
+        flex: 1;
+        min-width: 48%;
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 
   .featured-block {
