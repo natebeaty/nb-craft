@@ -50,7 +50,7 @@ body.active-featured {
     &.threeper {
       display: flex;
       flex-flow: row wrap;
-      a {
+      a.blowup {
         flex: 0 1 50%;
         @include min-screen($breakpoint-medium) {
           flex: 0 1 33.3%;
@@ -66,7 +66,7 @@ body.active-featured {
       display: flex;
       flex-flow: row wrap;
       gap: 10px;
-      a {
+      a.blowup {
         flex: 1;
         min-width: 48%;
         img {
