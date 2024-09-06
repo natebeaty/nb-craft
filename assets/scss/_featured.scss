@@ -1,10 +1,8 @@
 // featured
 body.active-featured {
   background: $featured;
-  nav.main {
-    svg {
-      stroke: $black;
-    }
+  svg.icon {
+    stroke: $black;
   }
   .description {
     margin: 20px 0;
