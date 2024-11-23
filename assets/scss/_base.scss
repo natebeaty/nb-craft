@@ -77,7 +77,7 @@ nav.main {
     z-index: 9;
     width: 50%;
     height: 50vh;
-    transition: border 0.25s steps(4), background 0.01s, font 0.01s;
+    transition: border 0.25s, background 0.01s, font 0.01s;
     border: 0 solid rgba(0,0,0,0);
     span {
       padding: 2px;
@@ -85,11 +85,11 @@ nav.main {
       position: absolute;
       left: 30%;
       top: 50%;
+      // transition: top 0.35s, left 0.35s, right 0.35s, bottom 0.35s;
+      transform: translateY(-50%);
       @include max-screen($breakpoint-small) {
         top: 60%;
       }
-      // transition: top 0.35s, left 0.35s, right 0.35s, bottom 0.35s;
-      transform: translateY(-50%);
     }
     @include max-screen($breakpoint-small) {
       &.journal,
@@ -247,12 +247,12 @@ body.active-comics nav.main a.comics {
 // single pages & journal lists
 .journal-list article,
 .is-single {
-  @include clearfix;
   max-width: 750px;
+  margin: 0 auto;
+  @include clearfix;
   @include min-screen($breakpoint-large) {
     max-width: 960px;
   }
-  margin: 0 auto;
 }
 .journal-list article {
   margin-bottom: 40px;
@@ -512,14 +512,14 @@ body.in-section {
       flex: 0 1 50%;
     }
     @include min-screen($breakpoint-medium) {
+      flex: 0 1 25%;
+      cursor: pointer;
       &.wide {
         flex: 0 1 50%;
         img {
           width: 100%;
         }
       }
-      flex: 0 1 25%;
-      cursor: pointer;
     }
     @include min-screen($breakpoint-large) {
       h3 {
@@ -559,14 +559,14 @@ body.in-section {
 
 .pagination {
   max-width: 750px;
-  @include min-screen($breakpoint-large) {
-    max-width: 960px;
-  }
   height: 30px;
   margin: 20px auto;
   position: relative;
   text-align: center;
   line-height: 30px;
+  @include min-screen($breakpoint-large) {
+    max-width: 960px;
+  }
   a.archives {
     font: italic 20px/1 "Anonymous Pro", monospace;
     text-transform: uppercase;
@@ -603,9 +603,9 @@ body.in-section {
     font-style: italic;
   }
   a {
-    @include inline-link($link_dark, $link);
     text-decoration: underline;
     display: inline-block;
+    @include inline-link($link_dark, $link);
   }
   p.question {
     text-decoration: underline;
