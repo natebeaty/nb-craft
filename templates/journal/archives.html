@@ -8,6 +8,8 @@
 {% set allEntries = craft.entries.section('journal') %}
 
 {% block content %}
+{% cache unless craft.app.config.general.devMode or currentUser %}
+
   <section class="journal-list is-single archives page-content"  data-section="journal" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
     <h1>Journal Archives</h1>
     <div class="archives-wrap">
@@ -26,4 +28,6 @@
     </div>
   {% endif %}
   </section>
+
+{% endcache %}
 {% endblock %}

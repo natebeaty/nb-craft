@@ -1,8 +1,11 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = entry.title %}
 {% set description = entry.body|striptags[:160] %}
-{% if entry.seoDescription %}
-  {% set description = entry.seoDescription %}
+{% if entry.seoDescription %}{% set seoDescription = entry.seoDescription %}{% endif %}
+{% if entry.seoShareImage.exists() %}
+  {% set seoShareImage = entry.seoShareImage.one() %}
+{% elseif entry.comicPages|length %}
+  {% set seoShareImage = entry.comicPages.one() %}
 {% endif %}
 
 {% set params = craft.entries.section('comics').orderBy('postDate desc, id asc') %}
@@ -10,6 +13,8 @@
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
+{% cache unless craft.app.config.general.devMode or currentUser %}
+
   <article class="comic is-single" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
     {% include "partials/_edit" with {'entry': entry} %}
     <h1>{{ entry.title }}</h1>
@@ -41,4 +46,6 @@
     </div>
   </article>
   {% include "partials/_pagination" %}
+
+{% endcache %}
 {% endblock %}

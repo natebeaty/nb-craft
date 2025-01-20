@@ -4,12 +4,19 @@
 {% if entry.seoDescription %}
   {% set description = entry.seoDescription %}
 {% endif %}
+{% if entry.seoShareImage.exists() %}
+  {% set seoShareImage = entry.seoShareImage.one() %}
+{% elseif entry.featureImages|length %}
+  {% set seoShareImage = entry.featureImages.one() %}
+{% endif %}
 
 {% set params = craft.entries.section('featured').orderBy('postDate desc, id asc') %}
 {% set prevEntry = entry.getPrev(params) %}
 {% set nextEntry = entry.getNext(params) %}
 
 {% block content %}
+{% cache unless craft.app.config.general.devMode or currentUser %}
+
   <article class="featured is-single" data-section="featured" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
     {% include "partials/_edit" with {'entry': entry} %}
     <h1>{{ entry.title }}</h1>
@@ -63,4 +70,6 @@
 
   </article>
   {% include "partials/_pagination" %}
+
+{% endcache %}
 {% endblock %}
