@@ -24,6 +24,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 78f3b786-aa0f-4606-86ed-7ea6b2b4a471
             warning: null
             width: 100
           -
@@ -33,10 +34,12 @@ fieldLayouts:
             required: '0'
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: b599c169-c72a-4305-aabd-dc695f9a147b
             warning: null
             width: 100
         name: 'Tab 1'
         sortOrder: 1
+        uid: 6b345587-91ad-45c9-bb09-b8ace0b41140
       -
         elements:
           -
@@ -46,6 +49,7 @@ fieldLayouts:
             required: '0'
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 87daa3ad-46bb-416f-adcd-f6397e6df90d
             warning: null
             width: 100
           -
@@ -55,14 +59,15 @@ fieldLayouts:
             required: '0'
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: c37b3988-73fa-4a34-b0ea-bd0308980682
             warning: null
             width: 100
         name: SEO
         sortOrder: 2
+        uid: 373f0d22-1c68-4574-b33e-a454a8a7441a
 handle: journalArchives
 hasTitleField: true
 name: 'Journal Archives'
-section: 00443305-72ee-4efd-abc5-48edf0835af2 # Journal Archives
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

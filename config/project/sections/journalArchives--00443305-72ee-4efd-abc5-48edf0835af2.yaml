@@ -1,5 +1,9 @@
+defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  - 1e2efd00-c7cf-4fd0-9773-f7873bc0f42a # Journal Archives
 handle: journalArchives
+maxAuthors: 1
 name: 'Journal Archives'
 previewTargets:
   -
@@ -16,5 +20,5 @@ siteSettings:
     enabledByDefault: true
     hasUrls: true
     template: journal/archives
-    uriFormat: /journal/archives
+    uriFormat: journal/archives
 type: single

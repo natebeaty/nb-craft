@@ -2,27 +2,59 @@ fieldLayouts:
   ef905e82-fc27-4731-9eed-448e2fb5d348:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            dateAdded: '2025-01-20T16:34:17+00:00'
+            elementCondition: null
             fieldUid: dd8198bd-9339-4152-911a-2c279336bdd8 # SEO Title
+            handle: null
+            includeInCards: false
             instructions: null
             label: null
-            required: '0'
+            providesThumbs: false
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 910fcbc7-89ef-4a81-8ed8-892e1632661d
+            userCondition: null
             warning: null
             width: 100
           -
+            dateAdded: '2025-01-20T16:34:17+00:00'
+            elementCondition: null
             fieldUid: 4b7aee9a-860d-4d7d-8e51-088345eb928f # SEO Description
+            handle: null
+            includeInCards: false
             instructions: null
             label: null
-            required: '0'
+            providesThumbs: false
+            required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: fab0c86c-a367-47bb-a0e2-c055369e68b4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-01-20T16:42:28+00:00'
+            elementCondition: null
+            fieldUid: 7b4cca7a-8d8b-444d-92be-381788461080 # SEO Share Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 01f40329-2388-4859-b3da-77e3cc86a86a
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: a45e7b7b-475b-47f1-9a4d-65406706f94e
+        userCondition: null
 handle: globalSeo
 name: 'Global SEO'
 sortOrder: 1

@@ -1,5 +1,9 @@
+defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  - c539eb18-f49c-416c-a32b-ca32c4fa9fd1 # Featured
 handle: featured
+maxAuthors: 1
 name: Featured
 previewTargets:
   -

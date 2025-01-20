@@ -24,10 +24,12 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: a510e694-a185-4316-8a61-bb8dcf5282fb
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+        uid: e1b50388-1df8-49d4-95ac-963c32108f5b
 fs: comics
 handle: comics
 hasUrls: true

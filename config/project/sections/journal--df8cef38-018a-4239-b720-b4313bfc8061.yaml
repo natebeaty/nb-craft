@@ -1,5 +1,9 @@
+defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  - 9a4b7552-e9c7-4c43-b438-0cfb90308952 # Journal
 handle: journal
+maxAuthors: 1
 name: Journal
 previewTargets:
   -

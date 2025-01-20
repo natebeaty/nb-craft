@@ -1,5 +1,9 @@
+defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  - 01cabc32-e6ab-49c1-b259-bc8b98ed911e # About
 handle: about
+maxAuthors: 1
 name: About
 previewTargets:
   -

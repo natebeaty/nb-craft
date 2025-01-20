@@ -24,10 +24,12 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\TitleField
+            uid: 5655909f-efe1-4e21-8dd0-531b0daf0cb1
             warning: null
             width: 100
         name: 'Tab 1'
         sortOrder: 1
+        uid: 9fa74fae-0039-46d7-b7eb-3f8b119cb9cf
 handle: comics
 name: Comics
 siteSettings:

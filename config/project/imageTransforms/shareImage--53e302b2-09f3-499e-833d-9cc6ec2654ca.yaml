@@ -1,0 +1,11 @@
+fill: null
+format: null
+handle: shareImage
+height: 600
+interlace: none
+mode: crop
+name: 'Share Image'
+position: center-center
+quality: null
+upscale: false
+width: 1200

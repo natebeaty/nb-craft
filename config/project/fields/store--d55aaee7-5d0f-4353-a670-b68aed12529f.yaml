@@ -1,30 +1,21 @@
 columnSuffix: null
-contentColumnType: string
-fieldGroup: c93e3857-1ac5-4a18-9f51-f04722779d20 # Globals
 handle: store
 instructions: null
 name: Store
 searchable: false
 settings:
-  blockTypeFields: 0
-  changedFieldIndicator: 245956171
-  columns:
-    __assoc__:
-      -
-        - 13126522-02f9-44e4-ac47-078e4a42cee4 # Buy Now Enabled
-        -
-          __assoc__:
-            -
-              - width
-              - ''
-  contentTable: '{{%stc_store}}'
-  fieldLayout: table
-  maxRows: null
-  minRows: null
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    - 49b75f7a-bd23-4b60-9541-66b95326dfa5 # Store Block
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
   propagationKeyFormat: null
   propagationMethod: all
-  selectionLabel: null
-  staticField: true
+  showCardsInGrid: false
+  viewMode: blocks
 translationKeyFormat: null
 translationMethod: site
-type: verbb\supertable\fields\SuperTableField
+type: craft\fields\Matrix

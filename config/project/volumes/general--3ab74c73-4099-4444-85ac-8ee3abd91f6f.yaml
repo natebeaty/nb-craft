@@ -24,10 +24,12 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 86b0554d-445f-4032-8022-38f42e662a60
             warning: null
             width: 100
         name: Content
         sortOrder: 1
+        uid: 981b3845-cc90-44ae-9939-d755bac09807
 fs: general
 handle: general
 hasUrls: true

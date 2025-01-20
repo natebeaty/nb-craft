@@ -1,0 +1,10 @@
+columnSuffix: null
+handle: bg
+instructions: 'If populated, sets a background color on the block'
+name: 'Featured Blocks - Feature Block - Bg'
+searchable: false
+settings:
+  defaultColor: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Color

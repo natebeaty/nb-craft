@@ -1,0 +1,34 @@
+columnSuffix: null
+handle: seoShareImage
+instructions: null
+name: 'SEO Share Image'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds: null
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:3ab74c73-4099-4444-85ac-8ee3abd91f6f' # General
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  previewMode: full
+  restrictFiles: false
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:3ab74c73-4099-4444-85ac-8ee3abd91f6f' # General
+  restrictedLocationSubpath: null
+  selectionLabel: 'Add image'
+  showCardsInGrid: false
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

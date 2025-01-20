@@ -1,16 +1,17 @@
 columnSuffix: null
 contentColumnType: string
-fieldGroup: 7ccd7585-e576-4a7c-81bd-999c168264e2 # Default
 handle: featuredBlocks
 instructions: ''
 name: 'Featured Blocks'
 searchable: true
 settings:
-  contentTable: '{{%matrixcontent_featuredblocks}}'
-  maxBlocks: ''
-  minBlocks: ''
+  entryTypes:
+    - b168120a-212b-41d2-b888-5d01268c527e
+  maxEntries: ''
+  minEntries: ''
   propagationKeyFormat: null
   propagationMethod: all
+  viewMode: blocks
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

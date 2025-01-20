@@ -1,22 +1,20 @@
-contentColumnType: text
-handle: body
-instructions: ''
-name: Body
+columnSuffix: null
+handle: description
+instructions: null
+name: 'Featured Blocks - Feature Block - Description'
 searchable: true
 settings:
   availableTransforms: '*'
   availableVolumes: '*'
-  cleanupHtml: true
-  columnType: text
   configSelectionMode: choose
   defaultTransform: ''
   manualConfig: ''
-  purifierConfig: ''
-  purifyHtml: ''
-  redactorConfig: Standard.json
-  removeEmptyTags: ''
-  removeInlineStyles: ''
-  removeNbsp: ''
+  purifierConfig: null
+  purifyHtml: true
+  redactorConfig: null
+  removeEmptyTags: true
+  removeInlineStyles: true
+  removeNbsp: true
   showHtmlButtonForNonAdmins: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: true

@@ -1,0 +1,37 @@
+color: null
+fieldLayouts:
+  34acd72a-57c9-484b-8eb1-19e4dfd9b9cd:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-01-20T16:34:17+00:00'
+            elementCondition: null
+            fieldUid: 13126522-02f9-44e4-ac47-078e4a42cee4
+            handle: null
+            includeInCards: true
+            instructions: null
+            label: 'Buy Now Enabled'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a736ceb5-9dc0-4921-b4d0-024dbec1720e
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 1d32f02e-8ea4-42b5-b463-af80d535dca2
+        userCondition: null
+handle: storeBlock
+hasTitleField: false
+icon: null
+name: 'Store Block'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

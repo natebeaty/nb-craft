@@ -1,0 +1,12 @@
+columnSuffix: null
+handle: buyNowEnabled
+instructions: 'Turn on/off buy now buttons in comics section'
+name: 'Store - Buy Now Enabled'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

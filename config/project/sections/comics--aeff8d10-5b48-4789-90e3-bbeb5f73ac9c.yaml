@@ -1,5 +1,9 @@
+defaultPlacement: end
 enableVersioning: true
+entryTypes:
+  - 41732311-3a2e-414b-9d4e-e6d4b3ab95b3 # Comics
 handle: comics
+maxAuthors: 1
 name: Comics
 previewTargets:
   -

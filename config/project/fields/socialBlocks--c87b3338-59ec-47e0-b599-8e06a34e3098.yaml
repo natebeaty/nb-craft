@@ -1,14 +1,15 @@
 contentColumnType: string
-fieldGroup: 7ccd7585-e576-4a7c-81bd-999c168264e2 # Default
 handle: socialBlocks
 instructions: ''
 name: 'Social Blocks'
 searchable: true
 settings:
-  contentTable: '{{%matrixcontent_socialblocks}}'
-  maxBlocks: null
-  minBlocks: null
+  entryTypes:
+    - f3e6c86c-39c3-4aa8-9576-58c353cd9f93
+  maxEntries: null
+  minEntries: null
   propagationMethod: all
+  viewMode: blocks
 translationKeyFormat: null
 translationMethod: site
 type: craft\fields\Matrix

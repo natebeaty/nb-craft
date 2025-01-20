@@ -1,16 +1,15 @@
-contentColumnType: text
-handle: seoTitle
-instructions: ''
-name: 'SEO Title'
+columnSuffix: null
+handle: socialURL
+instructions: null
+name: 'Social Blocks - Social - URL'
 searchable: true
 settings:
   byteLimit: null
   charLimit: null
   code: false
-  columnType: text
-  initialRows: '4'
-  multiline: ''
-  placeholder: ''
+  initialRows: 4
+  multiline: false
+  placeholder: null
   uiMode: normal
 translationKeyFormat: null
 translationMethod: none
