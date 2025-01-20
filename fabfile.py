@@ -3,7 +3,7 @@ from invoke import run as local
 
 remote_path = "/home/natebeaty/apps/nb-craft"
 remote_hosts = ["natebeaty@natebeaty.opalstacked.com"]
-php_command = "php81"
+php_command = "php82"
 
 # set to production
 # @task
