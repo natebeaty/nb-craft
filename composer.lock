@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbedb59b1393d462b7ebc1863f51e2b6",
+    "content-hash": "0cf268b11bccfaa8a83561d8b001d39a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1726,11 +1726,11 @@
         },
         {
             "name": "mmikkel/retcon",
-            "version": "3.2.0",
+            "version": "3.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mmikkel/Retcon-Craft/zipball/86e622a9d57d49706fbe976c69a1f26a94041e47",
-                "reference": "86e622a9d57d49706fbe976c69a1f26a94041e47",
+                "url": "https://api.github.com/repos/mmikkel/Retcon-Craft/zipball/80a520b54220417a598f66b5dcac77216da51cc1",
+                "reference": "80a520b54220417a598f66b5dcac77216da51cc1",
                 "shasum": ""
             },
             "require": {
@@ -1777,7 +1777,7 @@
                 "docs": "https://github.com/mmikkel/Retcon-Craft/blob/master/README.md",
                 "issues": "https://github.com/mmikkel/Retcon-Craft/issues"
             },
-            "time": "2024-06-28T17:08:59+00:00"
+            "time": "2024-10-21T13:36:18+00:00"
         },
         {
             "name": "mofodojodino/profanity-filter",
