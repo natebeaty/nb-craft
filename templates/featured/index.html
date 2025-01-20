@@ -4,6 +4,7 @@
 
 {% block content %}
 {% cache unless craft.app.config.general.devMode or currentUser %}
+
   <section class="featured-list image-list page-content" data-page="{{ craft.app.request.absoluteUrl|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
     <div class="thumb-wrap">
     {% set entries = craft.entries({
@@ -32,7 +33,6 @@
     {% endfor %}
     </div>
   </section>
-  {% endcache %}
 
 {% endcache %}
 {% endblock %}
