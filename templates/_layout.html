@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" class="no-js">
 <head>
   <meta charset="utf-8" />
-  <title>{% if title is defined %}{{ title }} – {{ siteName }}{% elseif seoTitle is defined %}{{ seoTitle }}{% elseif global.Seo.seoTitle %}{{ globalSeo.seoTitle }}{% endif %}</title>
-  <meta name="description" content="{% if description is defined %}{{ description }}{% else %}{{ seoDescription }}{% endif %}"/>
+  <title>{% if title is defined %}{{ title }} – {{ siteName }}{% elseif seoTitle is defined %}{{ seoTitle }}{% elseif globalSeo.seoTitle %}{{ globalSeo.seoTitle }}{% endif %}</title>
+  <meta name="description" content="{% if description is defined %}{{ description }}{% elseif globalSeo.seoDescription %}{{ globalSeo.seoDescription }}{% endif %}"/>
   <link rel="home" href="{{ siteUrl }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="alternate" type="application/atom+xml" href="{{ url('journal/feed.atom') }}">
@@ -25,7 +25,7 @@
   <meta property="og:url" content="{{ entry.getUrl() }}">
   {% endif -%}
   <meta property="og:site_name" content="{{ siteName }}">
-  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% elseif global.Seo.seoTitle %}{{ globalSeo.seoTitle }}{% else %}{{ siteName }}{% endif %}">
+  <meta property="og:title" content="{% if seoTitle is defined %}{{ seoTitle }}{% elseif title is defined %}{{ title }} | {{ siteName }}{% elseif globalSeo.seoTitle %}{{ globalSeo.seoTitle }}{% else %}{{ siteName }}{% endif %}">
   {% if seoDescription is defined -%}
   <meta property="og:description" content="{{ seoDescription }}">
   {% elseif globalSeo.seoDescription %}
