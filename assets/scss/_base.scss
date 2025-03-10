@@ -1,3 +1,19 @@
+@font-face {
+    font-display: swap;
+    font-family: Rosart;
+    font-style: normal;
+    font-weight: 400;
+    src: url(/fonts/Rosart-Regular-subset.woff2) format("woff2"),url(/fonts/Rosart-Regular-subset.woff) format("woff")
+}
+
+@font-face {
+    font-display: swap;
+    font-family: Rosart;
+    font-style: italic;
+    font-weight: 400;
+    src: url(/fonts/Rosart-RegularItalic-subset.woff2) format("woff2"),url(/fonts/Rosart-RegularItalic-subset.woff) format("woff")
+}
+
 %loading {
   content: '';
   position: absolute;
@@ -18,17 +34,17 @@
 body {
   background: $comics;
   transition: background-color .25s ease-out;
-  font: 15px/1.5 "Anonymous Pro", monospace;
+  font: 18px/1.5 Rosart, "Georgia Pro", Georgia, serif;
   @include min-screen($breakpoint-large) {
-    font: 17px/1.5 "Anonymous Pro", monospace;
+    font: 17px/1.5 Rosart, "Georgia Pro", Georgia, serif;
   }
   color: $text;
 }
 .h1,h1 {
-  font: italic 24px/1 "Anonymous Pro", monospace;
+  font: italic 32px/1 "Anonymous Pro", monospace;
   margin: 1em 0 .5em;
   @include min-screen($breakpoint-large) {
-    font: italic 32px/1 "Anonymous Pro", monospace;
+    font: italic 36px/1 "Anonymous Pro", monospace;
   }
 }
 .h2,h2,
@@ -337,7 +353,7 @@ svg.icon {
 
 // "nate beaty" title
 h1.title {
-  font: italic 20px/1 "Anonymous Pro";
+  font: italic 20px/1 "Anonymous Pro", monospace;
   -webkit-font-smoothing: antialiased;
   color: $white;
   text-transform: uppercase;
@@ -362,7 +378,7 @@ h1.title {
   }
 
   @include min-screen($breakpoint-medium) {
-    font: italic 24px/1 "Anonymous Pro";
+    font: italic 24px/1 "Anonymous Pro", monospace;
   }
 }
 
@@ -568,7 +584,7 @@ body.in-section {
     max-width: 960px;
   }
   a.archives {
-    font: italic 20px/1 "Anonymous Pro", monospace;
+    font: 20px/1 Rosart, "Georgia Pro", Georgia, serif;
     text-transform: uppercase;
     color: $link;
     @include inline-link($link, $journal);
@@ -787,13 +803,13 @@ img.lazy {
     left: 20px;
     height: calc(100vh - 98px);
     overflow: auto;
-    font: italic 16px/1.2 "Anonymous Pro", monospace;
+    font: 16px/1.2 Rosart, "Georgia Pro", Georgia, serif;
     @include min-screen($breakpoint-medium) {
       left: 80px;
       width: 80%;
       height: calc(100vh - 220px);
       top: 220px;
-      font: italic 24px/1.2 "Anonymous Pro", monospace;
+      font: 24px/1.2 Rosart, "Georgia Pro", Georgia, serif;
     }
     padding: 10px;
     color: $black;
@@ -812,7 +828,7 @@ img.lazy {
           left: 0;
           top: 0;
           color: $white;
-          font: 24px/1.2 "Anonymous Pro", monospace;
+          font: 24px/1.2 Rosart, "Georgia Pro", Georgia, serif;
         }
       }
     }
