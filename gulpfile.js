@@ -34,7 +34,7 @@ function styles() {
     .pipe(gulpif(!isProduction, gulp.dest('web/assets/dist/css')))
     .pipe(browsersync.stream())
     .pipe(notify({
-      message: 'Styles smashed.', 
+      message: 'Styles smashed.',
       onLast: true
     }));
 }
@@ -53,7 +53,7 @@ function scripts() {
     .pipe(gulpif(!isProduction, sourcemaps.write('maps')))
     .pipe(gulpif(!isProduction, gulp.dest('web/assets/dist/js')))
     .pipe(notify({
-      message: 'Scripts smashed.', 
+      message: 'Scripts smashed.',
       onLast: true
     }));
 }
@@ -77,6 +77,8 @@ function copy() {
     .pipe(gulp.dest('web/assets/dist/js/'));
   gulp.src(['assets/js/lazysizes.min.js'])
     .pipe(gulp.dest('web/assets/dist/js/'));
+  gulp.src(['assets/fonts/*'])
+    .pipe(gulp.dest('web/assets/dist/fonts/'));
   gulp.src(['assets/svg/*'])
     .pipe(gulp.dest('web/assets/dist/svg/'));
   return gulp.src(['assets/img/*'])
