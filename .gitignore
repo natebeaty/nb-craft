@@ -3,6 +3,7 @@
 /vendor
 .DS_Store
 .nova
+.zed
 
 # Build
 node_modules
