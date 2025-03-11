@@ -41,10 +41,10 @@ body {
   color: $text;
 }
 .h1,h1 {
-  font: italic 32px/1 "Anonymous Pro", monospace;
+  font: italic 28px/1 "Anonymous Pro", monospace;
   margin: 1em 0 .5em;
   @include min-screen($breakpoint-large) {
-    font: italic 36px/1 "Anonymous Pro", monospace;
+    font: italic 32px/1 "Anonymous Pro", monospace;
   }
 }
 .h2,h2,
@@ -187,7 +187,7 @@ body.active-about nav.main a.about,
 body.active-featured nav.main a.featured,
 body.active-journal nav.main a.journal,
 body.active-comics nav.main a.comics {
-  font: italic 30px/1 "Anonymous Pro", monospace;
+  /* font: italic 30px/1 "Anonymous Pro", monospace; */
   background: transparent;
   width: auto;
   span {
@@ -584,7 +584,7 @@ body.in-section {
     max-width: 960px;
   }
   a.archives {
-    font: 20px/1 Rosart, "Georgia Pro", Georgia, serif;
+    font: 20px/1 "Anonymous Pro", monospace;
     text-transform: uppercase;
     color: $link;
     @include inline-link($link, $journal);
@@ -804,6 +804,8 @@ img.lazy {
     height: calc(100vh - 98px);
     overflow: auto;
     font: 16px/1.2 Rosart, "Georgia Pro", Georgia, serif;
+    padding: 10px;
+    color: $black;
     @include min-screen($breakpoint-medium) {
       left: 80px;
       width: 80%;
@@ -811,8 +813,6 @@ img.lazy {
       top: 220px;
       font: 24px/1.2 Rosart, "Georgia Pro", Georgia, serif;
     }
-    padding: 10px;
-    color: $black;
     a {
       display: block;
       text-decoration: underline;
