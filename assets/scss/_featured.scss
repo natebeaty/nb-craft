@@ -11,7 +11,7 @@ body.active-featured {
     margin: -10px 0 20px;
     @include clearfix;
   }
-  .user-content a {
+  .user-content a:not(:has(img)) {
     @include inline-link($link_dark, $featured);
   }
   .lightbox-group span {

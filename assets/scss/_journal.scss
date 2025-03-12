@@ -13,7 +13,7 @@ body.active-journal {
     margin-bottom: .25em;
   }
   h1 a,
-  .user-content a {
+  .user-content a:not(:has(img)) {
     @include inline-link($link, $journal);
   }
   h1 a:hover {

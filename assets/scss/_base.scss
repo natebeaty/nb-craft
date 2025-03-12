@@ -618,7 +618,7 @@ body.in-section {
   em {
     font-style: italic;
   }
-  a {
+  a:not(:has(img)) {
     text-decoration: underline;
     display: inline-block;
     @include inline-link($link_dark, $link);
