@@ -774,8 +774,8 @@ img.lazy {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba($comics,.9);
-  // background: rgba(255,0,0,.9);
+  /* background: rgba($about, 0.9); */
+  background: rgba(0,0,0,0.75);
   z-index: 15;
 }
 .search {
@@ -817,7 +817,7 @@ img.lazy {
       display: block;
       text-decoration: underline;
       margin-bottom: 10px;
-      color: $link_dark;
+      color: $link;
       position: relative;
       @include min-screen($breakpoint-medium) {
         padding-left: 20px;
@@ -839,10 +839,17 @@ img.lazy {
     text-indent: -100em;
   }
 }
+
 // Active search state
-body.searching .search {
-  display: block;
+body.searching {
+  svg.icon {
+    stroke: $white !important;
+  }
+  .search {
+    display: block;
+  }
 }
+
 body.checking-out {
   .checkout-form {
     background: rgba($cart,.9);
@@ -860,7 +867,7 @@ body.checking-out {
   }
 }
 
-// 404
+// 404 page
 body.active-404 {
   background: #01A1AF;
   text-align: center;
