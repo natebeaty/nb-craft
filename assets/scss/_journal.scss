@@ -4,7 +4,7 @@ body.active-journal {
     margin-top: 1.5em;
   }
   p.date {
-    font: 15px/1.5 "Anonymous Pro", monospace;
+    font: italic 16px/1.5 $serif;
     opacity: 0.5;
     margin-bottom: 1em;
   }
@@ -12,9 +12,11 @@ body.active-journal {
   article.journal h1 {
     margin-bottom: .25em;
   }
-  h1 a,
-  .user-content a:not(:has(img)) {
+  h1 a {
     @include inline-link($link, $journal);
+  }
+  .user-content a:not(:has(img)) {
+    @include inline-link($link_dark, $journal);
   }
   h1 a:hover {
     text-decoration: underline;
@@ -58,7 +60,7 @@ body.active-journal {
       margin: 40px 0;
     }
     h2.date {
-      font: 15px/1.5 Rosart, "Georgia Pro", Georgia, serif;
+      font: 15px/1.5 $serif;
     }
     li {
       position: relative;

@@ -42,7 +42,7 @@ body.active-about {
   li {
     display: inline-block;
     a {
-      font: italic 18px/1 "Anonymous Pro", monospace;
+      font: italic 18px/1 $sans-serif;
       text-decoration: underline;
       color: $white;
       @include inline-link($white, $about);

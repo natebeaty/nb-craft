@@ -20,7 +20,8 @@ body.active-comics {
     margin-bottom: 20px;
   }
   .info {
-    opacity: 0.65;
+    font: italic 16px/1.5 $serif;
+    opacity: 0.5;
   }
   @include min-screen($breakpoint-medium) {
     #natehead {

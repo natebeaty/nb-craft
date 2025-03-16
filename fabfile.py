@@ -1,3 +1,8 @@
+# fabric deploy + build
+
+# specify host in command based on ssh config name
+# fab -H nbopal deploy --assets
+
 from fabric import task
 from invoke import run as local
 from patchwork.transfers import rsync

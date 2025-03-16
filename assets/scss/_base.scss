@@ -34,25 +34,25 @@
 body {
   background: $comics;
   transition: background-color .25s ease-out;
-  font: 18px/1.5 Rosart, "Georgia Pro", Georgia, serif;
+  font: 18px/1.5 $serif;
   @include min-screen($breakpoint-large) {
-    font: 17px/1.5 Rosart, "Georgia Pro", Georgia, serif;
+    font: 17px/1.5 $serif;
   }
   color: $text;
 }
 .h1,h1 {
-  font: italic 28px/1 "Anonymous Pro", monospace;
+  font: italic 28px/1 $sans-serif;
   margin: 1em 0 .5em;
   @include min-screen($breakpoint-large) {
-    font: italic 32px/1 "Anonymous Pro", monospace;
+    font: italic 32px/1 $sans-serif;
   }
 }
 .h2,h2,
 .h3,h3 {
-  font: italic 18px/1 "Anonymous Pro", monospace;
-  margin: 1em 0 .5em;
+  font: italic 20px/1 $sans-serif;
+  margin: 1.5em 0 1em;
   @include min-screen($breakpoint-large) {
-    font: italic 24px/1.2 "Anonymous Pro", monospace;
+    font: italic 24px/1.2 $sans-serif;
   }
 }
 main {
@@ -82,7 +82,7 @@ nav.main {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   a {
-    font: italic 24px/1 "Anonymous Pro", monospace;
+    font: italic 24px/1 $sans-serif;
     color: $black;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -187,7 +187,7 @@ body.active-about nav.main a.about,
 body.active-featured nav.main a.featured,
 body.active-journal nav.main a.journal,
 body.active-comics nav.main a.comics {
-  /* font: italic 30px/1 "Anonymous Pro", monospace; */
+  /* font: italic 30px/1 $sans-serif; */
   background: transparent;
   width: auto;
   span {
@@ -353,7 +353,7 @@ svg.icon {
 
 // "nate beaty" title
 h1.title {
-  font: italic 20px/1 "Anonymous Pro", monospace;
+  font: italic 20px/1 $sans-serif;
   -webkit-font-smoothing: antialiased;
   color: $white;
   text-transform: uppercase;
@@ -378,7 +378,7 @@ h1.title {
   }
 
   @include min-screen($breakpoint-medium) {
-    font: italic 24px/1 "Anonymous Pro", monospace;
+    font: italic 24px/1 $sans-serif;
   }
 }
 
@@ -514,7 +514,7 @@ body.in-section {
     }
     h3 {
       margin: 0;
-      font: normal 18px/1 "Anonymous Pro", monospace;
+      font: normal 18px/1 $sans-serif;
       color: $white;
       background: black;
       a {
@@ -584,7 +584,7 @@ body.in-section {
     max-width: 960px;
   }
   a.archives {
-    font: 20px/1 "Anonymous Pro", monospace;
+    font: 20px/1 $sans-serif;
     text-transform: uppercase;
     color: $link;
     @include inline-link($link, $journal);
@@ -630,24 +630,26 @@ body.in-section {
   .qna,
   blockquote,
   .writing-excerpt {
-    padding: 0 1.5em;
-    border-left: 10px solid $link_dark;
-    p {
-      font-size: 1.1rem;
-    }
-    // color: $white;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 0 0 2rem 2rem;
   }
   p.caption {
-    margin-top: -0.5em;
-    opacity: 0.65;
-    font-size: small;
+    font: italic 16px/1.5 $serif;
+  }
+  p + p.caption {
+    margin-top: -1em;
   }
   .video-container {
     margin-bottom: 1em;
   }
   ul {
     list-style: disc;
+    li::marker {
+      color: $white;
+    }
     margin: 0 0 1.5em;
+    padding: 0 0 0 1em;
   }
   code {
     background: rgba(255, 255, 255, 0.1);
@@ -780,7 +782,7 @@ img.lazy {
 }
 .search {
   input[name=s] {
-    font: 50px/1.2 "Anonymous Pro", monospace;
+    font: 50px/1.2 $sans-serif;
     letter-spacing: -.03em;
     padding: 0;
     color: $white;
@@ -793,7 +795,7 @@ img.lazy {
     text-indent: .05em;
 
     @include min-screen($breakpoint-medium) {
-      font: 150px/1.2 "Anonymous Pro", monospace;
+      font: 150px/1.2 $sans-serif;
       left: 100px;
     }
   }
@@ -803,7 +805,7 @@ img.lazy {
     left: 20px;
     height: calc(100vh - 98px);
     overflow: auto;
-    font: 16px/1.2 Rosart, "Georgia Pro", Georgia, serif;
+    font: 16px/1.2 $serif;
     padding: 10px;
     color: $black;
     @include min-screen($breakpoint-medium) {
@@ -811,7 +813,7 @@ img.lazy {
       width: 80%;
       height: calc(100vh - 220px);
       top: 220px;
-      font: 24px/1.2 Rosart, "Georgia Pro", Georgia, serif;
+      font: 24px/1.2 $serif;
     }
     a {
       display: block;
@@ -828,7 +830,7 @@ img.lazy {
           left: 0;
           top: 0;
           color: $white;
-          font: 24px/1.2 Rosart, "Georgia Pro", Georgia, serif;
+          font: 24px/1.2 $serif;
         }
       }
     }
@@ -922,7 +924,7 @@ body.active-404 {
   margin: 15px 0 0;
   border: none;
   background: none;
-  font: italic 18px/1 "Anonymous Pro", monospace;
+  font: italic 18px/1 $sans-serif;
   outline: none;
   svg {
     width: 22px;
