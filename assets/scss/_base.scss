@@ -623,6 +623,9 @@ body.in-section {
     display: inline-block;
     @include inline-link($link_dark, $link);
   }
+  p {
+    max-width: 75ch;
+  }
   p.question {
     text-decoration: underline;
   }
