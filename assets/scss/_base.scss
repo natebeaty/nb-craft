@@ -478,14 +478,6 @@ body.in-section {
 
 // general image masonry list (used on comics, featured)
 .image-list {
-  .category-shorts article,
-  .category-oldies article,
-  .category-kids article {
-    flex: 0 1 50%;
-    @include min-screen($breakpoint-medium) {
-      flex: 0 1 20%;
-    }
-  }
   .images-loaded article img {
     min-height: 0;
   }
@@ -493,13 +485,13 @@ body.in-section {
   .thumb-wrap {
     display: flex;
     flex-flow: row wrap;
-    margin: 0 -5px;
+    margin: 0;
     position: relative;
   }
 
   article {
-    flex: 0 1 100%;
-    margin: 0 0 10px;
+    flex: 0 1 50%;
+    margin: 0 0 5px;
     position: relative;
     .pad {
       padding: 0 5px;
@@ -524,9 +516,9 @@ body.in-section {
         text-decoration: none;
       }
     }
-    @include min-screen($breakpoint-small) {
-      flex: 0 1 50%;
-    }
+    // @include min-screen($breakpoint-small) {
+    //   flex: 0 1 50%;
+    // }
     @include min-screen($breakpoint-medium) {
       flex: 0 1 25%;
       cursor: pointer;
@@ -538,9 +530,10 @@ body.in-section {
       }
     }
     @include min-screen($breakpoint-large) {
+      flex: 0 1 15%;
       h3 {
         a {
-          padding: 20px;
+          // padding: 20px;
         }
       }
     }

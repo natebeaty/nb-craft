@@ -46,14 +46,35 @@ body.active-comics {
 
 // Support various tags to style comics
 article.comic {
-  // add white bg to comic thumbs
+  // Add white bg to comic thumbs
   &.white-bg {
     .comic-pages {
       background: $white;
       padding: 10px;
     }
   }
-  // dense comic panels: 3-per at md, 5-per at lg
+
+  // Dense comic panels: 3-per at md, 5-per at lg
+  &.two-three-per {
+    @include min-screen($breakpoint-medium) {
+      .comic-pages {
+        display: flex;
+        flex-flow: row wrap;
+        a {
+          flex: 0 1 50%;
+        }
+      }
+    }
+    @include min-screen($breakpoint-large) {
+      .comic-pages {
+        a {
+          flex: 0 1 33.3%;
+        }
+      }
+    }
+  }
+
+  // More dense comic panels: 3-per at md, 5-per at lg
   &.three-five-per {
     @include min-screen($breakpoint-medium) {
       .comic-pages {
