@@ -23,6 +23,8 @@ body.active-comics {
     font: italic 16px/1.5 $serif;
     opacity: 0.5;
   }
+
+  // Desktop styles
   @include min-screen($breakpoint-medium) {
     #natehead {
       top: calc(100vh - 125px);
@@ -37,6 +39,36 @@ body.active-comics {
       span {
         left: 0;
         right: 20%
+      }
+    }
+  }
+}
+
+// Support various tags to style comics
+article.comic {
+  // add white bg to comic thumbs
+  &.white-bg {
+    .comic-pages {
+      background: $white;
+      padding: 10px;
+    }
+  }
+  // dense comic panels: 3-per at md, 5-per at lg
+  &.three-five-per {
+    @include min-screen($breakpoint-medium) {
+      .comic-pages {
+        display: flex;
+        flex-flow: row wrap;
+        a {
+          flex: 0 1 33.3%;
+        }
+      }
+    }
+    @include min-screen($breakpoint-large) {
+      .comic-pages {
+        a {
+          flex: 0 1 20%;
+        }
       }
     }
   }

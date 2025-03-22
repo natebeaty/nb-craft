@@ -15,7 +15,7 @@
 {% block content %}
 {% cache unless craft.app.config.general.devMode or currentUser %}
 
-  <article class="comic is-single" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
+  <article class="comic is-single{% if entry.tags %}{% for tag in entry.tags.all() %} {{ tag.slug }}{% endfor %}{% endif %}" data-page="{{ entry.url|replace((siteUrl), '/') }}" data-page-title="{{ entry.title }}">
     {% include "partials/_edit" with {'entry': entry} %}
     <h1>{{ entry.title }}</h1>
     <div class="meta user-content">
