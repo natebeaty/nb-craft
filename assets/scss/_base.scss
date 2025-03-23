@@ -600,11 +600,14 @@ body.in-section {
     }
     &:hover {
       background: $black;
+      svg {
+        stroke: $white;
+      }
     }
     svg {
       width: 30px;
       height: 30px;
-      stroke: #fff;
+      stroke: $white;
     }
   }
 }
@@ -892,7 +895,7 @@ body.active-404 {
     color: $white;
   }
   h2 {
-    background: #fff;
+    background: $white;
     color: #AA0C00;
     padding: 20px;
     margin: 0;
