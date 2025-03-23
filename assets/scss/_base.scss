@@ -589,7 +589,7 @@ body.in-section {
     height: 50px;
     padding: 10px;
     cursor: pointer;
-    // background: rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.15);
     top: 0;
     &.previous {
       left: 0;
@@ -599,7 +599,7 @@ body.in-section {
       transform: rotate(180deg);
     }
     &:hover {
-      // background: $black;
+      background: $black;
     }
     svg {
       width: 30px;
