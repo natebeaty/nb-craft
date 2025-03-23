@@ -636,7 +636,17 @@ body.in-section {
   .writing-excerpt {
     padding: 1rem;
     background: rgba(255, 255, 255, 0.15);
-    margin: 0 0 2rem 2rem;
+    margin: 0 0 2rem 0;
+    @include min-screen($breakpoint-medium) {
+      margin: 0 0 2rem 2rem;
+    }
+  }
+  blockquote {
+    font-size: 1.3rem;
+    font-style: italic;
+    p:last-of-type {
+      margin-bottom: 0;
+    }
   }
   p.caption {
     font: italic 16px/1.5 $serif;
