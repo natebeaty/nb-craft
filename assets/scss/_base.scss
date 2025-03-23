@@ -943,6 +943,10 @@ body.active-404 {
   }
   &:hover {
     background: $black;
+    color: $white;
+    svg {
+      stroke: $white;
+    }
     span {
       text-decoration: underline;
     }
