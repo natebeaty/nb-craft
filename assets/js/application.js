@@ -167,6 +167,8 @@ var Nb = (function($) {
 
     // Main nav click: scroll page up or push URL into history
     $('nav.main a').on('click', function(e) {
+      // If holding meta key, just return
+      if (e.metaKey) return true;
       e.preventDefault();
       _colorStache(this);
       if (section_in == 'home') {
