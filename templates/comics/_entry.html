@@ -8,7 +8,7 @@
   {% set seoShareImage = entry.comicPages.one() %}
 {% endif %}
 
-{% set params = craft.entries.section('comics').orderBy('postDate desc, id asc') %}
+{% set params = craft.entries.section('comics').orderBy('category, postDate desc, id asc') %}
 {% set prevEntry = entry.getPrev(params) %}
 {% set nextEntry = entry.getNext(params) %}
 
