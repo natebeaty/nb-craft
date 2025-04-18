@@ -1,4 +1,4 @@
-dateModified: 1739155136
+dateModified: 1744939146
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -154,7 +154,7 @@ system:
   edition: solo
   live: true
   name: 'Nate Beaty'
-  schemaVersion: 5.6.0.2
+  schemaVersion: 5.7.0.3
   timeZone: UTC
 users:
   allowPublicRegistration: false
