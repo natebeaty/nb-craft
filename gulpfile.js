@@ -15,7 +15,7 @@ const browsersync  = require('browser-sync').create();
 const isProduction = argv.production;
 
 const conf = {
-  siteUrl: 'nb-craft3.localhost'
+  siteUrl: 'natebeaty.localhost'
 };
 
 function styles() {
