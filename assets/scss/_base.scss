@@ -530,7 +530,7 @@ body.in-section {
       }
     }
     @include min-screen($breakpoint-large) {
-      flex: 0 1 15%;
+      flex: 0 1 16.666%;
     }
   }
 }
