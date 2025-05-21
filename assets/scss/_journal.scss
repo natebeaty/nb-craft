@@ -1,5 +1,6 @@
 // journal
 body.active-journal {
+  background: $journal;
   h2.date {
     margin-top: 1.5em;
   }
@@ -8,7 +9,6 @@ body.active-journal {
     opacity: 0.5;
     margin-bottom: 1em;
   }
-  background: $journal;
   article.journal h1 {
     margin-bottom: .25em;
   }

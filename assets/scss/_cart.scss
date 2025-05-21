@@ -4,14 +4,14 @@
 .cart {
   position: fixed;
   right: 85px;
-  @include min-screen($breakpoint-medium) {
-    right: 155px;
-  }
   top: 13px;
   cursor: pointer;
   .icon {
     width: 25px;
     height: 25px;
+  }
+  @include min-screen($breakpoint-medium) {
+    right: 155px;
   }
 }
 
@@ -92,12 +92,12 @@ a.buy {
 .checking-out .cart-wrap,
 .active-cart .cart-wrap {
   pointer-events: auto;
+  display: block;
   .flip {
     margin-top: 10px;
     transform: rotateX(0deg);
     opacity: 1;
   }
-  display: block;
   @include min-screen($breakpoint-medium) {
     .flip {
       margin-top: 0;

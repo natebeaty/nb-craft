@@ -5,8 +5,24 @@ body.active-about {
     display: block;
     margin-bottom: 10px;
   }
-  .user-content a {
-    @include inline-link($white, $about);
+  .user-content {
+    a {
+      @include inline-link($white, $about);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 1.5em;
+      li > em {
+        font-style: normal;
+        margin: 0 0 0 -1.5em;
+        display: inline;
+        padding-right: 0.25em;
+      }
+      li + li {
+        margin-top: 0.5em;
+      }
+    }
   }
   @include min-screen($breakpoint-medium) {
     main {
@@ -45,9 +61,9 @@ body.active-about {
       font: italic 18px/1 $sans-serif;
       text-decoration: underline;
       color: $white;
-      @include inline-link($white, $about);
       display: inline-block;
       padding: 6px 10px;
+      @include inline-link($white, $about);
     }
   }
 }
