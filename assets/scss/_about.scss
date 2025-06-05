@@ -7,7 +7,7 @@ body.active-about {
   }
   .user-content {
     a {
-      @include inline-link($white, $about);
+      @include inline-link($featured, $about);
     }
     ul {
       list-style: none;
