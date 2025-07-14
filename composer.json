@@ -27,7 +27,6 @@
     "craftcms/redactor": "4.2.0",
     "mmikkel/retcon": "^3.2.1",
     "verbb/expanded-singles": "3.0.2",
-    "mmikkel/cp-field-inspect": "2.0.4",
     "verbb/super-table": "4.0.4"
   },
   "autoload": {

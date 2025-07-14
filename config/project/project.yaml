@@ -1,4 +1,4 @@
-dateModified: 1752520039
+dateModified: 1752520317
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -100,11 +100,6 @@ plugins:
     schemaVersion: 1.0.0
     settings: null
   assetrev:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
-  cp-field-inspect:
     enabled: '1'
     licenseKey: null
     schemaVersion: 1.0.0
