@@ -1,3 +1,3 @@
-# nb-craft3
+# nb-craft
 
-Craft 3 version of [natebeaty.com](https://natebeaty.com/)
+Craft CMS version of [natebeaty.com](https://natebeaty.com/)
