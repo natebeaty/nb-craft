@@ -8,9 +8,28 @@
   {% set seoShareImage = entry.comicPages.one() %}
 {% endif %}
 
-{% set params = craft.entries.section('comics').orderBy('category, postDate desc, id asc') %}
+{% set category = entry.category.one() %}
+{% set entryIds = craft.entries.section('comics').status('live').ids() %}
+{% set comicCategories = craft.categories.relatedTo({ sourceElement: entryIds }) %}
+
+{% set params = craft.entries.section('comics').relatedTo(category).status('live') %}
 {% set prevEntry = entry.getPrev(params) %}
+{% if prevEntry == null %}
+  {% set prevCategory = comicCategories.prevSiblingOf(category).one() %}
+  {% if prevCategory is null %}
+    {% set prevCategory = craft.categories.relatedTo({ sourceElement: entryIds }).inReverse().one() %}
+  {% endif %}
+  {% set prevEntry = craft.entries.section('comics').status('live').relatedTo(prevCategory).inReverse().one() %}
+{% endif %}
+
 {% set nextEntry = entry.getNext(params) %}
+{% if nextEntry == null %}
+  {% set nextCategory = comicCategories.nextSiblingOf(category).one() %}
+  {% if nextCategory is null %}
+    {% set nextCategory = craft.categories.relatedTo({ sourceElement: entryIds }).one() %}
+  {% endif %}
+  {% set nextEntry = craft.entries.section('comics').relatedTo(nextCategory).status('live').one() %}
+{% endif %}
 
 {% block content %}
 {% cache unless craft.app.config.general.devMode or currentUser %}

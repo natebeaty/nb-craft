@@ -1,27 +1,28 @@
 {% extends (craft.app.request.isAjax and not craft.app.request.isLivePreview) ? "_ajax-layout" : "_layout" %}
 {% set title = "Comics" %}
 {% set description = "Diddling with sequential doodles." %}
-{% set entries = craft.entries({
-    section: 'comics',
-    with: [
-      ['featuredImage', {
-          withTransforms: ['thumb','thumb1x','thumbLarge']
-      }]
-    ]
-}) %}
-{% set relatedCats = craft.categories.relatedTo(entries) %}
+
+{# Find categories used by comics #}
+{% set entryIds = craft.entries.section('comics').ids() %}
+{% set comicCategories = craft.categories.relatedTo({ sourceElement: entryIds }) %}
 
 {% block content %}
 {% cache unless craft.app.config.general.devMode or currentUser %}
 
   <section class="comics-list image-list page-content" data-page="{{ craft.app.request.absoluteUrl|replace((siteUrl), '/') }}" data-page-title="{{ title }}">
-  {# Loop the categories #}
-  {% for category in relatedCats.all() %}
+  {% for category in comicCategories.all() %}
 
     <div class="comic-group category-{{ category.slug }}">
       <h2>{{ category.title }}</h2>
       <div class="thumb-wrap">
-      {% set relatedEntries = craft.entries.relatedTo(category) %}
+      {% set relatedEntries = craft.entries({
+        relatedTo: category,
+        with: [
+          ['featuredImage', {
+              withTransforms: ['thumb', 'thumb1x', 'thumbLarge']
+          }]
+        ]
+      }) %}
       {% for entry in relatedEntries.all() %}
 
         {% set featuredImage = entry.featuredImage[0] ?? null %}
