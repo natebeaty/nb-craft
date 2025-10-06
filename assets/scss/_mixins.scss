@@ -59,7 +59,7 @@ a.button {
     color: $hover_color;
     border-color: $hover_color;
     background-color: rgba($hover_bg, 1);
-    box-shadow: .2em .1em 0 #fff, -.2em .1em 0 #fff, -.2em 0 0 #fff, .2em 0 0 #fff;
+    box-shadow: .2em .1em 0 $hover_bg, -.2em .1em 0 $hover_bg, -.2em 0 0 $hover_bg, .2em 0 0 $hover_bg;
     box-decoration-break: clone;
     svg {
       fill: $hover_color;
