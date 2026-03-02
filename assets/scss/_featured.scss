@@ -17,6 +17,14 @@ body.active-featured {
   .lightbox-group span {
     color: $link_dark;
   }
+
+  // Fitvid custom video elements
+  article.featured figure video {
+    width: 100%;
+    height: auto;
+  }
+
+  // Desktop styles
   @include min-screen($breakpoint-medium) {
     main {
       padding: 150px 20px 50px 70px;
@@ -44,6 +52,7 @@ body.active-featured {
     }
   }
 
+  // Featured blocks
   .featured-block {
     &.threeper {
       display: flex;
@@ -83,9 +92,7 @@ body.active-featured {
         }
       }
     }
-  }
 
-  .featured-block {
     &.-colored {
       padding: 10px;
       .description {
@@ -96,4 +103,5 @@ body.active-featured {
       }
     }
   }
+
 }

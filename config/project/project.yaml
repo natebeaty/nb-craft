@@ -1,4 +1,4 @@
-dateModified: 1752520317
+dateModified: 1772483288
 email:
   fromEmail: nate@clixel.com
   fromName: 'Natebeaty.com (Craft)'
@@ -75,6 +75,7 @@ meta:
     ae906d3d-25e4-450f-a120-f3ba9ebe5102: 'Custom CSS' # Custom CSS
     aeff8d10-5b48-4789-90e3-bbeb5f73ac9c: Comics # Comics
     af8f54e2-871a-4219-8081-55fc8a42f3c7: Headsploog # Headsploog
+    b168120a-212b-41d2-b888-5d01268c527e: 'Feature Block' # Feature Block
     bbdbc318-559b-473f-bb9b-d3c428120920: Thumb # Thumb
     c29d2f2b-8d65-473a-99e8-9577265744a2: Comics # Comics
     c87b3338-59ec-47e0-b599-8e06a34e3098: 'Social Blocks' # Social Blocks
@@ -92,6 +93,7 @@ meta:
     e98fa039-438e-41bc-b70c-7eaf3c903d61: Homepage # Homepage
     e6890102-93bc-4cc6-9f10-a9994de342d4: Category # Category
     f1fda3e3-ba67-4ab1-8c7c-3ff3dba59a71: About # About
+    f3e6c86c-39c3-4aa8-9576-58c353cd9f93: Social # Social
     fa9fc1f2-faef-4192-a91e-fdef1db4d7a7: Body # Body
 plugins:
   asset-rev:
@@ -149,7 +151,7 @@ system:
   edition: solo
   live: true
   name: 'Nate Beaty'
-  schemaVersion: 5.8.0.3
+  schemaVersion: 5.9.0.8
   timeZone: UTC
 users:
   allowPublicRegistration: false

@@ -5,7 +5,7 @@ name: 'Social Blocks'
 searchable: true
 settings:
   entryTypes:
-    - f3e6c86c-39c3-4aa8-9576-58c353cd9f93
+    - f3e6c86c-39c3-4aa8-9576-58c353cd9f93 # Social
   maxEntries: null
   minEntries: null
   propagationMethod: all

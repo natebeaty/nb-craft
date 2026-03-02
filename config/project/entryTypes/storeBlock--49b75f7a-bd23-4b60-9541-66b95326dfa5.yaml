@@ -1,6 +1,8 @@
 color: null
 fieldLayouts:
   34acd72a-57c9-484b-8eb1-19e4dfd9b9cd:
+    cardView:
+      - 'layoutElement:a736ceb5-9dc0-4921-b4d0-024dbec1720e'
     tabs:
       -
         elementCondition: null
@@ -10,10 +12,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 13126522-02f9-44e4-ac47-078e4a42cee4
             handle: null
-            includeInCards: true
             instructions: null
             label: 'Buy Now Enabled'
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField

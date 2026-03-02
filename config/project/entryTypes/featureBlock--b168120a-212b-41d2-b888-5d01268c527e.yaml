@@ -1,6 +1,8 @@
 color: null
 fieldLayouts:
   4fdcba29-c964-4e70-950c-b0ed71e10f9b:
+    cardView:
+      - 'layoutElement:5667caf6-b97f-4c7c-ab65-561029a6b7b5'
     tabs:
       -
         elementCondition: null
@@ -10,10 +12,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: fd62e3fe-23c7-4e02-b892-132c1d4da8e7
             handle: null
-            includeInCards: false
             instructions: null
             label: Images
-            providesThumbs: true
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -26,10 +26,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 46044220-4c91-43c8-a145-52ddd272d71e
             handle: null
-            includeInCards: true
             instructions: null
             label: Description
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -42,10 +40,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: f80a73ba-de41-4c27-af86-c3f04aabb9cd
             handle: null
-            includeInCards: false
             instructions: null
             label: Bg
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -58,10 +54,8 @@ fieldLayouts:
             elementCondition: null
             fieldUid: 7b01be86-7661-4819-89b0-2761a1190d18
             handle: null
-            includeInCards: false
             instructions: null
             label: Class
-            providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
@@ -72,6 +66,7 @@ fieldLayouts:
         name: Content
         uid: 0499c21a-389e-48f4-80c3-6d820e0cc848
         userCondition: null
+    thumbFieldKey: 'layoutElement:30d98cf3-cf13-41ab-b3c3-d89924655a1f'
 handle: featureBlock
 hasTitleField: false
 icon: null

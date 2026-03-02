@@ -121,11 +121,7 @@ corepack_enable: false
 # Please take care with this because it can cause great confusion.
 
 upload_dirs:
-  - web
-  - node_modules
-  - storage
-  # - cpresources
-  # - uploads
+  - web/uploads
 
 #
 # upload_dirs:

@@ -6,7 +6,7 @@ name: 'Featured Blocks'
 searchable: true
 settings:
   entryTypes:
-    - b168120a-212b-41d2-b888-5d01268c527e
+    - b168120a-212b-41d2-b888-5d01268c527e # Feature Block
   maxEntries: ''
   minEntries: ''
   propagationKeyFormat: null
