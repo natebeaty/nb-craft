@@ -4,11 +4,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" class="no-js">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>{% if title is defined %}{{ title }} – {{ siteName }}{% elseif seoTitle is defined %}{{ seoTitle }}{% elseif globalSeo.seoTitle %}{{ globalSeo.seoTitle }}{% endif %}</title>
-  <meta name="description" content="{% if description is defined %}{{ description }}{% elseif globalSeo.seoDescription %}{{ globalSeo.seoDescription }}{% endif %}"/>
-  <link rel="home" href="{{ siteUrl }}" />
+  <meta name="description" content="{% if description is defined %}{{ description }}{% elseif globalSeo.seoDescription %}{{ globalSeo.seoDescription }}{% endif %}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#333">
   <link rel="alternate" type="application/atom+xml" href="{{ url('journal/feed.atom') }}">
   <link rel="alternate" type="application/rss+xml" href="{{ url('journal/feed.rss') }}">
 

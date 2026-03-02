@@ -464,6 +464,15 @@ var Nb = (function($) {
     _updateTitle();
   }
 
+  function _updateThemeColorMeta() {
+    const bodyBgColor = window.getComputedStyle(document.body).backgroundColor;
+    const themeColorMetaTag = document.querySelector("meta[name='theme-color']");
+    console.log(bodyBgColor, themeColorMetaTag);
+    if (themeColorMetaTag && bodyBgColor) {
+      themeColorMetaTag.setAttribute("content", bodyBgColor);
+    }
+  }
+
   // Show active page
   function _showPage() {
     // Hide cart
@@ -513,6 +522,9 @@ var Nb = (function($) {
         lightbox.open().goToSlide(1);
       });
     }
+
+    // Update bg color
+    setTimeout(_updateThemeColorMeta, 350);
 
     _updateNateEyes();
   }
