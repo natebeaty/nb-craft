@@ -5,7 +5,6 @@
 
 from fabric import task
 from invoke import run as local
-from patchwork.transfers import rsync
 
 # linode
 remote_path = "/home/natebeaty/apps/nb-craft"
@@ -30,7 +29,8 @@ def build_assets(c):
     local("rm -rf assets/dist")
     local("bun run gulp --production")
     c.run("mkdir -p {}/web/assets/dist".format(remote_path))
-    rsync(c, "web/assets/dist", "{}/web/assets/".format(remote_path))
+    # rsync(c, "web/assets/dist", "{}/web/assets/".format(remote_path))
+    local("sleep 2; rsync -avz web/assets/dist nbopal:{}/web/assets/".format(remote_path))
     local("bun run gulp")
 
 @task()
